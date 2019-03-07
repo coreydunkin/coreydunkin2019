@@ -1,7 +1,7 @@
 import GLC from '../GLCommander/index.js';
 
 export default (id) => {
-    const canvas = document.querySelector('#${id}');
+    const canvas = document.querySelector(`#${id}`);
 
     if(!canvas) {
         return;
