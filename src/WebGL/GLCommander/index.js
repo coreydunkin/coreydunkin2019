@@ -1,6 +1,13 @@
 class GLCommander {
     init(gl) {
         this.gl = gl;
+
+
+ 
+           
+        
+  
+        
     };
 
     clear = (r, g, b, a) => {

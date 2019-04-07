@@ -9,6 +9,7 @@ class App extends Component {
       <div className="App">
       
         <header className="App-header">
+        <canvas id="glscreen"></canvas>
         <WebGL></WebGL>
           <img src={logo} className="App-logo" alt="logo" />
           <p>
