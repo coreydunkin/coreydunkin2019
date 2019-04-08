@@ -4,10 +4,7 @@ import GLC from '../GLCommander/index.js';
 
 let canvas, gl; // canvas and webgl context
 
-let shaderScript;
 let shaderSource;
-let vertexShader; // Vertex shader.  Not much happens in that shader, it just creates the vertex's to be drawn on
-let fragmentShader; // this shader is where the magic happens. Fragment = pixel.  Vertex = kind of like "faces" on a 3d model.  
 let buffer;
 
 
@@ -24,6 +21,7 @@ let program;
 
 
 const render = () => {
+
 
     let now = new Date().getTime();
     currentTime = (now - startTime) / 1000; // update the current time for animations
@@ -43,10 +41,14 @@ const render = () => {
 export default (id) => {
 	// standard canvas setup here, except get webgl context
 	
+	let vertexShader = GLC.vertexShaderSource;
+	let fragmentShader = GLC.fragmentShaderSource;
+
 
 const init = () => {
+	
 	// standard canvas setup here, except get webgl context
-	canvas = document.getElementById('glscreen');
+	canvas = document.getElementById('webgl');
 	gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
 	canvas.width  = window.innerWidth;
 	canvas.height = window.innerHeight;
@@ -69,14 +71,12 @@ const init = () => {
 		gl.STATIC_DRAW
 	); // ^^ That up there sets up the vertex's used to draw onto. I think at least, I haven't payed much attention to vertex's yet, for all I know I'm wrong.
 
-	shaderScript = document.getElementById("2d-vertex-shader");
-	shaderSource = shaderScript.text;
+	shaderSource = GLC.vertexShaderSource;
 	vertexShader = gl.createShader(gl.VERTEX_SHADER); //create the vertex shader from script
 	gl.shaderSource(vertexShader, shaderSource);
 	gl.compileShader(vertexShader);
 
-	shaderScript   = document.getElementById("2d-fragment-shader");
-	shaderSource   = shaderScript.text;
+	shaderSource   = GLC.fragmentShaderSource;
 	fragmentShader = gl.createShader(gl.FRAGMENT_SHADER); //create the fragment from script
 	gl.shaderSource(fragmentShader, shaderSource);
 	gl.compileShader(fragmentShader);
