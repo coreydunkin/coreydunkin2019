@@ -1,4 +1,6 @@
 import GLC from '../GLCommander/index.js';
+import {fragmentShaderTemplate} from '../constants';
+
 
 // set up global javascript variables
 
@@ -42,7 +44,7 @@ export default (id) => {
 	// standard canvas setup here, except get webgl context
 	
 	let vertexShader = GLC.vertexShaderSource;
-	let fragmentShader = GLC.fragmentShaderSource;
+	let fragmentShader = fragmentShaderTemplate;
 
 
 const init = () => {
@@ -71,15 +73,20 @@ const init = () => {
 		gl.STATIC_DRAW
 	); // ^^ That up there sets up the vertex's used to draw onto. I think at least, I haven't payed much attention to vertex's yet, for all I know I'm wrong.
 
+
+
 	shaderSource = GLC.vertexShaderSource;
 	vertexShader = gl.createShader(gl.VERTEX_SHADER); //create the vertex shader from script
 	gl.shaderSource(vertexShader, shaderSource);
 	gl.compileShader(vertexShader);
 
-	shaderSource   = GLC.fragmentShaderSource;
+	shaderSource   = fragmentShaderTemplate;
 	fragmentShader = gl.createShader(gl.FRAGMENT_SHADER); //create the fragment from script
 	gl.shaderSource(fragmentShader, shaderSource);
 	gl.compileShader(fragmentShader);
+
+	
+
 
 	program = gl.createProgram(); // create the WebGL program.  This variable will be used to inject our javascript variables into the program.
 	gl.attachShader(program, vertexShader); // add the shaders to the program
@@ -98,7 +105,8 @@ const init = () => {
 	locationOfResolution = gl.getUniformLocation(program, "u_resolution");
 	locationOfTime = gl.getUniformLocation(program, "u_time");
 	
-	
+
+
 	/*
 	
 	Then we simply apply our javascript variables to the program. 
