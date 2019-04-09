@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import GLC from '../GLCommander/index.js';
 import {fragmentShaderTemplate} from '../constants';
 
-export const canvas = document.getElementById('webgl');
+//export const canvas = document.getElementById('webgl');
+//export const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
 
 export const render = () => {
 
@@ -15,9 +16,8 @@ export const init = () => {
 
 
 export default () => {
-
+ 
 	// set up global javascript variables
-
 	let canvas; 
 	let gl; // canvas and webgl context
 
@@ -63,8 +63,6 @@ export default () => {
 	canvas.width  = window.innerWidth;
 	canvas.height = window.innerHeight;
 	
-console.log(canvas);
-console.log(gl);
 
 	// give WebGL it's viewport
 	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
@@ -122,7 +120,6 @@ console.log(gl);
 
 	gl.uniform1f(colorF, "255")
 
-	console.log(colorF);
 	/*
 	
 	Then we simply apply our javascript variables to the program. 
@@ -139,7 +136,6 @@ console.log(gl);
 	gl.uniform2f(locationOfResolution, canvas.width, canvas.height);
 	gl.uniform1f(locationOfTime, currentTime);
 
-	console.log(fragmentShaderTemplate);
 
 	render();
 	
@@ -156,8 +152,8 @@ console.log(gl);
         locationOfResolution = gl.getUniformLocation(program, "u_resolution");
     });
 
-    GLC.init();
 
+    GLC.init(gl, colorF);
 
 }
 

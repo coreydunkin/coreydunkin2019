@@ -13,7 +13,7 @@ class ToggleButton extends Component {
     GLC.newNumber = `8000.5`;
     GLC.colorA = `0.0/0.0,0.0/0.0,0.0/0.0`;
 
-    console.log(this.props.init);
+    GLC.changeNumbers();
   }
 
   render() {

@@ -1,4 +1,4 @@
-import ToggleButton from '../../buttons/main';
+import {gl, colorF, program, init} from '../init/index.js';
 
 class GLCommander {    
     
@@ -18,7 +18,6 @@ class GLCommander {
     //vec3 color5 = vec3(242.0/255.0,205.0/255.0,96.0/255.0);
     //vec3 color6 = vec3(255.0/255.0,255.0/255.0,255.0/255.0);
 
-
     vertexShaderSource = `
       attribute vec2 a_position;
       void main() {
@@ -26,13 +25,21 @@ class GLCommander {
       }
     `;
 
+    init(gl) {
+
+     this.gl = gl;
+
+    };
+
+
     changeNumbers() {
-      console.log('link clicked');
+      
+      console.log(this.gl);
+
+
     }
 
-    init(gl) {
-        this.gl = gl;
-    };
+
 
     clear = (r, g, b, a) => {
         this.gl.clearColor(r, g, b, a);
