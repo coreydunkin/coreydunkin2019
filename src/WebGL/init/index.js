@@ -1,53 +1,61 @@
+import React, { Component } from 'react';
 import GLC from '../GLCommander/index.js';
 import {fragmentShaderTemplate} from '../constants';
 
+export const canvas = document.getElementById('webgl');
 
-// set up global javascript variables
+export const render = () => {
 
-let canvas, gl; // canvas and webgl context
-
-let shaderSource;
-let buffer;
-
-
-/* Variables holding the location of uniform variables in the WebGL. We use this to send info to the WebGL script. */
-let locationOfTime;
-let locationOfResolution;
-
-let startTime = new Date().getTime(); // Get start time for animating
-let currentTime = 0;
-
-
-let positionLocation;
-let program;
-
-
-const render = () => {
-
-
-    let now = new Date().getTime();
-    currentTime = (now - startTime) / 1000; // update the current time for animations
-    
-    
-    gl.uniform1f(locationOfTime, currentTime); // update the time uniform in our shader
-
-    window.requestAnimationFrame(render, canvas); // request the next frame
-
-    positionLocation = gl.getAttribLocation(program, "a_position"); // do stuff for those vertex's
-    gl.enableVertexAttribArray(positionLocation);
-    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
-    gl.drawArrays(gl.TRIANGLES, 0, 6);
 
 }
 
-export default (id) => {
-	// standard canvas setup here, except get webgl context
+export const init = () => {
+
+}
+
+
+export default () => {
+
+	// set up global javascript variables
+
+	let canvas; 
+	let gl; // canvas and webgl context
+
+	let shaderSource;
+	let buffer;
+
+	/* Variables holding the location of uniform variables in the WebGL. We use this to send info to the WebGL script. */
+	let locationOfTime;
+	let locationOfResolution;
+
+	let startTime = new Date().getTime(); // Get start time for animating
+	let currentTime = 0;
+
+	let positionLocation;
+	let program;
+
+
+	const render = () => {
+
+		let now = new Date().getTime();
+		currentTime = (now - startTime) / 1000; // update the current time for animations
+		
+		gl.uniform1f(locationOfTime, currentTime); // update the time uniform in our shader
 	
+		window.requestAnimationFrame(render, canvas); // request the next frame
+	
+		positionLocation = gl.getAttribLocation(program, "a_position"); // do stuff for those vertex's
+		gl.enableVertexAttribArray(positionLocation);
+		gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+		gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+	}
+
+
+	// standard canvas setup here, except get webgl context
 	let vertexShader = GLC.vertexShaderSource;
 	let fragmentShader = fragmentShaderTemplate;
 
-
-const init = () => {
 	
 	// standard canvas setup here, except get webgl context
 	canvas = document.getElementById('webgl');
@@ -55,6 +63,9 @@ const init = () => {
 	canvas.width  = window.innerWidth;
 	canvas.height = window.innerHeight;
 	
+console.log(canvas);
+console.log(gl);
+
 	// give WebGL it's viewport
 	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
 
@@ -105,8 +116,13 @@ const init = () => {
 	locationOfResolution = gl.getUniformLocation(program, "u_resolution");
 	locationOfTime = gl.getUniformLocation(program, "u_time");
 	
+	const colorF = gl.getUniformLocation(program, "colorF");
 
+	gl.useProgram(program);
 
+	gl.uniform1f(colorF, "255")
+
+	console.log(colorF);
 	/*
 	
 	Then we simply apply our javascript variables to the program. 
@@ -123,14 +139,10 @@ const init = () => {
 	gl.uniform2f(locationOfResolution, canvas.width, canvas.height);
 	gl.uniform1f(locationOfTime, currentTime);
 
+	console.log(fragmentShaderTemplate);
+
 	render();
-}
-
-
-
-
-
-
+	
     window.addEventListener('load', function(event){
         init();
     });
@@ -148,3 +160,4 @@ const init = () => {
 
 
 }
+

@@ -13,10 +13,13 @@ export const fragmentShaderTemplate = `
       uniform float u_time;
       uniform float u_xpos;
       uniform float u_ypos;
+
+      uniform float colorF;
+
     
-      vec3 mod289(vec3 x) {
-        return x - floor(x * (1.0 / 289.0)) * ${GLC.newNumber};
-      }
+    vec3 mod289(vec3 x) {
+      return x - floor(x * (1.0 / 289.0)) * ${GLC.newNumber};
+    }
     
     vec4 mod289(vec4 x) {
       return x - floor(x * (1.0 / 289.0)) * 289.0;
@@ -94,12 +97,13 @@ export const fragmentShaderTemplate = `
       }
     
       void main() {
+
         vec3 color1 = vec3(${GLC.colorA});
-        vec3 color2 = vec3(97.0/255.0,232.0/255.0,225.0/255.0);
-        vec3 color3 = vec3(242.0/255.0,87.0/255.0,87.0/255.0);
-        vec3 color4 = vec3(242.0/255.0,232.0/255.0,99.0/255.0);
-        vec3 color5 = vec3(242.0/255.0,205.0/255.0,96.0/255.0);
-        vec3 color6 = vec3(255.0/255.0,255.0/255.0,255.0/255.0);
+        vec3 color2 = vec3(${GLC.colorB});
+        vec3 color3 = vec3(${GLC.colorC});
+        vec3 color4 = vec3(${GLC.colorD});
+        vec3 color5 = vec3(${GLC.colorE});
+        vec3 color6 = vec3(colorF);
         vec2 lt = vec2(gl_FragCoord.x + u_xpos, gl_FragCoord.y + u_ypos);
         vec2 st = lt.xy/u_resolution.xy;
         st.x *= u_resolution.x/u_resolution.y;
