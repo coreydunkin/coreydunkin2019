@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import GLC from '../GLCommander/index.js';
 import {fragmentShaderTemplate} from '../constants';
 
@@ -27,27 +26,36 @@ export default () => {
 	/* Variables holding the location of uniform variables in the WebGL. We use this to send info to the WebGL script. */
 	let locationOfTime;
 	let locationOfResolution;
+	let locationOfNum;
 
 	let startTime = new Date().getTime(); // Get start time for animating
 	let currentTime = 0;
 
+	let newNewNumber;
+
+	
 	let positionLocation;
 	let program;
+
+
 
 
 	const render = () => {
 
 		let now = new Date().getTime();
 		currentTime = (now - startTime) / 1000; // update the current time for animations
-		
+		newNewNumber = 49.0;
+
 		gl.uniform1f(locationOfTime, currentTime); // update the time uniform in our shader
-	
+		//gl.uniform1f(locationOfNum, newNewNumber);
+
 		window.requestAnimationFrame(render, canvas); // request the next frame
 	
 		positionLocation = gl.getAttribLocation(program, "a_position"); // do stuff for those vertex's
 		gl.enableVertexAttribArray(positionLocation);
 		gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
 		gl.drawArrays(gl.TRIANGLES, 0, 6);
+
 
 	}
 
@@ -114,11 +122,9 @@ export default () => {
 	locationOfResolution = gl.getUniformLocation(program, "u_resolution");
 	locationOfTime = gl.getUniformLocation(program, "u_time");
 	
-	const colorF = gl.getUniformLocation(program, "colorF");
+	locationOfNum = gl.getAttribLocation(program, "newNumber");
 
-	gl.useProgram(program);
-
-	gl.uniform1f(colorF, "255")
+	console.log(locationOfNum);
 
 	/*
 	
@@ -151,9 +157,11 @@ export default () => {
         gl.viewport(0, 0, window.innerWidth, window.innerHeight);
         locationOfResolution = gl.getUniformLocation(program, "u_resolution");
     });
+	
 
 
-    GLC.init(gl, colorF);
+
+    GLC.init(gl, program);
 
 }
 

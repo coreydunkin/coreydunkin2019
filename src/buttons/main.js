@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import GLC from '../WebGL/GLCommander/index.js';
-import init, {render, canvas, gl} from '../WebGL/init/index.js';
 
 
 class ToggleButton extends Component {
@@ -13,7 +12,7 @@ class ToggleButton extends Component {
     GLC.newNumber = `8000.5`;
     GLC.colorA = `0.0/0.0,0.0/0.0,0.0/0.0`;
 
-    GLC.changeNumbers();
+    GLC.changeNumbers(GLC.colorA);
   }
 
   render() {
