@@ -31,23 +31,23 @@ export default () => {
 	let startTime = new Date().getTime(); // Get start time for animating
 	let currentTime = 0;
 
-	let newNewNumber;
+	let newNewNumber = 247.0;
 
 	
 	let positionLocation;
-	let program;
+	let program; 
 
 
 
 
 	const render = () => {
 
+		
+
 		let now = new Date().getTime();
 		currentTime = (now - startTime) / 1000; // update the current time for animations
-		newNewNumber = 49.0;
 
 		gl.uniform1f(locationOfTime, currentTime); // update the time uniform in our shader
-		//gl.uniform1f(locationOfNum, newNewNumber);
 
 		window.requestAnimationFrame(render, canvas); // request the next frame
 	
@@ -122,7 +122,7 @@ export default () => {
 	locationOfResolution = gl.getUniformLocation(program, "u_resolution");
 	locationOfTime = gl.getUniformLocation(program, "u_time");
 	
-	locationOfNum = gl.getAttribLocation(program, "newNumber");
+	locationOfNum = gl.getUniformLocation(program, "numNumber");
 
 	console.log(locationOfNum);
 
@@ -141,6 +141,7 @@ export default () => {
 	*/
 	gl.uniform2f(locationOfResolution, canvas.width, canvas.height);
 	gl.uniform1f(locationOfTime, currentTime);
+	gl.uniform1f(locationOfNum, newNewNumber);
 
 
 	render();
@@ -160,8 +161,7 @@ export default () => {
 	
 
 
-
-    GLC.init(gl, program);
+    GLC.init(gl, program, newNewNumber);
 
 }
 

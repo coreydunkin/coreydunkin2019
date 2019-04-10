@@ -14,7 +14,7 @@ export const fragmentShaderTemplate = `
       uniform float u_xpos;
       uniform float u_ypos;
 
-      uniform vec2 numNumber;
+      uniform float numNumber;
 
 
     
@@ -99,7 +99,7 @@ export const fragmentShaderTemplate = `
     
       void main() {
 
-        vec3 color1 = vec3(247.0/255.0,178.0/255.0,103.0/255.0);
+        vec3 color1 = vec3(numNumber/255.0,178.0/255.0,103.0/255.0);
         vec3 color2 = ${GLC.colorB};
         vec3 color3 = ${GLC.colorC};
         vec3 color4 = ${GLC.colorD};

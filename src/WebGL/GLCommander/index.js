@@ -1,3 +1,4 @@
+import {init, render, newNewNumber} from "../init/index.js";
 
 class GLCommander {    
     
@@ -25,24 +26,44 @@ class GLCommander {
       }
     `;
 
-    init(gl) {
+    init(gl, program) {
 
      this.gl = gl;
+     this.program = program;
+
+
      console.log(gl);
 
      console.log(this.colorA);
     };
 
 
-    changeNumbers(program, colorA) {
+    changeNumbers(program) {
+     
       
-      console.log(this.gl);
 
-      console.log(this.locateColor);
-      console.log(GLC.colorA);
-      
-      this.gl.uniform1f(this.locateColor, `666`);
+      let newNewNewNumber = 247.0;
 
+
+
+
+
+
+
+
+/*
+      if (newNewNewNumber > 177.0) {
+        setInterval(function() {
+          newNewNewNumber -= 1;
+          console.log(newNewNewNumber);
+
+        }, 40);
+      } 
+*/      
+            // To start the loop
+            this.gl.useProgram(this.program);
+            let locationOfNum = this.gl.getUniformLocation(this.program, "numNumber");
+            this.gl.uniform1f(locationOfNum, newNewNewNumber);
     }
 
 
