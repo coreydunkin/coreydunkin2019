@@ -28,17 +28,84 @@ export default () => {
 	let locationOfResolution;
 	let locationOfNum;
 
+	let locOfColorR = [];
+	let locOfColorG = [];
+	let locOfColorB = [];
+
+	let locOfc1r;
+	let locOfc1g;
+	let locOfc1b;
+	let locOfc2r;
+	let locOfc2g;
+	let locOfc2b;
+	let locOfc3r;
+	let locOfc3g;
+	let locOfc3b;
+	let locOfc4r;
+	let locOfc4g;
+	let locOfc4b;
+	let locOfc5r;
+	let locOfc5g;
+	let locOfc5b;
+	let locOfc6r;
+	let locOfc6g;
+	let locOfc6b;
+
 	let startTime = new Date().getTime(); // Get start time for animating
 	let currentTime = 0;
 
-	let newNewNumber = 247.0;
+	let newNewNumber = `vec3(147.0/255.0,178.0/255.0,103.0/255.0)`;
 
-	
+
+
+	let color1r;
+	let color1g;
+	let color1b;
+
+	let color2r;
+	let color2g;
+	let color2b;
+
+	let color3r;
+	let color3g;
+	let color3b;
+
+	let color4r;
+	let color4g;
+	let color4b;
+
+	let color5r;
+	let color5g;
+	let color5b;
+
+	let color6r;
+	let color6g;
+	let color6b;
+
 	let positionLocation;
 	let program; 
 
+	//below is all the colors so they're available for editing and playing with
+	//in rgb values 
 
 
+	/*
+	let color1 = vec3(color1r/255.0,color1g/255.0,color1b/255.0);
+	let color2 = vec3(color2r/255.0,color2g/255.0,color2b/255.0);
+	let color3 = vec3(color3r/255.0,color3g/255.0,color3b/255.0);
+	let color4 = vec3(color4r/255.0,color4g/255.0,color4b/255.0);
+	let color5 = vec3(color5r/255.0,color5g/255.0,color5b/255.0);
+	let color6 = vec3(color6r/255.0,color6g/255.0,color6b/255.0);
+	*/
+
+	// ^^ wip
+
+	color1r = 247.0; color1g = 178.0; color1b = 103.0;
+	color2r = 247.0; color2g = 157.0; color2b = 101.0;
+	color3r = 244.0; color3g = 132.0; color3b = 95.0;
+	color4r = 242.0; color4g = 112.0; color4b = 89.0;
+	color5r = 242.0; color5g = 92.0;  color5b = 84.0;
+	color6r = 199.0; color6g = 76.0;  color6b = 69.0;
 
 	const render = () => {
 
@@ -123,6 +190,51 @@ export default () => {
 	locationOfTime = gl.getUniformLocation(program, "u_time");
 	
 	locationOfNum = gl.getUniformLocation(program, "numNumber");
+	
+	// assign all R values
+	/*
+	for (let i = 0; i < 6; ++i) {
+		locOfColorR[i] = gl.getUniformLocation(program, "color"i"r");
+		gl.uniform1f(locOfc1r, color1r);
+	}
+*/
+	locOfc1r = gl.getUniformLocation(program, "color1r");
+	locOfc1g = gl.getUniformLocation(program, "color1g");
+	locOfc1b = gl.getUniformLocation(program, "color1b");
+	locOfc2r = gl.getUniformLocation(program, "color2r");
+	locOfc2g = gl.getUniformLocation(program, "color2g");
+	locOfc2b = gl.getUniformLocation(program, "color2b");
+	locOfc3r = gl.getUniformLocation(program, "color3r");
+	locOfc3g = gl.getUniformLocation(program, "color3g");
+	locOfc3b = gl.getUniformLocation(program, "color3b");
+	locOfc4r = gl.getUniformLocation(program, "color4r");
+	locOfc4g = gl.getUniformLocation(program, "color4g");
+	locOfc4b = gl.getUniformLocation(program, "color4b");
+	locOfc5r = gl.getUniformLocation(program, "color5r");
+	locOfc5g = gl.getUniformLocation(program, "color5g");
+	locOfc5b = gl.getUniformLocation(program, "color5b");
+	locOfc6r = gl.getUniformLocation(program, "color6r");
+	locOfc6g = gl.getUniformLocation(program, "color6g");
+	locOfc6b = gl.getUniformLocation(program, "color6b");
+
+	gl.uniform1f(locOfc1r, color1r);
+	gl.uniform1f(locOfc1g, color1g);
+	gl.uniform1f(locOfc1b, color1b);
+	gl.uniform1f(locOfc2r, color2r);
+	gl.uniform1f(locOfc2g, color2g);
+	gl.uniform1f(locOfc2b, color2b);
+	gl.uniform1f(locOfc3r, color3r);
+	gl.uniform1f(locOfc3g, color3g);
+	gl.uniform1f(locOfc3b, color3b);
+	gl.uniform1f(locOfc4r, color4r);
+	gl.uniform1f(locOfc4g, color4g);
+	gl.uniform1f(locOfc4b, color4b);
+	gl.uniform1f(locOfc5r, color5r);
+	gl.uniform1f(locOfc5g, color5g);
+	gl.uniform1f(locOfc5b, color5b);
+	gl.uniform1f(locOfc6r, color6r);
+	gl.uniform1f(locOfc6g, color6g);
+	gl.uniform1f(locOfc6b, color6b);
 
 	console.log(locationOfNum);
 

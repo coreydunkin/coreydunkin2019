@@ -14,7 +14,36 @@ export const fragmentShaderTemplate = `
       uniform float u_xpos;
       uniform float u_ypos;
 
-      uniform float numNumber;
+      uniform float color1;
+      uniform float color2;
+      uniform float color3;
+      uniform float color4;
+      uniform float color5;
+      uniform float color6;
+
+      uniform float color1r;
+      uniform float color1g;
+      uniform float color1b;
+
+      uniform float color2r;
+      uniform float color2g;
+      uniform float color2b;
+
+      uniform float color3r;
+      uniform float color3g;
+      uniform float color3b;
+
+      uniform float color4r;
+      uniform float color4g;
+      uniform float color4b;
+
+      uniform float color5r;
+      uniform float color5g;
+      uniform float color5b;
+
+      uniform float color6r;
+      uniform float color6g;
+      uniform float color6b;
 
 
     
@@ -99,12 +128,12 @@ export const fragmentShaderTemplate = `
     
       void main() {
 
-        vec3 color1 = vec3(numNumber/255.0,178.0/255.0,103.0/255.0);
-        vec3 color2 = ${GLC.colorB};
-        vec3 color3 = ${GLC.colorC};
-        vec3 color4 = ${GLC.colorD};
-        vec3 color5 = ${GLC.colorE};
-        vec3 color6 = ${GLC.colorF};
+        vec3 color1 = vec3(color1r/255.0,color1g/255.0,color1b/255.0);
+        vec3 color2 = vec3(color2r/255.0,color2g/255.0,color2b/255.0);
+        vec3 color3 = vec3(color3r/255.0,color3g/255.0,color3b/255.0);
+        vec3 color4 = vec3(color4r/255.0,color4g/255.0,color4b/255.0);
+        vec3 color5 = vec3(color5r/255.0,color5g/255.0,color5b/255.0);
+        vec3 color6 = vec3(color6r/255.0,color6g/255.0,color6b/255.0);
         vec2 lt = vec2(gl_FragCoord.x + u_xpos, gl_FragCoord.y + u_ypos);
         vec2 st = lt.xy/u_resolution.xy;
         st.x *= u_resolution.x/u_resolution.y;
