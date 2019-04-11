@@ -21,31 +21,29 @@ export const fragmentShaderTemplate = `
       uniform float color5;
       uniform float color6;
 
-      uniform float color1r;
-      uniform float color1g;
-      uniform float color1b;
+      uniform float colorR1;
+      uniform float colorG1;
+      uniform float colorB1;
 
-      uniform float color2r;
-      uniform float color2g;
-      uniform float color2b;
+      uniform float colorR2;
+      uniform float colorG2;
+      uniform float colorB2;
 
-      uniform float color3r;
-      uniform float color3g;
-      uniform float color3b;
+      uniform float colorR3;
+      uniform float colorG3;
+      uniform float colorB3;
 
-      uniform float color4r;
-      uniform float color4g;
-      uniform float color4b;
-
-      uniform float color5r;
-      uniform float color5g;
-      uniform float color5b;
-
-      uniform float color6r;
-      uniform float color6g;
-      uniform float color6b;
-
-
+      uniform float colorR4;
+      uniform float colorG4;
+      uniform float colorB4;
+      
+      uniform float colorR5;
+      uniform float colorG5;
+      uniform float colorB5;
+      
+      uniform float colorR6;
+      uniform float colorG6;
+      uniform float colorB6;
     
     vec3 mod289(vec3 x) {
       return x - floor(x * (1.0 / 289.0)) * 289.0;
@@ -128,12 +126,12 @@ export const fragmentShaderTemplate = `
     
       void main() {
 
-        vec3 color1 = vec3(color1r/255.0,color1g/255.0,color1b/255.0);
-        vec3 color2 = vec3(color2r/255.0,color2g/255.0,color2b/255.0);
-        vec3 color3 = vec3(color3r/255.0,color3g/255.0,color3b/255.0);
-        vec3 color4 = vec3(color4r/255.0,color4g/255.0,color4b/255.0);
-        vec3 color5 = vec3(color5r/255.0,color5g/255.0,color5b/255.0);
-        vec3 color6 = vec3(color6r/255.0,color6g/255.0,color6b/255.0);
+        vec3 color1 = vec3(colorR1/255.0,colorG1/255.0,colorB1/255.0);
+        vec3 color2 = vec3(colorR2/255.0,colorG2/255.0,colorB2/255.0);
+        vec3 color3 = vec3(colorR3/255.0,colorG3/255.0,colorB3/255.0);
+        vec3 color4 = vec3(colorR4/255.0,colorG4/255.0,colorB4/255.0);
+        vec3 color5 = vec3(colorR5/255.0,colorG5/255.0,colorB5/255.0);
+        vec3 color6 = vec3(colorR6/255.0,colorG6/255.0,colorB6/255.0);
         vec2 lt = vec2(gl_FragCoord.x + u_xpos, gl_FragCoord.y + u_ypos);
         vec2 st = lt.xy/u_resolution.xy;
         st.x *= u_resolution.x/u_resolution.y;
