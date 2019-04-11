@@ -1,6 +1,6 @@
 import GLC from '../GLCommander/index.js';
 import {fragmentShaderTemplate} from '../constants';
-
+//import {changeNumbers} from '../../buttons/main.js'
 //export const canvas = document.getElementById('webgl');
 //export const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
 
@@ -67,6 +67,7 @@ export default () => {
 	color6r = 199.0; color6g = 76.0;  color6b = 69.0;
 */
 
+	// This is written this way purely for sanity's sake, easier to read.
 	colorR[1] = 247.0; colorG[1] = 178.0; colorB[1] = 103.0;
 	colorR[2] = 247.0; colorG[2] = 157.0; colorB[2] = 101.0;
 	colorR[3] = 244.0; colorG[3] = 132.0; colorB[3] = 95.0;
@@ -162,23 +163,35 @@ export default () => {
 	
 	locationOfNum = gl.getUniformLocation(program, "numNumber");
 	
-	// assign all R values
-	for (let i = 1; i < 7; ++i) {
-		locOfColorR[i] = gl.getUniformLocation(program, "colorR"+i);
-		gl.uniform1f(locOfColorR[i], colorR[i]);
-	}
+	const assign = (colorR, colorG, colorB) => {
+		console.log("assign button hit");
+		console.log(colorR);
+		console.log(colorG);
+		console.log(colorB);
 
-	// assign all G values
-	for (let i = 1; i < 7; ++i) {
-		locOfColorG[i] = gl.getUniformLocation(program, "colorG"+i);
-		gl.uniform1f(locOfColorG[i], colorG[i]);
-	}
+		// assign all R values
+		for (let i = 1; i < 7; ++i) {
+			locOfColorR[i] = gl.getUniformLocation(program, "colorR"+i);
+			gl.uniform1f(locOfColorR[i], colorR[i]);
+		}
+
+		// assign all G values
+		for (let i = 1; i < 7; ++i) {
+			locOfColorG[i] = gl.getUniformLocation(program, "colorG"+i);
+			gl.uniform1f(locOfColorG[i], colorG[i]);
+		}
+		
+		// assign all B values
+		for (let i = 1; i < 7; ++i) {
+			locOfColorB[i] = gl.getUniformLocation(program, "colorB"+i);
+			gl.uniform1f(locOfColorB[i], colorB[i]);
+		}
+	};
 	
-	// assign all B values
-	for (let i = 1; i < 7; ++i) {
-		locOfColorB[i] = gl.getUniformLocation(program, "colorB"+i);
-		gl.uniform1f(locOfColorB[i], colorB[i]);
-	}
+
+
+	assign(colorR, colorG, colorB);
+
 	console.log(locationOfNum);
 
 	/*
@@ -216,7 +229,10 @@ export default () => {
 	
 
 
-    GLC.init(gl, program, newNewNumber);
+    GLC.init(gl, program, assign);
 
 }
+
+
+
 

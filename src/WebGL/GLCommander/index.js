@@ -1,4 +1,5 @@
-import {init, render, newNewNumber} from "../init/index.js";
+import {init, render, assign} from "../init/index.js";
+import { createAssignment } from "typescript";
 
 class GLCommander {    
     
@@ -11,7 +12,11 @@ class GLCommander {
     colorD = `vec3(242.0/255.0,112.0/255.0,89.0/255.0);`;
     colorE = `vec3(242.0/255.0,92.0/255.0,84.0/255.0);`;
     colorF = `vec3(199.0/255.0,76.0/255.0,69.0/255.0);`;
-
+/*
+    colorR = [0,75,227,245,73,172,255];
+    colorG = [0,0,99,204,198,237,255];
+    colorB = [0,130,151,232,229,255];
+*/
     //vec3 color2 = vec3(234.0/255.0,242.0/255.0,227.0/255.0);
     //vec3 color2 = vec3(97.0/255.0,232.0/255.0,225.0/255.0);
     //vec3 color3 = vec3(242.0/255.0,87.0/255.0,87.0/255.0);
@@ -26,44 +31,47 @@ class GLCommander {
       }
     `;
 
-    init(gl, program) {
+    init(gl, program, assign) {
 
      this.gl = gl;
      this.program = program;
+
+     this.assign = assign;
 
 
      console.log(gl);
 
      console.log(this.colorA);
+
+     
     };
 
 
-    changeNumbers(program) {
-     
+    changeNumbersIceCream() {
+      let colorR = [0,  75,227,245,73,172,    255];
+      let colorG = [0,  0,99,204,198,237,     255];
+      let colorB = [0,  130,151,232,229,255,  255];
+
+      this.assign(colorR, colorG, colorB);
       
+    };
 
-      let newNewNewNumber = `vec3(147.0/255.0,178.0/255.0,103.0/255.0)`;
+    changeNumbersPumpkin() {
+      let colorR = [0,  247,247,244,242,242,  255];
+      let colorG = [0,  178,157,132,112,92,   255];
+      let colorB = [0,  103,101,95,89,84,     255];
 
+      this.assign(colorR, colorG, colorB);
 
+    }
 
+    changeNumbersSpooky() {
+      let colorR = [0,  190,159,148,248,244,  255];
+      let colorG = [0,  175,136,124,246,182,   255];
+      let colorB = [0,  211,190,183,190,188,     255];
 
+      this.assign(colorR, colorG, colorB);
 
-
-
-
-/*
-      if (newNewNewNumber > 177.0) {
-        setInterval(function() {
-          newNewNewNumber -= 1;
-          console.log(newNewNewNumber);
-
-        }, 40);
-      } 
-*/      
-            // To start the loop
-            this.gl.useProgram(this.program);
-            let locationOfNum = this.gl.getUniformLocation(this.program, "numNumber");
-            this.gl.uniform1f(locationOfNum, newNewNewNumber);
     }
 
 

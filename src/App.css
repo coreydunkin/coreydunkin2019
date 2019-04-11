@@ -40,7 +40,27 @@ canvas {
   color: #61dafb;
 }
 
+button {
+  width: 33%;
+  background: white;
+  border: none;
+  padding: 10px;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
 
+.pumpkin {
+  background: rgb(255, 115, 0);
+}
+
+.icecream {
+  background: rgb(14, 153, 199);
+}
+
+.spooky {
+  background: rgb(95, 95, 196);
+}
 
 @keyframes App-logo-spin {
   from {
