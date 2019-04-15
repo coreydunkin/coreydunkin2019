@@ -14,6 +14,9 @@ class ToggleButton extends Component {
   handleClickSpooky = (init) => {
     GLC.changeNumbersSpooky();
   }    
+  handleClickAnim = (init) => {
+    GLC.changeNumbersAnim();
+  }    
 
   render() {
     return (
@@ -25,6 +28,9 @@ class ToggleButton extends Component {
         Ice Cream themed
       </button>
       <button className="spooky" onClick={this.handleClickSpooky}>
+        Spooky themed
+      </button>
+      <button className="animate" onClick={this.handleClickAnim}>
         Spooky themed
       </button>
       </div>

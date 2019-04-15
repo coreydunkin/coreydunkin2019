@@ -1,4 +1,4 @@
-import {init, render, assign} from "../init/index.js";
+import {init, render, assign, anim} from "../init/index.js";
 import { createAssignment } from "typescript";
 
 class GLCommander {    
@@ -31,12 +31,14 @@ class GLCommander {
       }
     `;
 
-    init(gl, program, assign) {
+    init(gl, program, assign, anim) {
 
      this.gl = gl;
      this.program = program;
 
      this.assign = assign;
+
+     this.anim = anim;
 
 
      console.log(gl);
@@ -67,12 +69,20 @@ class GLCommander {
 
     changeNumbersSpooky() {
       let colorR = [0,  190,159,148,248,244,  255];
-      let colorG = [0,  175,136,124,246,182,   255];
-      let colorB = [0,  211,190,183,190,188,     255];
+      let colorG = [0,  175,136,124,246,182,  255];
+      let colorB = [0,  211,190,183,190,188,  255];
 
       this.assign(colorR, colorG, colorB);
 
     }
+
+    changeNumbersAnim() {
+      let startNum = 1;
+
+      console.log(startNum);
+      this.anim(startNum);
+
+    }    
 
 
 

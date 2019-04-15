@@ -187,6 +187,11 @@ export default () => {
 			gl.uniform1f(locOfColorB[i], colorB[i]);
 		}
 	};
+
+	const anim = (startNum) => {
+
+		console.log(startNum); 
+	}
 	
 
 
@@ -229,7 +234,7 @@ export default () => {
 	
 
 
-    GLC.init(gl, program, assign);
+    GLC.init(gl, program, assign, anim);
 
 }
 
