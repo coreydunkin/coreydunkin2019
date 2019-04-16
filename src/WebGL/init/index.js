@@ -195,6 +195,9 @@ export default () => {
 	};
 
 	const anim = (newColorR, newColorG, newColorB) => {
+		
+
+
 		for (let i = 1; i < 7; i++) {
 			locOfColorR[i] = gl.getUniformLocation(program, "colorR"+i);
 			locOfColorG[i] = gl.getUniformLocation(program, "colorG"+i);
@@ -202,21 +205,18 @@ export default () => {
 
 
 			const step = () => {
-					if(colorR[i] > newColorR[i]) {
-	
-						colorR[i]--; 
-						
+		
 
+				if(colorR[i] > newColorR[i]) {
+						colorR[i]--; 
 						gl.uniform1f(locOfColorR[i], colorR[i]);
+						//colorR[i] = newColorR[i];
 						window.requestAnimationFrame(step);
-	
 					} else if (colorR[i] < newColorR[i]) {
-	
-						colorR[i]++;
-	
+						colorR[i]++;	
 						gl.uniform1f(locOfColorR[i], colorR[i]);
+						//colorR[i] = newColorR[i];
 						window.requestAnimationFrame(step);
-	
 					} else {
 						stepTwo();
 					}
@@ -227,20 +227,17 @@ export default () => {
 	
 			const stepTwo = () => {
 	
+
 					if(colorG[i] > newColorG[i]) {
-						window.requestAnimationFrame(stepTwo);
-	
 						colorG[i]--;
-	
 						gl.uniform1f(locOfColorG[i], colorG[i]);
-	
-					} else if (colorG[i] < newColorG[i]) {
+						//colorG[i] = newColorG[i];
 						window.requestAnimationFrame(stepTwo);
-	
+					} else if (colorG[i] < newColorG[i]) {
 						colorG[i]++;
-	
 						gl.uniform1f(locOfColorG[i], colorG[i]);
-	
+						//colorG[i] = newColorG[i];
+						window.requestAnimationFrame(stepTwo);
 					} else {
 						stepThree();
 					}
@@ -250,24 +247,23 @@ export default () => {
 	
 			const stepThree = () => {
 	
-					if(colorB[i] > newColorB[i]) {
-						window.requestAnimationFrame(stepThree);
-	
-						colorB[i]--;
-	
-						gl.uniform1f(locOfColorB[i], colorB[i]);
-	
-					} else if (colorB[i] < newColorB[i]) {
-						window.requestAnimationFrame(stepThree);
-	
-						colorB[i]++;
-	
-						gl.uniform1f(locOfColorB[i], colorB[i]);
-	
-					} 
-	
-					console.log(colorR, colorG, colorB);
 
+					if(colorB[i] > newColorB[i]) {
+						colorB[i]--;
+						gl.uniform1f(locOfColorB[i], colorB[i]);
+						//colorB[i] = newColorB[i];
+						window.requestAnimationFrame(stepThree);
+					} else if (colorB[i] < newColorB[i]) {
+						colorB[i]++;
+						gl.uniform1f(locOfColorB[i], colorB[i]);
+						//colorB[i] = newColorB[i];
+						window.requestAnimationFrame(stepThree);
+					} else {
+
+
+					}
+	
+					
 			}
 
 		requestAnimationFrame(step);
