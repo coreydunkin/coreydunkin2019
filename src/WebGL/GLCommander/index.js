@@ -1,5 +1,5 @@
-import {init, render, assign, anim} from "../init/index.js";
-import { createAssignment } from "typescript";
+//import anim from "../init/index.js";
+//import { createAssignment } from "typescript";
 
 class GLCommander {    
     

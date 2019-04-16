@@ -1,4 +1,4 @@
-import GLC from './GLCommander/index.js';
+//import GLC from './GLCommander/index.js';
 
 export const fragmentShaderTemplate = `
       #ifdef GL_ES

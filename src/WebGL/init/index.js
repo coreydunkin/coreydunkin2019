@@ -35,9 +35,6 @@ export default () => {
 	let colorR = [];
 	let colorG = [];
 	let colorB = [];
-	let newColorR = [];
-	let newColorG = [];
-	let newColorB = [];
 
 	let startTime = new Date().getTime(); // Get start time for animating
 	let currentTime = 0;
