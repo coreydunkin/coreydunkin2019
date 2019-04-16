@@ -35,6 +35,9 @@ export default () => {
 	let colorR = [];
 	let colorG = [];
 	let colorB = [];
+	let newColorR = [];
+	let newColorG = [];
+	let newColorB = [];
 
 	let startTime = new Date().getTime(); // Get start time for animating
 	let currentTime = 0;
@@ -68,13 +71,14 @@ export default () => {
 */
 
 	// This is written this way purely for sanity's sake, easier to read.
+	
 	colorR[1] = 247.0; colorG[1] = 178.0; colorB[1] = 103.0;
 	colorR[2] = 247.0; colorG[2] = 157.0; colorB[2] = 101.0;
 	colorR[3] = 244.0; colorG[3] = 132.0; colorB[3] = 95.0;
 	colorR[4] = 242.0; colorG[4] = 112.0; colorB[4] = 89.0;
 	colorR[5] = 242.0; colorG[5] = 92.0;  colorB[5] = 84.0;
 	colorR[6] = 199.0; colorG[6] = 76.0;  colorB[6] = 69.0;
-
+	
 	const render = () => {
 
 		
@@ -169,28 +173,106 @@ export default () => {
 		console.log(colorG);
 		console.log(colorB);
 
+		
 		// assign all R values
-		for (let i = 1; i < 7; ++i) {
+		for (let i = 1; i < 7; i++) {
+			
 			locOfColorR[i] = gl.getUniformLocation(program, "colorR"+i);
-			gl.uniform1f(locOfColorR[i], colorR[i]);
+			gl.uniform1f(locOfColorR[i], colorR[i]); 
 		}
 
 		// assign all G values
-		for (let i = 1; i < 7; ++i) {
+		for (let i = 1; i < 7; i++) {
 			locOfColorG[i] = gl.getUniformLocation(program, "colorG"+i);
 			gl.uniform1f(locOfColorG[i], colorG[i]);
 		}
 		
 		// assign all B values
-		for (let i = 1; i < 7; ++i) {
+		for (let i = 1; i < 7; i++) {
 			locOfColorB[i] = gl.getUniformLocation(program, "colorB"+i);
 			gl.uniform1f(locOfColorB[i], colorB[i]);
 		}
 	};
 
-	const anim = (startNum) => {
+	const anim = (newColorR, newColorG, newColorB) => {
+		for (let i = 1; i < 7; i++) {
+			locOfColorR[i] = gl.getUniformLocation(program, "colorR"+i);
+			locOfColorG[i] = gl.getUniformLocation(program, "colorG"+i);
+			locOfColorB[i] = gl.getUniformLocation(program, "colorB"+i);
 
-		console.log(startNum); 
+
+			const step = () => {
+					if(colorR[i] > newColorR[i]) {
+	
+						colorR[i]--; 
+						
+
+						gl.uniform1f(locOfColorR[i], colorR[i]);
+						window.requestAnimationFrame(step);
+	
+					} else if (colorR[i] < newColorR[i]) {
+	
+						colorR[i]++;
+	
+						gl.uniform1f(locOfColorR[i], colorR[i]);
+						window.requestAnimationFrame(step);
+	
+					} else {
+						stepTwo();
+					}
+	
+						
+			};
+	
+	
+			const stepTwo = () => {
+	
+					if(colorG[i] > newColorG[i]) {
+						window.requestAnimationFrame(stepTwo);
+	
+						colorG[i]--;
+	
+						gl.uniform1f(locOfColorG[i], colorG[i]);
+	
+					} else if (colorG[i] < newColorG[i]) {
+						window.requestAnimationFrame(stepTwo);
+	
+						colorG[i]++;
+	
+						gl.uniform1f(locOfColorG[i], colorG[i]);
+	
+					} else {
+						stepThree();
+					}
+	
+					
+			}
+	
+			const stepThree = () => {
+	
+					if(colorB[i] > newColorB[i]) {
+						window.requestAnimationFrame(stepThree);
+	
+						colorB[i]--;
+	
+						gl.uniform1f(locOfColorB[i], colorB[i]);
+	
+					} else if (colorB[i] < newColorB[i]) {
+						window.requestAnimationFrame(stepThree);
+	
+						colorB[i]++;
+	
+						gl.uniform1f(locOfColorB[i], colorB[i]);
+	
+					} 
+	
+					console.log(colorR, colorG, colorB);
+
+			}
+
+		requestAnimationFrame(step);
+		}
+ 
 	}
 	
 

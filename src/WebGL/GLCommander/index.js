@@ -77,10 +77,11 @@ class GLCommander {
     }
 
     changeNumbersAnim() {
-      let startNum = 1;
+      let newColorR = [0,  252,165,89,37,243,  255];
+      let newColorG = [0,  186,1,0,0,243,  255];
+      let newColorB = [0,  4,4,4,1,243,  255];
 
-      console.log(startNum);
-      this.anim(startNum);
+      this.anim(newColorR, newColorG, newColorB);
 
     }    
 

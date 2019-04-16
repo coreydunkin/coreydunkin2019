@@ -30,8 +30,8 @@ class ToggleButton extends Component {
       <button className="spooky" onClick={this.handleClickSpooky}>
         Spooky themed
       </button>
-      <button className="animate" onClick={this.handleClickAnim}>
-        Spooky themed
+      <button className="animate maccas" onClick={this.handleClickAnim}>
+        Maccas themed
       </button>
       </div>
     );

@@ -62,6 +62,10 @@ button {
   background: rgb(95, 95, 196);
 }
 
+.maccas {
+  background: red;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
