@@ -1,9 +1,8 @@
 //import GLC from './GLCommander/index.js';
 
 export const fragmentShaderTemplate = `
-      #ifdef GL_ES
-      precision mediump float;
-      #endif
+      precision highp float;
+    
     
       #define PI 3.14159265359;
     

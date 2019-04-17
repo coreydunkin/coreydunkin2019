@@ -108,10 +108,6 @@ export default () => {
 	canvas.height = window.innerHeight;
 	
 
-	console.log(colorR);
-	console.log(colorG);
-	console.log(colorB);
-
 	// give WebGL it's viewport
 	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
 
@@ -165,10 +161,6 @@ export default () => {
 	locationOfNum = gl.getUniformLocation(program, "numNumber");
 	
 	const assign = (colorR, colorG, colorB) => {
-		console.log("assign button hit");
-		console.log(colorR);
-		console.log(colorG);
-		console.log(colorB);
 
 		
 		// assign all R values
@@ -272,7 +264,6 @@ export default () => {
 
 	assign(colorR, colorG, colorB);
 
-	console.log(locationOfNum);
 
 	/*
 	
