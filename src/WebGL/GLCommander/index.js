@@ -77,9 +77,9 @@ class GLCommander {
     }
 
     changeNumbersAnim() {
-      let newColorR = [0,  252,165,89,37,243,  255];
-      let newColorG = [0,  186,1,0,0,243,  255];
-      let newColorB = [0,  4,4,4,1,243,  255];
+      let newColorR = [0,  252,165,89,243,37,  255];
+      let newColorG = [0,  186,1,0,243,0,  255];
+      let newColorB = [0,  4,4,4,243,1,  255];
 
       this.anim(newColorR, newColorG, newColorB);
 

@@ -36,6 +36,10 @@ export default () => {
 	let colorG = [];
 	let colorB = [];
 
+	let locOfShapeNum = [];
+
+	let newShapeNum = 20;
+
 	let startTime = new Date().getTime(); // Get start time for animating
 	let currentTime = 0;
 
@@ -69,11 +73,11 @@ export default () => {
 
 	// This is written this way purely for sanity's sake, easier to read.
 	
-	colorR[1] = 247.0; colorG[1] = 178.0; colorB[1] = 103.0;
-	colorR[2] = 247.0; colorG[2] = 157.0; colorB[2] = 101.0;
-	colorR[3] = 244.0; colorG[3] = 132.0; colorB[3] = 95.0;
-	colorR[4] = 242.0; colorG[4] = 112.0; colorB[4] = 89.0;
-	colorR[5] = 242.0; colorG[5] = 92.0;  colorB[5] = 84.0;
+	colorR[1] = 109.0; colorG[1] = 104.0; colorB[1] = 117.0;
+	colorR[2] = 181.0; colorG[2] = 131.0; colorB[2] = 141.0;
+	colorR[3] = 229.0; colorG[3] = 152.0; colorB[3] = 155.0;
+	colorR[4] = 255.0; colorG[4] = 180.0; colorB[4] = 162.0;
+	colorR[5] = 255.0; colorG[5] = 205.0;  colorB[5] = 178.0;
 	colorR[6] = 199.0; colorG[6] = 76.0;  colorB[6] = 69.0;
 	
 	const render = () => {
@@ -162,6 +166,8 @@ export default () => {
 	
 	const assign = (colorR, colorG, colorB) => {
 
+		locOfShapeNum = gl.getUniformLocation(program, "shapeNum");
+		gl.uniform1f(locOfShapeNum, newShapeNum);
 		
 		// assign all R values
 		for (let i = 1; i < 7; i++) {
@@ -184,6 +190,27 @@ export default () => {
 	};
 
 	const anim = (newColorR, newColorG, newColorB) => {
+		console.log(newShapeNum);
+
+
+
+
+			const stepNum = () => {
+				
+				if (newShapeNum > 0.85373472095314) {
+					newShapeNum--;
+					console.log(newShapeNum);
+					locOfShapeNum = gl.getUniformLocation(program, "shapeNum");
+					gl.uniform1f(locOfShapeNum, newShapeNum);
+					window.requestAnimationFrame(stepNum);
+				} else {
+
+				}
+
+
+			}
+			requestAnimationFrame(stepNum);
+
 		
 
 

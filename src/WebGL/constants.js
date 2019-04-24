@@ -43,6 +43,8 @@ export const fragmentShaderTemplate = `
       uniform float colorR6;
       uniform float colorG6;
       uniform float colorB6;
+
+      uniform float shapeNum;
     
     vec3 mod289(vec3 x) {
       return x - floor(x * (1.0 / 289.0)) * 289.0;
@@ -58,7 +60,7 @@ export const fragmentShaderTemplate = `
     
     vec4 taylorInvSqrt(vec4 r)
     {
-      return 1.79284291400159 - 0.85373472095314 * r;
+      return 1.79284291400159 - shapeNum * r;
     }
     
     float snoise(vec3 v)
