@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import GLC from '../WebGL/GLCommander/index.js';
 
 import Home from '../home/main';
 import About from '../about/main';
 
 class Nav extends Component {
-  
+    handleClickIceCream = (init) => {
+        GLC.changeNumbersIceCream();
+    }  
+    handleClickAnim = (init) => {
+      GLC.changeNumbersAnim();
+    }  
   render() {
     return (
       <Router>
@@ -15,10 +21,10 @@ class Nav extends Component {
         <div>
           <ul className="nav">
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={this.handleClickIceCream}>Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/about" onClick={this.handleClickAnim}>About</Link>
             </li>
           </ul>
 
@@ -40,7 +46,6 @@ class Nav extends Component {
                 <Route exact path="/" component={Home} />
                 <Route path="/about" component={About} />
                 {/* Without this `Route`, we would get errors during
-                    the initial transition from `/` to `/hsl/10/90/50`
                 */}
                     <Route render={() => <div>Not Found</div>} />
             </Switch>
