@@ -7,10 +7,12 @@ class Home extends Component {
   
   render() {
     return (
-      <div className="home absolute-center">
+      <div className="home">
+        <div className="absolute-center">
           <h1 className="hero">COREY DUNKIN</h1>
           <h2 className="subhero">- front-end developer - designer - creative -</h2>
           <ToggleButton></ToggleButton>
+        </div>
       </div>
     );
   }
