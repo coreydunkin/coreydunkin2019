@@ -83,9 +83,9 @@ export default () => {
 	const render = () => {
 
 		
-
+		let speed = 2000;
 		let now = new Date().getTime();
-		currentTime = (now - startTime) / 1000; // update the current time for animations
+		currentTime = (now - startTime) / speed; // update the current time for animations
 
 		gl.uniform1f(locationOfTime, currentTime); // update the time uniform in our shader
 
