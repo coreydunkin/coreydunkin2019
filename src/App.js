@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
 import WebGL from './WebGL/main';
-import Nav from './nav/main';
+import Content from './Content/main';
 
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
         
         <WebGL></WebGL>
 
-        <Nav></Nav>
+        <Content></Content>
 
       </div>
     );

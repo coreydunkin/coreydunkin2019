@@ -6,11 +6,9 @@ class About extends Component {
   
   render() {
     return (
-      <div className="about">
-        <div className="absolute-center">
-          <h1 className="hero">ABOUT ME</h1>
-          <h2 className="subhero">This is the about me section</h2>
-        </div>  
+      <div className="about page">
+          <h1 className="hero">ABOUT THIS PAGE</h1>
+          <h2 className="subhero">This is to test if webgl can be controlled inside react.</h2>
       </div>
     );
   }

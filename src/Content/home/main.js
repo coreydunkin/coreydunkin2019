@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ToggleButton from '../buttons/main';
+import ToggleButton from '../../buttons/main';
 
 class Home extends Component {
   // This syntax ensures `this` is bound within handleClick.
@@ -7,12 +7,11 @@ class Home extends Component {
   
   render() {
     return (
-      <div className="home">
-        <div className="absolute-center">
-          <h1 className="hero">COREY DUNKIN</h1>
-          <h2 className="subhero">- front-end developer - designer - creative -</h2>
+      <div className="home page">
+          <h1 className="hero">WEBGL React TEST</h1>
+          <h2 className="subhero">- webgl - react - animations  -</h2>
           <ToggleButton></ToggleButton>
-        </div>
+        
       </div>
     );
   }

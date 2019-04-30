@@ -36,8 +36,8 @@ class Nav extends Component {
             */}
             <CSSTransition
                 key={location.key}
-                classNames="fade"
-                timeout={300}
+                classNames="move"
+                timeout={1000}
             >
 
             <Switch location={location}>
