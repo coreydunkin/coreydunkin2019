@@ -13,6 +13,33 @@ html {
 }
 
 
+button {
+  width: 33%;
+  background: white;
+  border: none;
+  padding: 10px;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.pumpkin {
+  background: rgb(255, 115, 0);
+}
+
+.icecream {
+  background: rgb(14, 153, 199);
+}
+
+.spooky {
+  background: rgb(95, 95, 196);
+}
+
+.maccas {
+  background: red;
+}
+
+
 // Type //
 span {
   &.bar {
@@ -40,6 +67,30 @@ h1 {
     animation: text-shadow 0.5s ease-in-out forwards;
     animation-delay: 4.5s;
   }
+}
+
+h2 {
+  span {
+    display: inline-block;
+    margin: 0px -1.25vw;
+    font-size: 4vw;
+    vertical-align: super;
+  }
+    a {
+      color: #f2efe8;
+      background: transparent;
+      outline: 0px solid #f2efe8;
+      text-decoration: none;
+      padding: 10px 0px;
+      display: inline-block;
+      white-space: nowrap;
+      width: 0vw;
+      overflow: hidden;
+      text-align: center;
+
+      animation: expand 0.5s ease-in-out forwards;
+      animation-delay: 5.5s;
+    }
 }
 
 
@@ -164,6 +215,11 @@ h1 {
   color: white;
 }
 
+.about {
+  text-align: center;
+  color: white;
+}
+
 ul.nav {
   margin: 0px;
   padding: 10px;
@@ -196,32 +252,6 @@ canvas {
   animation: fade-in-80 2s ease-in;
 }
 
-button {
-  width: 33%;
-  background: white;
-  border: none;
-  padding: 10px;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.pumpkin {
-  background: rgb(255, 115, 0);
-}
-
-.icecream {
-  background: rgb(14, 153, 199);
-}
-
-.spooky {
-  background: rgb(95, 95, 196);
-}
-
-.maccas {
-  background: red;
-}
-
 @keyframes fade-in-80 {
   from {
     opacity: 0;
@@ -237,5 +267,16 @@ button {
   }
   to {
     text-shadow: 11px 8px rgba(56, 13, 13, 0.6);
+  }
+}
+
+@keyframes expand {
+  from {
+    outline: 0px solid #f2efe8;
+    width: 0vw;
+  }
+  to {
+    outline: 1px solid #f2efe8;
+    width: 13vw;
   }
 }

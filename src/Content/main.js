@@ -6,10 +6,12 @@ import GLC from '../WebGL/GLCommander/index.js';
 import {Animated} from "react-animated-css";
 import ReactFullpage from '@fullpage/react-fullpage';
 
-
+export const moveDown = (state, fullpageApi) => {
+    fullpageApi.moveSectionDown();
+};
 
 class MySection extends React.Component {
-  render() {
+  render=( state, fullpageApi ) => {
     return (
       <div className="section">
         {this.props.children}
@@ -21,6 +23,9 @@ class MySection extends React.Component {
 const anchors = ["/", "About", "Portfolio", "Contact"];
 
 const Content = () => (
+
+    
+
   <ReactFullpage
     anchors={anchors}
     navigationTooltips={anchors}
@@ -32,18 +37,20 @@ const Content = () => (
         GLC.changeNumbersPumpkin();
       } else if(destination.anchor == "About") {
         GLC.changeNumbersAnim();
-      } else {
-        GLC.changeNumbersSpooky();
       }
     }}
     render={({ state, fullpageApi }) => {
       console.log("render prop change", state, fullpageApi); // eslint-disable-line no-console
 
+      let moveDown = () => {
+        console.log('hello!');
+      };
+
       return (
         <div>
           <MySection><Home /></MySection>
           <MySection><About /></MySection>
-          <MySection>"This is some 3rd content"</MySection>
+          <MySection>"Third page, nothing to see here."</MySection>
         </div>
       );
     }}

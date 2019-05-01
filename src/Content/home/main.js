@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ToggleButton from '../../buttons/main';
 import {Animated} from "react-animated-css";
+import Content, {moveDown} from '../main';
+
+
 
 class Home extends Component {
   // This syntax ensures `this` is bound within handleClick.
@@ -35,7 +38,9 @@ class Home extends Component {
         animationInDuration={900}
         isVisible={true}>
 
-          <h2 className="subhero">- ABOUT -</h2>
+          <h2 className="subhero">
+          <span>&#8643;</span><a href="#About">NEXT PAGE</a><span>&#8642;</span>
+          </h2>
       </Animated>    
 
          

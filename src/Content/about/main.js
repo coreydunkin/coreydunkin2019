@@ -7,8 +7,8 @@ class About extends Component {
   render() {
     return (
       <div className="about page">
-          <h1 className="hero">ABOUT THIS PAGE</h1>
-          <h2 className="subhero">This is to test if webgl can be controlled inside react.</h2>
+          <h1 className="hero">SECOND PAGE</h1>
+          <h2 className="subhero">This is to test if webgl can be controlled inside react per page view.</h2>
       </div>
     );
   }
