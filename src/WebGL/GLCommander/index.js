@@ -12,6 +12,8 @@ class GLCommander {
     colorD = `vec3(242.0/255.0,112.0/255.0,89.0/255.0);`;
     colorE = `vec3(242.0/255.0,92.0/255.0,84.0/255.0);`;
     colorF = `vec3(199.0/255.0,76.0/255.0,69.0/255.0);`;
+
+    newShape = 20;
 /*
     colorR = [0,75,227,245,73,172,255];
     colorG = [0,0,99,204,198,237,255];
@@ -31,7 +33,7 @@ class GLCommander {
       }
     `;
 
-    init(gl, program, assign, anim, animHome) {
+    init(gl, program, assign, anim) {
 
      this.gl = gl;
      this.program = program;
@@ -40,12 +42,6 @@ class GLCommander {
 
      this.anim = anim;
 
-     this.animHome = animHome;
-
-
- 
-
-     
     };
 
 
@@ -81,7 +77,7 @@ class GLCommander {
       let newColorG = [0,  186,1,0,243,0,  255];
       let newColorB = [0,  4,4,4,243,1,  255];
 
-      this.anim(newColorR, newColorG, newColorB);
+      this.animColor(newColorR, newColorG, newColorB);
 
     }    
 
@@ -90,7 +86,10 @@ class GLCommander {
       let newColorG = [0,  104,131,152,180,205,  255];
       let newColorB = [0,  117,141,155,162,178,  255];
 
-      this.animHome(newColorR, newColorG, newColorB);
+      let newShape = 'Home';
+
+      this.anim(newColorR, newColorG, newColorB, newShape);
+
 
     }       
 
@@ -98,9 +97,25 @@ class GLCommander {
       let newColorR = [0,  247,247,244,242,242,  255];
       let newColorG = [0,  178,157,132,112,92,   255];
       let newColorB = [0,  103,101,95,89,84,     255];
-      this.anim(newColorR, newColorG, newColorB);
+// saving for later 0.85373472095314
+      let newShape = 'About';
+
+      this.anim(newColorR, newColorG, newColorB, newShape);
+
 
     }    
+
+    changeNumbersAnimWork() {
+      let newColorR = [0,  0,36,66,125,0,  255];
+      let newColorG = [0,  49,102,141,189,26,   255];
+      let newColorB = [0,  76,140,175,216,45,     255];
+// saving for later 0.85373472095314
+      let newShape = 'Work';
+
+      this.anim(newColorR, newColorG, newColorB, newShape);
+
+
+    }        
 
 
 

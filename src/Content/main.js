@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Home from './home/main';
 import About from './about/main';
+import Work from './work/main';
 import "fullpage.js/vendors/scrolloverflow"; // Optional. When using scrollOverflow:true
 import GLC from '../WebGL/GLCommander/index.js';
 import ReactFullpage from '@fullpage/react-fullpage';
@@ -19,7 +20,7 @@ export class MySection extends Component {
   }
 }
 
-const anchors = ["/", "About", "Portfolio", "Contact"];
+const anchors = ["/", "About", "Work", "Contact"];
 
 const Content = () => (
 
@@ -36,6 +37,8 @@ const Content = () => (
         GLC.changeNumbersAnimHome();
       } else if(destination.anchor === "About") {
         GLC.changeNumbersAnimAbout();
+      } else if(destination.anchor === "Work") {
+        GLC.changeNumbersAnimWork();
       }
     }}
     render={({ state, fullpageApi }) => {
@@ -47,6 +50,7 @@ const Content = () => (
         <div>
           <MySection><Home /></MySection>
           <MySection><About /></MySection>
+          <MySection><Work /></MySection>
         </div>
       );
     }}

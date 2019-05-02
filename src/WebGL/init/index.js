@@ -189,30 +189,54 @@ export default () => {
 		}
 	};
 
-	const anim = (newColorR, newColorG, newColorB) => {
-		console.log(newShapeNum);
+	const anim = (newColorR, newColorG, newColorB, newShape) => {
 
 
-
-
-			const stepNum = () => {
-				
-				if (newShapeNum > 0.85373472095314) {
-					newShapeNum--;
-					console.log(newShapeNum);
+		if (newShape == 'Home') {
+			const stepAbout = () => {
+			//saving remaining numbers for later 5373472095314
+				if (newShapeNum <= 30) {
+					newShapeNum++;
 					locOfShapeNum = gl.getUniformLocation(program, "shapeNum");
 					gl.uniform1f(locOfShapeNum, newShapeNum);
-					window.requestAnimationFrame(stepNum);
-				} else {
-
-				}
-
-
+					window.requestAnimationFrame(stepAbout);
+				} 	else {}
+				
 			}
-			requestAnimationFrame(stepNum);
-
+	
+			requestAnimationFrame(stepAbout);
+		} else if (newShape == 'About') {
+			const stepHome = () => {
+			
+				if (newShapeNum >= 12) {
+					newShapeNum--;
+					locOfShapeNum = gl.getUniformLocation(program, "shapeNum");
+					gl.uniform1f(locOfShapeNum, newShapeNum);
+					window.requestAnimationFrame(stepHome);
+				} else {
+	
+				}
+	
+	
+			}
+			requestAnimationFrame(stepHome);
+		} else if (newShape == 'Work') {
+			const stepHome = () => {
+			
+				if (newShapeNum >= 10) {
+					newShapeNum--;
+					locOfShapeNum = gl.getUniformLocation(program, "shapeNum");
+					gl.uniform1f(locOfShapeNum, newShapeNum);
+					window.requestAnimationFrame(stepHome);
+				} else {
+	
+				}
+	
+	
+			}
+			requestAnimationFrame(stepHome);
+		}
 		
-
 
 		for (let i = 1; i < 7; i++) {
 			locOfColorR[i] = gl.getUniformLocation(program, "colorR"+i);
@@ -287,102 +311,9 @@ export default () => {
  
 	}
 	
-	const animHome = (newColorR, newColorG, newColorB) => {
-		console.log(newShapeNum);
+	const animShape = (newColorR, newColorG, newColorB) => {
 
-
-
-
-			const stepNum = () => {
-				
-				if (newShapeNum < 20) {
-					newShapeNum++;
-					console.log(newShapeNum);
-					locOfShapeNum = gl.getUniformLocation(program, "shapeNum");
-					gl.uniform1f(locOfShapeNum, newShapeNum);
-					window.requestAnimationFrame(stepNum);
-				} else {
-
-				}
-
-
-			}
-			requestAnimationFrame(stepNum);
-
-		
-
-
-		for (let i = 1; i < 7; i++) {
-			locOfColorR[i] = gl.getUniformLocation(program, "colorR"+i);
-			locOfColorG[i] = gl.getUniformLocation(program, "colorG"+i);
-			locOfColorB[i] = gl.getUniformLocation(program, "colorB"+i);
-
-
-			const step = () => {
-		
-
-				if(colorR[i] > newColorR[i]) {
-						colorR[i]--; 
-						gl.uniform1f(locOfColorR[i], colorR[i]);
-						//colorR[i] = newColorR[i];
-						window.requestAnimationFrame(step);
-					} else if (colorR[i] < newColorR[i]) {
-						colorR[i]++;	
-						gl.uniform1f(locOfColorR[i], colorR[i]);
-						//colorR[i] = newColorR[i];
-						window.requestAnimationFrame(step);
-					} else {
-						stepTwo();
-					}
-	
-						
-			};
-	
-	
-			const stepTwo = () => {
-	
-
-					if(colorG[i] > newColorG[i]) {
-						colorG[i]--;
-						gl.uniform1f(locOfColorG[i], colorG[i]);
-						//colorG[i] = newColorG[i];
-						window.requestAnimationFrame(stepTwo);
-					} else if (colorG[i] < newColorG[i]) {
-						colorG[i]++;
-						gl.uniform1f(locOfColorG[i], colorG[i]);
-						//colorG[i] = newColorG[i];
-						window.requestAnimationFrame(stepTwo);
-					} else {
-						stepThree();
-					}
-	
-					
-			}
-	
-			const stepThree = () => {
-	
-
-					if(colorB[i] > newColorB[i]) {
-						colorB[i]--;
-						gl.uniform1f(locOfColorB[i], colorB[i]);
-						//colorB[i] = newColorB[i];
-						window.requestAnimationFrame(stepThree);
-					} else if (colorB[i] < newColorB[i]) {
-						colorB[i]++;
-						gl.uniform1f(locOfColorB[i], colorB[i]);
-						//colorB[i] = newColorB[i];
-						window.requestAnimationFrame(stepThree);
-					} else {
-
-
-					}
-	
-					
-			}
-
-		requestAnimationFrame(step);
-		}
- 
+			
 	}
 
 	assign(colorR, colorG, colorB);
@@ -423,7 +354,7 @@ export default () => {
 	
 
 
-    GLC.init(gl, program, assign, anim, animHome);
+    GLC.init(gl, program, assign, anim);
 
 }
 
