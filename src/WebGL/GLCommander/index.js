@@ -31,7 +31,7 @@ class GLCommander {
       }
     `;
 
-    init(gl, program, assign, anim) {
+    init(gl, program, assign, anim, animHome) {
 
      this.gl = gl;
      this.program = program;
@@ -40,10 +40,10 @@ class GLCommander {
 
      this.anim = anim;
 
+     this.animHome = animHome;
 
-     console.log(gl);
 
-     console.log(this.colorA);
+ 
 
      
     };
@@ -84,6 +84,24 @@ class GLCommander {
       this.anim(newColorR, newColorG, newColorB);
 
     }    
+
+    changeNumbersAnimHome() {
+      let newColorR = [0,  109,181,229,255,255,  255];
+      let newColorG = [0,  104,131,152,180,205,  255];
+      let newColorB = [0,  117,141,155,162,178,  255];
+
+      this.animHome(newColorR, newColorG, newColorB);
+
+    }       
+
+    changeNumbersAnimAbout() {
+      let newColorR = [0,  247,247,244,242,242,  255];
+      let newColorG = [0,  178,157,132,112,92,   255];
+      let newColorB = [0,  103,101,95,89,84,     255];
+      this.anim(newColorR, newColorG, newColorB);
+
+    }    
+
 
 
 

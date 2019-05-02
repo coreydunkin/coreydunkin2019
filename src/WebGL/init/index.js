@@ -287,7 +287,103 @@ export default () => {
  
 	}
 	
+	const animHome = (newColorR, newColorG, newColorB) => {
+		console.log(newShapeNum);
 
+
+
+
+			const stepNum = () => {
+				
+				if (newShapeNum < 20) {
+					newShapeNum++;
+					console.log(newShapeNum);
+					locOfShapeNum = gl.getUniformLocation(program, "shapeNum");
+					gl.uniform1f(locOfShapeNum, newShapeNum);
+					window.requestAnimationFrame(stepNum);
+				} else {
+
+				}
+
+
+			}
+			requestAnimationFrame(stepNum);
+
+		
+
+
+		for (let i = 1; i < 7; i++) {
+			locOfColorR[i] = gl.getUniformLocation(program, "colorR"+i);
+			locOfColorG[i] = gl.getUniformLocation(program, "colorG"+i);
+			locOfColorB[i] = gl.getUniformLocation(program, "colorB"+i);
+
+
+			const step = () => {
+		
+
+				if(colorR[i] > newColorR[i]) {
+						colorR[i]--; 
+						gl.uniform1f(locOfColorR[i], colorR[i]);
+						//colorR[i] = newColorR[i];
+						window.requestAnimationFrame(step);
+					} else if (colorR[i] < newColorR[i]) {
+						colorR[i]++;	
+						gl.uniform1f(locOfColorR[i], colorR[i]);
+						//colorR[i] = newColorR[i];
+						window.requestAnimationFrame(step);
+					} else {
+						stepTwo();
+					}
+	
+						
+			};
+	
+	
+			const stepTwo = () => {
+	
+
+					if(colorG[i] > newColorG[i]) {
+						colorG[i]--;
+						gl.uniform1f(locOfColorG[i], colorG[i]);
+						//colorG[i] = newColorG[i];
+						window.requestAnimationFrame(stepTwo);
+					} else if (colorG[i] < newColorG[i]) {
+						colorG[i]++;
+						gl.uniform1f(locOfColorG[i], colorG[i]);
+						//colorG[i] = newColorG[i];
+						window.requestAnimationFrame(stepTwo);
+					} else {
+						stepThree();
+					}
+	
+					
+			}
+	
+			const stepThree = () => {
+	
+
+					if(colorB[i] > newColorB[i]) {
+						colorB[i]--;
+						gl.uniform1f(locOfColorB[i], colorB[i]);
+						//colorB[i] = newColorB[i];
+						window.requestAnimationFrame(stepThree);
+					} else if (colorB[i] < newColorB[i]) {
+						colorB[i]++;
+						gl.uniform1f(locOfColorB[i], colorB[i]);
+						//colorB[i] = newColorB[i];
+						window.requestAnimationFrame(stepThree);
+					} else {
+
+
+					}
+	
+					
+			}
+
+		requestAnimationFrame(step);
+		}
+ 
+	}
 
 	assign(colorR, colorG, colorB);
 
@@ -327,7 +423,7 @@ export default () => {
 	
 
 
-    GLC.init(gl, program, assign, anim);
+    GLC.init(gl, program, assign, anim, animHome);
 
 }
 

@@ -1,46 +1,54 @@
 import React, { Component } from 'react';
-import ToggleButton from '../../buttons/main';
 import {Animated} from "react-animated-css";
-import Content, {moveDown} from '../main';
+import ReactFullPage, {fullpageApi} from '@fullpage/react-fullpage';
 
+import Content, {MySection} from '../main';
 
+export const newContent = Content;
 
 class Home extends Component {
   // This syntax ensures `this` is bound within handleClick.
   // Warning: this is *experimental* syntax.
   
+  
   render() {
+    
+    
+    console.log(Content.prototype);
+
     return (
       <div className="home page">
       
           <h1 className="hero">
       <Animated 
-        animationIn="fadeInDown"
+        animationIn="fadeIn"
         animationOut="fadeOutUp"
-        animationInDelay="3000"
-        animationInDuration={1500}
+        animationInDelay={3000}
+        animationInDuration={1000}
         isVisible={true}>    
-          WEBGL 
+          <span>WEBGL</span>
           </Animated>    
       <Animated 
-        animationIn="fadeInDown"
+        animationIn="fadeIn"
         animationOut="fadeOutUp"
-        animationInDelay="3200"
-        animationInDuration={1500}
+        animationInDelay={3200}
+        animationInDuration={1000}
         isVisible={true}>
-          REACT
+          <span>&nbsp;REACT</span>
       </Animated>
           </h1>
       <Animated
         animationIn="fadeInDown"
         animationOut="fadeOutUp"
-        animationInDelay="4500"
+        animationInDelay={5000}
         animationInDuration={900}
         isVisible={true}>
 
           <h2 className="subhero">
           <span>&#8643;</span><a href="#About">NEXT PAGE</a><span>&#8642;</span>
           </h2>
+
+
       </Animated>    
 
          
