@@ -45,6 +45,8 @@ export const fragmentShaderTemplate = `
       uniform float colorB6;
 
       uniform float shapeNum;
+
+      uniform float sizeNum;
     
     vec3 mod289(vec3 x) {
       return x - floor(x * (1.0 / 289.0)) * 289.0;
@@ -141,7 +143,7 @@ export const fragmentShaderTemplate = `
         float DF = 0.0;
         float a = 0.0;
         vec2 vel = vec2(u_time*.1);
-        st.xy *= 0.4;
+        st.xy *= sizeNum;
         float r = snoise(vec3(st.x,st.y,u_time * 0.1));
         if(r >= -1.0 && r < -0.6){
           color = color1;

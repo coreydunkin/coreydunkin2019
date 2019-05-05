@@ -37,8 +37,11 @@ export default () => {
 	let colorB = [];
 
 	let locOfShapeNum = [];
+	let locOfSizeNum = [];
 
 	let newShapeNum = 20;
+
+	let newSizeNum = 0.4;
 
 	let startTime = new Date().getTime(); // Get start time for animating
 	let currentTime = 0;
@@ -169,6 +172,9 @@ export default () => {
 		locOfShapeNum = gl.getUniformLocation(program, "shapeNum");
 		gl.uniform1f(locOfShapeNum, newShapeNum);
 		
+		locOfSizeNum = gl.getUniformLocation(program, "sizeNum");
+		gl.uniform1f(locOfSizeNum, newSizeNum);
+
 		// assign all R values
 		for (let i = 1; i < 7; i++) {
 			
@@ -196,9 +202,9 @@ export default () => {
 			const stepAbout = () => {
 			//saving remaining numbers for later 5373472095314
 				if (newShapeNum <= 30) {
-					newShapeNum++;
+					newShapeNum+=0.3;
 					locOfShapeNum = gl.getUniformLocation(program, "shapeNum");
-					gl.uniform1f(locOfShapeNum, newShapeNum);
+					gl.uniform1f(locOfShapeNum, newShapeNum); 
 					window.requestAnimationFrame(stepAbout);
 				} 	else {}
 				
@@ -207,15 +213,26 @@ export default () => {
 			requestAnimationFrame(stepAbout);
 		} else if (newShape == 'About') {
 			const stepHome = () => {
-			
+
+				let speed = 10000;
+				let now = new Date().getTime();
+				currentTime = (now - startTime) / speed; // update the current time for animations
+				locationOfTime = gl.getUniformLocation(program, "u_time");
+				gl.uniform1f(locationOfTime, currentTime); // update the time uniform in our shader
+			/*
+				if (newSizeNum <= 0.8) {
+					newSizeNum+=0.001;
+					locOfSizeNum = gl.getUniformLocation(program, "sizeNum");
+					gl.uniform1f(locOfSizeNum, newSizeNum);
+					window.requestAnimationFrame(stepHome);
+				} 
+			*/
 				if (newShapeNum >= 12) {
-					newShapeNum--;
+					newShapeNum-=0.3;
 					locOfShapeNum = gl.getUniformLocation(program, "shapeNum");
 					gl.uniform1f(locOfShapeNum, newShapeNum);
 					window.requestAnimationFrame(stepHome);
-				} else {
-	
-				}
+				} 
 	
 	
 			}
@@ -224,7 +241,7 @@ export default () => {
 			const stepHome = () => {
 			
 				if (newShapeNum >= 10) {
-					newShapeNum--;
+					newShapeNum-=0.2;
 					locOfShapeNum = gl.getUniformLocation(program, "shapeNum");
 					gl.uniform1f(locOfShapeNum, newShapeNum);
 					window.requestAnimationFrame(stepHome);
