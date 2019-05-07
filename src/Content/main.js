@@ -11,6 +11,9 @@ export const moveDown = (state, fullpageApi) => {
 };
 
 export class MySection extends Component {
+
+
+
   render=( state, fullpageApi ) => {
     return (
       <div className="section">
@@ -20,7 +23,7 @@ export class MySection extends Component {
   }
 }
 
-const anchors = ["/", "About", "Work", "Contact"];
+const anchors = ["/", "About", "Work"];
 
 const Content = () => (
 
