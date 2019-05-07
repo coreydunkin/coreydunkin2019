@@ -6,10 +6,20 @@ class Work extends Component {
   
   render() {
     return (
-      <div className="work page">
-          <h1 className="hero">TESTER 2</h1>
-          <h2 className="subhero">A website built in react controlling webgl</h2>
-      </div>
+      
+      
+              <div className="section">
+                <div className="slide">
+                  <h3>Slide 2.1</h3>
+                </div>
+                <div className="slide">
+                  <h3>Slide 2.2</h3>
+                </div>
+                <div className="slide">
+                  <h3>Slide 2.3</h3>
+                </div>
+              </div>
+      
     );
   }
 }
