@@ -6,6 +6,8 @@ import "fullpage.js/vendors/scrolloverflow"; // Optional. When using scrollOverf
 import GLC from '../WebGL/GLCommander/index.js';
 import ReactFullpage from '@fullpage/react-fullpage';
 
+let workSection = false;
+
 export const moveDown = (state, fullpageApi) => {
     fullpageApi.moveSectionDown();
 };
@@ -32,7 +34,8 @@ const Content = () => (
   <ReactFullpage
     anchors={anchors}
     navigationTooltips={anchors}
-    onLeave={(origin, destination, direction, item, id) => {
+    onLeave={(origin, destination, direction, item, id, workSection) => {
+
       console.log("onLeave event", { origin, destination, direction});
       console.log(destination.anchor);
 
@@ -42,7 +45,11 @@ const Content = () => (
         GLC.changeNumbersAnimAbout();
       } else if(destination.anchor === "Work") {
         GLC.changeNumbersAnimWork();
+        let workSection = true;
       }
+    }}
+    onSlideLeave={(section, origin, destination, direction) => {
+      
     }}
     render={({ state, fullpageApi }) => {
       console.log("render prop change", state, fullpageApi); // eslint-disable-line no-console

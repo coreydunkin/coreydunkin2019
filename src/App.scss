@@ -23,20 +23,6 @@ button {
   cursor: pointer;
 }
 
-.scene {
-  display: none;
-  height: 200px;
-  text-align: center;
-  border: 1px solid red;
-  h3 {
-    height: 30px;
-    p {
-      display: block;
-      height: 30px;
-    }
-  }
-}
-
 .pumpkin {
   background: rgb(255, 115, 0);
 }
@@ -231,7 +217,13 @@ h2 {
 
 
 
+.slide {
+  text-align: center;
+}
 
+.fp-slidesContainer {
+  //width: 100%!important;
+}
 
 
 .absolute-center {

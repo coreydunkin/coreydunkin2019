@@ -238,20 +238,20 @@ export default () => {
 			}
 			requestAnimationFrame(stepHome);
 		} else if (newShape == 'Work') {
-			const stepHome = () => {
+			const stepWork = () => {
 			
 				if (newShapeNum >= 10) {
 					newShapeNum-=0.2;
 					locOfShapeNum = gl.getUniformLocation(program, "shapeNum");
 					gl.uniform1f(locOfShapeNum, newShapeNum);
-					window.requestAnimationFrame(stepHome);
+					window.requestAnimationFrame(stepWork);
 				} else {
 	
 				}
 	
 	
 			}
-			requestAnimationFrame(stepHome);
+			requestAnimationFrame(stepWork);
 		}
 		
 
