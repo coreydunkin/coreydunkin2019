@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import {Animated} from "react-animated-css";
-import {workSection} from '../main';
+import Content from "../main";
 
 class Work extends Component {
   // This syntax ensures `this` is bound within handleClick.
   // Warning: this is *experimental* syntax.  
   render() {
+    console.log('header content');
+    console.log(Content);
 
     const workItem = [
       {
@@ -27,23 +29,23 @@ class Work extends Component {
 
     return (
       
-    <div className="home page">
-       
+    <div className="work page">
        {workItem.map((item, i) => 
 
-          <Animated
-          animationIn="fadeInUp"
-          animationOut="fadeOutUp"
-          animationInDelay={1000}
-          animationInDuration={900}
-          isVisible={workSection}>
-   
             <div className="slide" key={i}>
-              <h2>{item.title}</h2>
-              <p>{item.body}</p>
-            </div> 
 
-         </Animated>    
+            <Animated
+            animationIn="fadeInUp"
+            animationOut="fadeOutUp"
+            animationInDelay={1000}
+            animationInDuration={900}
+            isVisible={Content.workSection}>
+
+              <h2> {item.title}</h2> 
+              <p> {item.body}</p>
+            
+            </Animated>    
+            </div> 
 
        )}
 

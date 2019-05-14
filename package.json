@@ -10,9 +10,11 @@
     "react-animated-css": "^1.0.5",
     "react-dom": "^16.8.4",
     "react-fullpage": "^0.1.19",
+    "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
     "react-scripts": "^3.0.0",
-    "react-transition-group": "^4.0.0"
+    "react-transition-group": "^4.0.0",
+    "redux": "^4.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,5 +30,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "redux-devtools": "^3.5.0"
+  }
 }

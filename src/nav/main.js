@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import GLC from '../WebGL/GLCommander/index.js';
 
-import Home from '../home/main';
-import About from '../about/main';
+import Home from '../Content/home/main';
+import About from '../Content/about/main';
 
 class Nav extends Component {
     handleClickIceCream = (init) => {

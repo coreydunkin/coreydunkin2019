@@ -21,18 +21,18 @@ class ToggleButton extends Component {
   render() {
     return (
       <div>
-      <button className="pumpkin" onClick={this.handleClickPumpkin}>
-        Pumpkin themed
-      </button>
-      <button className="icecream" onClick={this.handleClickIceCream}>
-        Ice Cream themed
-      </button>
-      <button className="spooky" onClick={this.handleClickSpooky}>
-        Spooky themed
-      </button>
-      <button className="animate maccas" onClick={this.handleClickAnim}>
-        Maccas themed
-      </button>
+        <button className="pumpkin" onClick={this.handleClickPumpkin}>
+          Pumpkin themed
+        </button>
+        <button className="icecream" onClick={this.handleClickIceCream}>
+          Ice Cream themed
+        </button>
+        <button className="spooky" onClick={this.handleClickSpooky}>
+          Spooky themed
+        </button>
+        <button className="animate maccas" onClick={this.handleClickAnim}>
+          Maccas themed
+        </button>
       </div>
     );
   }
