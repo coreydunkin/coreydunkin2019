@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Animated} from "react-animated-css";
 import ReactFullPage, {fullpageApi} from '@fullpage/react-fullpage';
-
 import Content, {MySection} from '../main';
 
 export const newContent = Content;
@@ -19,6 +18,8 @@ class Home extends Component {
     return (
       <div className="home page">
       
+
+
           <h1 className="hero">
       <Animated 
         animationIn="fadeIn"

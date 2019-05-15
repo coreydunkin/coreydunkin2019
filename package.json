@@ -14,7 +14,9 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "^3.0.0",
     "react-transition-group": "^4.0.0",
-    "redux": "^4.0.1"
+    "react-wow": "^1.0.0",
+    "redux": "^4.0.1",
+    "wow.js": "^1.2.2"
   },
   "scripts": {
     "start": "react-scripts start",

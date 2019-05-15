@@ -3,7 +3,6 @@ import './App.scss';
 import WebGL from './WebGL/main';
 import Content from './Content/main';
 
-
 class App extends Component {
   render() {
     return (
@@ -17,5 +16,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;

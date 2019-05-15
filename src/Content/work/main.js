@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import {Animated} from "react-animated-css";
 import Content from "../main";
+import logo from '../../logo.svg';
+import { connect } from "react-redux";
+import { animIn } from "../../actions/animIn";
+import { animOut } from "../../actions/animOut";
 
 class Work extends Component {
   // This syntax ensures `this` is bound within handleClick.
@@ -32,6 +36,9 @@ class Work extends Component {
     <div className="work page">
        {workItem.map((item, i) => 
 
+
+
+
             <div className="slide" key={i}>
 
             <Animated
@@ -40,6 +47,19 @@ class Work extends Component {
             animationInDelay={1000}
             animationInDuration={900}
             isVisible={Content.workSection}>
+
+            <img 
+              src={logo} 
+              className={
+                "App-logo" + 
+                (this.props.anim ? "":" App-logo-paused")
+              } 
+              alt="logo" 
+              onClick={
+                this.props.anim ? 
+                  this.props.animOut : this.props.animIn
+              }
+            />
 
               <h2> {item.title}</h2> 
               <p> {item.body}</p>
@@ -55,4 +75,12 @@ class Work extends Component {
   }
 }
 
-export default Work;
+const mapStateToProps = state => ({
+  ...state
+});
+const mapDispatchToProps = dispatch => ({
+  animIn: () => dispatch(animIn),
+  animOut: () => dispatch(animOut)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps) (Work);
