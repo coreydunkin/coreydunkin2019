@@ -1,8 +1,8 @@
 export default (state, action) => {
     switch (action.type) {
-        case "animIn":
+        case "anim":
         return {
-            anim: action.payload
+            animating: action.payload
         };
         default:
         return state;

@@ -1,4 +1,4 @@
 export const animIn = {
-    type: "animIn",
+    type: "anim",
     payload: true
 };

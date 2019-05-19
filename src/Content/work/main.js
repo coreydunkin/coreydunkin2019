@@ -6,12 +6,33 @@ import { connect } from "react-redux";
 import { animIn } from "../../actions/animIn";
 import { animOut } from "../../actions/animOut";
 
+
+let animDecider;
+
+
 class Work extends Component {
   // This syntax ensures `this` is bound within handleClick.
   // Warning: this is *experimental* syntax.  
-  render() {
+  render(animDecider) {
     console.log('header content');
     console.log(Content);
+
+    const changeAnim = (animDecider) => {
+      animDecider = this.props.anim;
+
+      if (this.props.anim = true) {
+
+        this.props.anim = false;
+
+      } else if (this.props.anim = false) {
+        
+        this.props.anim = true;
+
+        console.log('false323423');
+      }
+
+
+    };
 
     const workItem = [
       {
@@ -36,7 +57,7 @@ class Work extends Component {
     <div className="work page">
        {workItem.map((item, i) => 
 
-
+            
 
 
             <div className="slide" key={i}>
@@ -56,9 +77,10 @@ class Work extends Component {
               } 
               alt="logo" 
               onClick={
-                this.props.anim ? 
-                  this.props.animOut : this.props.animIn
-              }
+                /*this.props.anim ? 
+                  this.props.animOut : this.props.animIn*/
+                  changeAnim
+                }
             />
 
               <h2> {item.title}</h2> 
