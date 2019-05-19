@@ -1,6 +1,6 @@
 import { createStore } from "redux";
 import animReducer from "./reducers/animReducer";
-function configureStore(state = { anim: true }) {
+function configureStore(state = { animating: true }) {
   return createStore(animReducer,state);
 }
 export default configureStore;

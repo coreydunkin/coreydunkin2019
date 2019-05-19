@@ -5,6 +5,8 @@ import Work from './work/main';
 import "fullpage.js/vendors/scrolloverflow"; // Optional. When using scrollOverflow:true
 import GLC from '../WebGL/GLCommander/index.js';
 import ReactFullpage from '@fullpage/react-fullpage';
+import { connect } from "react-redux";
+import animAction from "../actions/animAction";
 
 
 
@@ -16,7 +18,8 @@ export class MySection extends Component {
 
 
   render=( state, fullpageApi ) => {
-
+    console.log("---=--");
+    console.log(this.props.animating);
 
     return (
       <div className="section">
@@ -28,8 +31,8 @@ export class MySection extends Component {
 
 const anchors = ["/", "About", "Work"];
 
-const Content = () => (
- 
+const Content = (mapStateToProps, mapDispatchToProps) => (
+
   <ReactFullpage
     anchors={anchors}
     navigationTooltips={anchors}
@@ -37,6 +40,7 @@ const Content = () => (
 
       console.log("onLeave event", { origin, destination, direction});
       console.log(destination.anchor);
+
 
       if(destination.anchor === "/") {
         GLC.changeNumbersAnimHome();
@@ -46,7 +50,8 @@ const Content = () => (
         GLC.changeNumbersAnimWork();
       }
     }}
-    onSlideLeave={(section, origin, destination, direction) => {
+    onSlideLeave={() => {
+        console.log(this.props.animating);
     }}
     render={({ state, fullpageApi }) => {
       console.log("render prop change", state, fullpageApi); // eslint-disable-line no-console
@@ -64,4 +69,11 @@ const Content = () => (
 );
 
 
-export default Content;
+const mapStateToProps = state => ({
+  ...state
+});
+const mapDispatchToProps = dispatch => ({
+  animAction: (payload) => dispatch(animAction(payload))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps) (Content);

@@ -5,6 +5,7 @@ import logo from '../../logo.svg';
 import { connect } from "react-redux";
 import { animIn } from "../../actions/animIn";
 import { animOut } from "../../actions/animOut";
+import animAction from "../../actions/animAction";
 
 
 let animDecider;
@@ -16,23 +17,8 @@ class Work extends Component {
   render(animDecider) {
     console.log('header content');
     console.log(Content);
-
-    const changeAnim = (animDecider) => {
-      animDecider = this.props.anim;
-
-      if (this.props.anim = true) {
-
-        this.props.anim = false;
-
-      } else if (this.props.anim = false) {
-        
-        this.props.anim = true;
-
-        console.log('false323423');
-      }
-
-
-    };
+    console.log("---=--");
+    console.log(this.props.animating);
 
     const workItem = [
       {
@@ -69,23 +55,15 @@ class Work extends Component {
             animationInDuration={900}
             isVisible={Content.workSection}>
 
-            <img 
-              src={logo} 
-              className={
-                "App-logo" + 
-                (this.props.anim ? "":" App-logo-paused")
-              } 
-              alt="logo" 
-              onClick={
-                /*this.props.anim ? 
-                  this.props.animOut : this.props.animIn*/
-                  changeAnim
-                }
-            />
-
+            <Animated
+            animationIn="fadeInUp"
+            animationOut="fadeOutUp"
+            animationInDelay={1000}
+            animationInDuration={900}
+            isVisible={this.props.animating}>
               <h2> {item.title}</h2> 
               <p> {item.body}</p>
-            
+              </Animated>    
             </Animated>    
             </div> 
 
@@ -97,12 +75,6 @@ class Work extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  ...state
-});
-const mapDispatchToProps = dispatch => ({
-  animIn: () => dispatch(animIn),
-  animOut: () => dispatch(animOut)
-});
 
-export default connect(mapStateToProps, mapDispatchToProps) (Work);
+
+export default Work;
