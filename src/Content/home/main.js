@@ -24,17 +24,7 @@ class Home extends Component {
     return (
       <div className="home page">
       
-      <img
-                src={logo}
-                className={
-                  "App-logo" +
-                  (this.props.animating ? "":" App-logo-paused")
-                }
-                alt="logo"
-                onClick={
-                  () => this.props.animAction(!this.props.animating)
-                }
-              />
+
 
 
           <h1 className="hero">

@@ -42,17 +42,7 @@ class Work extends Component {
 
 
             <div className="slide" key={i}>
-              <img
-                src={logo}
-                className={
-                  "App-logo" +
-                  (this.props.animating ? "":" App-logo-paused")
-                }
-                alt="logo"
-                onClick={
-                  () => this.props.animAction(!this.props.animating)
-                }
-              />
+
             <Animated
             animationIn="fadeInUp"
             animationOut="fadeOutUp"
