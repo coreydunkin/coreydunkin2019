@@ -5,8 +5,7 @@ import logo from '../../logo.svg';
 import { connect } from "react-redux";
 import { animIn } from "../../actions/animIn";
 import { animOut } from "../../actions/animOut";
-import animAction from "../../actions/animAction";
-
+import animAction from "../../actions/animAction"
 
 let animDecider;
 
@@ -15,10 +14,7 @@ class Work extends Component {
   // This syntax ensures `this` is bound within handleClick.
   // Warning: this is *experimental* syntax.  
   render(animDecider) {
-    console.log('header content');
-    console.log(Content);
-    console.log("---=--");
-    console.log(this.props.animating);
+
 
     const workItem = [
       {
@@ -43,11 +39,20 @@ class Work extends Component {
     <div className="work page">
        {workItem.map((item, i) => 
 
-            
 
 
             <div className="slide" key={i}>
-
+              <img
+                src={logo}
+                className={
+                  "App-logo" +
+                  (this.props.animating ? "":" App-logo-paused")
+                }
+                alt="logo"
+                onClick={
+                  () => this.props.animAction(!this.props.animating)
+                }
+              />
             <Animated
             animationIn="fadeInUp"
             animationOut="fadeOutUp"
@@ -77,4 +82,11 @@ class Work extends Component {
 
 
 
-export default Work;
+const mapStateToProps = state => ({
+  ...state
+});
+const mapDispatchToProps = dispatch => ({
+  animAction: (payload) => dispatch(animAction(payload))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps) (Work);

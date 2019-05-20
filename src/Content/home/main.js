@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import {Animated} from "react-animated-css";
 import ReactFullPage, {fullpageApi} from '@fullpage/react-fullpage';
 import Content, {MySection} from '../main';
+import logo from '../../logo.svg';
+
+import { connect } from "react-redux";
+import { animIn } from "../../actions/animIn";
+import { animOut } from "../../actions/animOut";
+import animAction from "../../actions/animAction"
 
 export const newContent = Content;
 
@@ -18,6 +24,17 @@ class Home extends Component {
     return (
       <div className="home page">
       
+      <img
+                src={logo}
+                className={
+                  "App-logo" +
+                  (this.props.animating ? "":" App-logo-paused")
+                }
+                alt="logo"
+                onClick={
+                  () => this.props.animAction(!this.props.animating)
+                }
+              />
 
 
           <h1 className="hero">
@@ -59,4 +76,11 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  ...state
+});
+const mapDispatchToProps = dispatch => ({
+  animAction: (payload) => dispatch(animAction(payload))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps) (Home);
