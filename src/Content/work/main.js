@@ -42,7 +42,7 @@ class Work extends Component {
 
 
             <div className="slide" key={i}>
-
+ 
             <Animated
             animationIn="fadeInUp"
             animationOut="fadeOutUp"

@@ -1,4 +1,8 @@
-export const animOut = {
-    type: "anim",
-    payload: false
-};
+  
+  export const animOut = (payload) => {
+    return {
+      type: "anim",
+      payload: false
+    }
+  }
+export default animOut;

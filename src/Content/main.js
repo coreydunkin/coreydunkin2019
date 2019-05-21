@@ -9,21 +9,23 @@ import GLC from '../WebGL/GLCommander/index.js';
 import ReactFullpage from '@fullpage/react-fullpage';
 import { connect } from "react-redux";
 import animAction from "../actions/animAction";
+import animIn from "../actions/animIn";
+import animOut from "../actions/animOut";
+
 import logo from '../logo.svg';
-
+let delay = 2000; 
+let timeoutId;
+let animationIsFinished = false;
 let handleProp
+let moveDown
 
-export const moveDown = (state, fullpageApi) => {
-    fullpageApi.moveSectionDown();
-};
+
 
 export class MySection extends Component {
 
 
   render=( state, fullpageApi ) => {
-    console.log("---=--");
-    console.log(this.props.animating);
-    console.log(this.props);
+
 
     return (
       <div className="section">
@@ -44,41 +46,45 @@ class Content extends Component {
   render=()=> {
     return (
         <div>
-             <img
-                src={logo}
-                className={
-                  "App-logo" +
-                  (this.props.animating ? "":" App-logo-paused")
-                }
-                alt="logo"
-                onClick={this.handleProp.bind(this)}
-              />
 
       <ReactFullpage
       anchors={anchors}
       navigationTooltips={anchors}
-      onLeave={(origin, destination, direction, item, id, workSection) => {
-  
-        console.log("onLeave event", { origin, destination, direction});
-        console.log(destination.anchor);
-  
+      onLeave={(origin, destination, direction, item, id) => {
+        let curTime = new Date().getTime();
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(function(){
+          animationIsFinished = true;
+          moveDown();
+        }, delay);
+        
   
         if(destination.anchor === "/") {
           GLC.changeNumbersAnimHome();
+          this.handleAnimOut();
         } else if(destination.anchor === "About") {
           GLC.changeNumbersAnimAbout();
+          this.handleAnimOut();
         } else if(destination.anchor === "Work") {
-          console.log('--');
-          this.handleProp();
-          console.log('--');
           GLC.changeNumbersAnimWork();
+          this.handleAnimIn();
         }
+        
+        return animationIsFinished;
+
       }}
-      onSlideLeave={() => {
+      onSlideLeave={(origin, destination, direction, item, id) => {
+        console.log(item);
       }}
-      render={({ state, fullpageApi }) => {
-        console.log("render prop change", state, fullpageApi); // eslint-disable-line no-console
-  
+      render={({ state, fullpageApi, destination, index }) => {
+        console.log(state);
+        console.log(fullpageApi);
+
+        moveDown = () => {
+          fullpageApi.moveTo(destination.index + 1);
+        };
+      
+
         return (
           <div>
             <MySection><Home /></MySection>
@@ -94,15 +100,12 @@ class Content extends Component {
 
   }
 
-  handleDelete = () => {
-    //here you can access the this.props
-    console.log(this.props.animating);
 
+  handleAnimIn = () => {
+    this.props.animIn(!this.props.animating)
   }
-  handleProp = () => {
-    console.log('what is this ' + this);
-    console.log(this.props.animating);
-    this.props.animAction(!this.props.animating)
+  handleAnimOut = () => {
+    this.props.animOut(!this.props.animating)
   }
 
 }
@@ -113,7 +116,9 @@ const mapStateToProps = state => ({
   ...state
 });
 const mapDispatchToProps = dispatch => ({
-  animAction: (payload) => dispatch(animAction(payload))
+  animAction: (payload) => dispatch(animAction(payload)),
+  animIn: (payload) => dispatch(animIn(payload)),
+  animOut: (payload) => dispatch(animOut(payload))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps) (Content);
