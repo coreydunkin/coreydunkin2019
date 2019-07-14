@@ -53,11 +53,20 @@ class Content extends Component {
       onLeave={(origin, destination, direction, item, id) => {
         let curTime = new Date().getTime();
         clearTimeout(timeoutId);
-        timeoutId = setTimeout(function(){
-          animationIsFinished = true;
-          moveDown();
-        }, delay);
+
+        console.log(direction);
+        if (direction === 'down') {
+          console.log('DOWN DOWN DOWN');
+          timeoutId = setTimeout(function(){
+                 
+              animationIsFinished = true;
+              moveDown();
+              
+            
+          }, delay);
+
         
+
   
         if(destination.anchor === "/") {
           GLC.changeNumbersAnimHome();
@@ -70,6 +79,7 @@ class Content extends Component {
           this.handleAnimIn();
         }
         
+      }
         return animationIsFinished;
 
       }}
@@ -81,7 +91,7 @@ class Content extends Component {
         console.log(fullpageApi);
 
         moveDown = () => {
-          fullpageApi.moveTo(destination.index + 1);
+          fullpageApi.moveSectionDown();
         };
       
 
