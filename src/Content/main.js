@@ -18,7 +18,7 @@ let timeoutId;
 let animationIsFinished = false;
 let handleProp
 let moveDown
-
+let goinDown = false;
 
 
 export class MySection extends Component {
@@ -55,11 +55,12 @@ class Content extends Component {
         clearTimeout(timeoutId);
 
         console.log(direction);
-        if (direction === 'down') {
+        if (direction === 'down' && goinDown == false) {
           console.log('DOWN DOWN DOWN');
           timeoutId = setTimeout(function(){
                  
               animationIsFinished = true;
+              goinDown = true;
               moveDown();
               
             
@@ -81,6 +82,11 @@ class Content extends Component {
         
       }
         return animationIsFinished;
+
+      }}
+      afterLoad={(origin, destination, direction) => {
+        goinDown = false; 
+        clearTimeout(timeoutId);
 
       }}
       onSlideLeave={(origin, destination, direction, item, id) => {
