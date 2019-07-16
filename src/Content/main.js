@@ -13,20 +13,14 @@ import animIn from "../actions/animIn";
 import animOut from "../actions/animOut";
 
 import logo from '../logo.svg';
-let delay = 2000; 
-let timeoutId;
-let animationIsFinished = false;
-let handleProp
-let moveDown
-let goinDown = false;
 
+let moveDown;
+let moveUp;
+let timeoutId;
 
 export class MySection extends Component {
 
-
   render=( state, fullpageApi ) => {
-
-
     return (
       <div className="section">
         {this.props.children}
@@ -34,41 +28,46 @@ export class MySection extends Component {
     );
   }
 
-
 }
-
-
 
 const anchors = ["/", "About", "Work"];
 
 class Content extends Component {
+  constructor(props) {
+    super(props);
+    this.delay = 1000;
+  }
+  state = {
+    animationIsFinished: false
+  };
 
   render=()=> {
     return (
-        <div>
+      <div>
 
       <ReactFullpage
       anchors={anchors}
       navigationTooltips={anchors}
-      onLeave={(origin, destination, direction, item, id) => {
-        let curTime = new Date().getTime();
+      onLeave={(origin, destination, direction, item, id, goinDown, animationIsFinished) => {
+
+        console.log(this.state.animationIsFinished);
+        let moveSection = 'move' + direction;
+        
         clearTimeout(timeoutId);
 
-        console.log(direction);
-        if (direction === 'down' && goinDown == false) {
-          console.log('DOWN DOWN DOWN');
-          timeoutId = setTimeout(function(){
-                 
-              animationIsFinished = true;
-              goinDown = true;
+        if (this.state.animationIsFinished == false) {
+          timeoutId = setTimeout(() => { 
+            this.setState({ animationIsFinished: true });
+            if (direction == 'up') {
+              moveUp();
+            } else {
               moveDown();
-              
-            
-          }, delay);
+            }
+          }, this.delay);
+        }
 
-        
 
-  
+
         if(destination.anchor === "/") {
           GLC.changeNumbersAnimHome();
           this.handleAnimOut();
@@ -79,28 +78,30 @@ class Content extends Component {
           GLC.changeNumbersAnimWork();
           this.handleAnimIn();
         }
-        
-      }
-        return animationIsFinished;
+
+
+        return this.state.animationIsFinished;
 
       }}
-      afterLoad={(origin, destination, direction) => {
-        goinDown = false; 
-        clearTimeout(timeoutId);
+      afterLoad={(origin, destination, direction, goinDown) => {
 
       }}
       onSlideLeave={(origin, destination, direction, item, id) => {
         console.log(item);
       }}
       render={({ state, fullpageApi, destination, index }) => {
-        console.log(state);
-        console.log(fullpageApi);
+        
 
         moveDown = () => {
           fullpageApi.moveSectionDown();
+          this.setState({ animationIsFinished: false });
         };
-      
 
+        moveUp = () => {
+          fullpageApi.moveSectionUp();
+          this.setState({ animationIsFinished: false });
+        };
+        
         return (
           <div>
             <MySection><Home /></MySection>
