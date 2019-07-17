@@ -21,6 +21,9 @@ class Home extends Component {
     
     console.log(Content.prototype);
 
+    console.log(this.props.animType);
+    console.log("YOU GOT IT");
+
     return (
       <div className="home page">
       
@@ -29,28 +32,28 @@ class Home extends Component {
 
           <h1 className="hero">
       <Animated 
-        animationIn="fadeIn"
-        animationOut="fadeOutUp"
+        animationIn={this.props.animType}
+        animationOut={this.props.animType}
         animationInDelay={3000}
         animationInDuration={1000}
-        isVisible={true}>    
+        isVisible={this.props.animating}>    
           <span>WEBGL</span>
           </Animated>    
       <Animated 
-        animationIn="fadeIn"
-        animationOut="fadeOutUp"
+        animationIn={this.props.animType}
+        animationOut={this.props.animType}
         animationInDelay={3200}
         animationInDuration={1000}
-        isVisible={true}>
+        isVisible={this.props.animating}>
           <span>&nbsp;REACT</span>
       </Animated>
           </h1>
       <Animated
-        animationIn="fadeInDown"
-        animationOut="fadeOutUp"
+        animationIn={this.props.animType}
+        animationOut={this.props.animType}
         animationInDelay={5000}
         animationInDuration={900}
-        isVisible={true}>
+        isVisible={this.props.animating}>
 
           <h2 className="subhero">
             <a href="#About">NEXT PAGE</a>

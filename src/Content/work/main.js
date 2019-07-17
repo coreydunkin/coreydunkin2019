@@ -44,16 +44,16 @@ class Work extends Component {
             <div className="slide" key={i}>
  
             <Animated
-            animationIn="fadeInUp"
-            animationOut="fadeOutUp"
-            animationInDelay={1000}
+            animationIn={this.props.animType}
+            animationOut={this.props.animType}
+            animationInDelay={1500}
             animationInDuration={900}
             isVisible={Content.workSection}>
 
             <Animated
-            animationIn="fadeInUp"
-            animationOut="fadeOutUp"
-            animationInDelay={1000}
+            animationIn={this.props.animType}
+            animationOut={this.props.animType}
+            animationInDelay={1500}
             animationInDuration={900}
             isVisible={this.props.animating}>
               <h2> {item.title}</h2> 

@@ -14,9 +14,18 @@ import animOut from "../actions/animOut";
 
 import logo from '../logo.svg';
 
+let moveSection;
 let moveDown;
 let moveUp;
 let timeoutId;
+let preventDefault;
+let preventDefaultForScrollKeys;
+let disableScroll;
+let enableScroll;
+
+// left: 37, up: 38, right: 39, down: 40,
+// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+let keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
 export class MySection extends Component {
 
@@ -38,7 +47,10 @@ class Content extends Component {
     this.delay = 1000;
   }
   state = {
-    animationIsFinished: false
+    animationIsFinished: false,
+    animType: "fadeIn",
+    animDurationFirst: 500,
+    animDurationSecond: 1000
   };
 
   render=()=> {
@@ -48,65 +60,99 @@ class Content extends Component {
       <ReactFullpage
       anchors={anchors}
       navigationTooltips={anchors}
-      onLeave={(origin, destination, direction, item, id, goinDown, animationIsFinished) => {
+      onLeave={(origin, destination, direction) => {
 
         console.log(this.state.animationIsFinished);
-        let moveSection = 'move' + direction;
-        
-        clearTimeout(timeoutId);
 
+        // we disable the scroll so that the moveSection method can finish
+        // this needs to be done for animation purposes to run
+        disableScroll();
+
+        clearTimeout(timeoutId);
+        // delaying the next page event so we can add some animations to our page elements
         if (this.state.animationIsFinished == false) {
           timeoutId = setTimeout(() => { 
             this.setState({ animationIsFinished: true });
-            if (direction == 'up') {
-              moveUp();
-            } else {
-              moveDown();
-            }
+            moveSection(direction);
           }, this.delay);
         }
 
+        console.log(origin);
+        console.log(destination);
 
-
+        this.handleAnimOut();
+        this.handleAnimInUp();
+/*
+        if(origin.index < destination.index) {
+          console.log('anim');
+          console.log(this.props.animating);
+        }
+*/
         if(destination.anchor === "/") {
           GLC.changeNumbersAnimHome();
-          this.handleAnimOut();
+          /*if (direction == 'down') {
+            this.handleAnimOut();
+          } else {
+            this.handleAnimIn();
+          }*/
+          
         } else if(destination.anchor === "About") {
           GLC.changeNumbersAnimAbout();
-          this.handleAnimOut();
+          /*if (direction == 'down') {
+            this.handleAnimOut();
+          } else {
+            this.handleAnimIn();
+          }       */ 
         } else if(destination.anchor === "Work") {
           GLC.changeNumbersAnimWork();
-          this.handleAnimIn();
+          /*if (direction == 'down') {
+            this.handleAnimOut();
+          } else {
+            this.handleAnimIn();
+          }*/
         }
 
 
         return this.state.animationIsFinished;
 
       }}
-      afterLoad={(origin, destination, direction, goinDown) => {
+      afterLoad={(origin, destination, direction) => {
+
+        this.handleAnimIn();
+        this.handleAnimOutUp();
 
       }}
       onSlideLeave={(origin, destination, direction, item, id) => {
         console.log(item);
       }}
-      render={({ state, fullpageApi, destination, index }) => {
+      render={({ state, fullpageApi, destination, index, direction }) => {
         
-
-        moveDown = () => {
-          fullpageApi.moveSectionDown();
+        // set the direction and reset the animationIsFinished property
+        moveSection = (direction) => {
+          if (direction == 'up') {
+            fullpageApi.moveSectionUp();
+          } else {
+            fullpageApi.moveSectionDown();
+          }
           this.setState({ animationIsFinished: false });
+          enableScroll();
         };
 
-        moveUp = () => {
-          fullpageApi.moveSectionUp();
-          this.setState({ animationIsFinished: false });
-        };
+        // disable scroll event
+        disableScroll = () => {
+          fullpageApi.setAllowScrolling(false);
+        }
+        
+        // enable scroll event
+        enableScroll = () => {
+          fullpageApi.setAllowScrolling(true);
+        }        
         
         return (
           <div>
-            <MySection><Home /></MySection>
-            <MySection><About /></MySection>
-            <MySection><Work /></MySection>
+            <MySection><Home animType={this.state.animType} /></MySection>
+            <MySection><About animType={this.state.animType} /></MySection>
+            <MySection><Work animType={this.state.animType} /></MySection>
           </div>
         );
       }}
@@ -116,6 +162,23 @@ class Content extends Component {
 
 
   }
+
+  handleAnimOutUp = () => {
+    this.setState({ animType: "fadeOutUp" });
+  }
+
+  handleAnimOutDown = () => {
+    this.setState({ animType: "fadeOutDown" });
+  }
+
+  handleAnimInUp = () => {
+    this.setState({ animType: "fadeInUp" });
+  }
+
+  handleAnimOutUp = () => {
+    this.setState({ animType: "fadeOutUp" });
+  }
+
 
 
   handleAnimIn = () => {
