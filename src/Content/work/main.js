@@ -20,7 +20,7 @@ class Work extends Component {
       {
         "id": 1,
         "title": "item 1",
-        "body": "This is some work"
+        "body": "example"
       },
       {
         "id": 2,
@@ -38,21 +38,21 @@ class Work extends Component {
       
     <div className="work page">
        {workItem.map((item, i) => 
-
+      
 
 
             <div className="slide" key={i}>
  
             <Animated
-            animationIn={this.props.animType}
-            animationOut={this.props.animType}
+            animationIn="fadeInDown"
+            animationOut="fadeInDown"
             animationInDelay={1500}
             animationInDuration={900}
             isVisible={Content.workSection}>
 
             <Animated
-            animationIn={this.props.animType}
-            animationOut={this.props.animType}
+            animationIn="fadeInDown"
+            animationOut="fadeInDown"
             animationInDelay={1500}
             animationInDuration={900}
             isVisible={this.props.animating}>
@@ -61,7 +61,7 @@ class Work extends Component {
               </Animated>    
             </Animated>    
             </div> 
-
+      
        )}
 
     </div>

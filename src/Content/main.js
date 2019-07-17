@@ -22,10 +22,11 @@ let preventDefault;
 let preventDefaultForScrollKeys;
 let disableScroll;
 let enableScroll;
-
-// left: 37, up: 38, right: 39, down: 40,
-// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-let keys = {37: 1, 38: 1, 39: 1, 40: 1};
+let animPageType;
+let handleAnimInUp;
+let handleAnimInDown;
+let handleAnimOutUp;
+let handleAnimOutDown;
 
 export class MySection extends Component {
 
@@ -48,9 +49,21 @@ class Content extends Component {
   }
   state = {
     animationIsFinished: false,
-    animType: "fadeIn",
-    animDurationFirst: 500,
-    animDurationSecond: 1000
+    animHome: {
+      animType: "fadeInDown",
+      animDelay1: 3000,
+      animDelay2: 3200,
+      animDelay3: 5000
+    },
+    animAbout: {
+      animType: "fadeOutDown",
+      animDelay1: 1500,
+      animDelay2: 1800
+    },
+    animWork: {
+      animType: "fadeOutDown",
+      animDelay: 1500
+    }
   };
 
   render=()=> {
@@ -62,65 +75,136 @@ class Content extends Component {
       navigationTooltips={anchors}
       onLeave={(origin, destination, direction) => {
 
-        console.log(this.state.animationIsFinished);
 
         // we disable the scroll so that the moveSection method can finish
         // this needs to be done for animation purposes to run
         disableScroll();
+        handleAnimOutUp();
 
         clearTimeout(timeoutId);
         // delaying the next page event so we can add some animations to our page elements
         if (this.state.animationIsFinished == false) {
           timeoutId = setTimeout(() => { 
             this.setState({ animationIsFinished: true });
+            
+
             moveSection(direction);
           }, this.delay);
         }
 
-        console.log(origin);
-        console.log(destination);
 
-        this.handleAnimOut();
-        this.handleAnimInUp();
-/*
-        if(origin.index < destination.index) {
-          console.log('anim');
-          console.log(this.props.animating);
+
+        //this.handleAnimOut();
+        //this.handleAnimInUp();
+
+        if(origin.anchor === "/") {
+          this.setState({animHome: {
+            animType: "fadeOutUp",
+            animDelay1: 0,
+            animDelay2: 0,
+            animDelay3: 0
+          }});
+        } else if (origin.anchor === "About") {
+          if(direction === "down") {
+            this.setState({animAbout: {
+              animType: "fadeOutUp",
+              animDelay1: 0,
+              animDelay2: 100,
+              animDelay3: 0
+            }});
+          } else {
+            this.setState({animAbout: {
+              animType: "fadeOutDown",
+              animDelay1: 0,
+              animDelay2: 100,
+              animDelay3: 0
+            }});
+          }
         }
-*/
+
+        /*
+        if(destination.anchor === "/") {
+          if(direction == "down") {
+            this.setState({ animTypeHome: "fadeInUp" });
+          } else {
+            this.setState({ animTypeHome: "fadeInDown" });
+          }
+        } else if(destination.anchor === "About") {
+          if(direction == "down") {
+            this.setState({ animTypeAbout: "fadeInUp" });
+          } else {
+            this.setState({ animTypeAbout: "fadeInDown" });
+          }
+        } else if(destination.anchor === "Work") {
+          if(direction == "down") {
+            this.setState({ animTypeAbout: "fadeInUp" });
+          } else {
+            this.setState({ animTypeAbout: "fadeInDown" });
+          }
+        }
+        */
+
         if(destination.anchor === "/") {
           GLC.changeNumbersAnimHome();
-          /*if (direction == 'down') {
-            this.handleAnimOut();
-          } else {
-            this.handleAnimIn();
-          }*/
-          
         } else if(destination.anchor === "About") {
           GLC.changeNumbersAnimAbout();
-          /*if (direction == 'down') {
-            this.handleAnimOut();
-          } else {
-            this.handleAnimIn();
-          }       */ 
         } else if(destination.anchor === "Work") {
           GLC.changeNumbersAnimWork();
-          /*if (direction == 'down') {
-            this.handleAnimOut();
-          } else {
-            this.handleAnimIn();
-          }*/
         }
-
 
         return this.state.animationIsFinished;
 
       }}
-      afterLoad={(origin, destination, direction) => {
+      afterLoad={(origin, destination, direction, animPageType) => {
 
-        this.handleAnimIn();
-        this.handleAnimOutUp();
+        if(destination.anchor === "/") {
+          this.setState({animHome: {
+            animType: "fadeInDown",
+            animDelay1: 0,
+            animDelay2: 0,
+            animDelay3: 0
+          }});
+        } else if(destination.anchor === "About") {
+         if(direction === "down") {
+          this.setState({animAbout: {
+            animType: "fadeInUp",
+            animDelay1: 500,
+            animDelay2: 700,
+          }});
+         } else {
+          this.setState({animAbout: {
+            animType: "fadeInDown",
+            animDelay1: 500,
+            animDelay2: 700,
+          }});
+         }
+        }
 
+
+        //this.handleAnimIn();
+        //this.handleAnimOutUp();
+
+        /*
+        if(origin.anchor === "/") {
+          if(direction == "down") {
+            this.setState({ animTypeHome: "fadeOutUp" });
+          } else {
+            this.setState({ animTypeHome: "fadeOutDown" });
+          }
+        } else if(origin.anchor === "About") {
+          if(direction == "down") {
+            this.setState({ animTypeAbout: "fadeOutUp" });
+          } else {
+            this.setState({ animTypeAbout: "fadeOutDown" });
+          }
+        } else if(origin.anchor === "Work") {
+          if(direction == "down") {
+            this.setState({ animTypeAbout: "fadeOutUp" });
+          } else {
+            this.setState({ animTypeAbout: "fadeOutDown" });
+          }
+        }
+        */
       }}
       onSlideLeave={(origin, destination, direction, item, id) => {
         console.log(item);
@@ -148,11 +232,29 @@ class Content extends Component {
           fullpageApi.setAllowScrolling(true);
         }        
         
+        handleAnimOutUp = (animPageType) => {
+          this.setState({ animPageType: "fadeOutUp" });
+        }
+      
+        handleAnimOutDown = (animPageType) => {
+          this.setState({ animPageType: "fadeOutDown" });
+        }
+      
+        handleAnimInUp = (animPageType) => {
+          this.setState({ animPageType: "fadeInUp" });
+        }
+      
+        handleAnimInDown = (animPageType) => {
+          this.setState({ animPageType: "fadeOutUp" });
+        }
+
+      
+
         return (
           <div>
-            <MySection><Home animType={this.state.animType} /></MySection>
-            <MySection><About animType={this.state.animType} /></MySection>
-            <MySection><Work animType={this.state.animType} /></MySection>
+            <MySection><Home animHome={this.state.animHome} /></MySection>
+            <MySection><About animAbout={this.state.animAbout} /></MySection>
+            <MySection><Work animWork={this.state.animWork} /></MySection>
           </div>
         );
       }}
@@ -163,21 +265,6 @@ class Content extends Component {
 
   }
 
-  handleAnimOutUp = () => {
-    this.setState({ animType: "fadeOutUp" });
-  }
-
-  handleAnimOutDown = () => {
-    this.setState({ animType: "fadeOutDown" });
-  }
-
-  handleAnimInUp = () => {
-    this.setState({ animType: "fadeInUp" });
-  }
-
-  handleAnimOutUp = () => {
-    this.setState({ animType: "fadeOutUp" });
-  }
 
 
 

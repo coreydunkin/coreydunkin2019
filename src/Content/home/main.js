@@ -14,44 +14,43 @@ export const newContent = Content;
 class Home extends Component {
   // This syntax ensures `this` is bound within handleClick.
   // Warning: this is *experimental* syntax.
-  
+  constructor(props){
+    super(props);    
+  }
   
   render() {
     
     
-    console.log(Content.prototype);
 
-    console.log(this.props.animType);
-    console.log("YOU GOT IT");
 
-    return (
-      <div className="home page">
-      
+    return ( 
+      <div className="home page"> 
+        <div key={this.props.animHome.animType}>
 
 
 
           <h1 className="hero">
-      <Animated 
-        animationIn={this.props.animType}
-        animationOut={this.props.animType}
-        animationInDelay={3000}
+      <Animated
+        animationIn={this.props.animHome.animType}
+        animationOut={this.props.animHome.animType}
+        animationInDelay={this.props.animHome.animDelay1}
         animationInDuration={1000}
         isVisible={this.props.animating}>    
-          <span>WEBGL</span>
+          <span>I'M A</span>
           </Animated>    
       <Animated 
-        animationIn={this.props.animType}
-        animationOut={this.props.animType}
-        animationInDelay={3200}
+        animationIn={this.props.animHome.animType}
+        animationOut={this.props.animHome.animType}
+        animationInDelay={this.props.animHome.animDelay2}
         animationInDuration={1000}
         isVisible={this.props.animating}>
-          <span>&nbsp;REACT</span>
+          <span>&nbsp;DUMB DUMB</span>
       </Animated>
           </h1>
       <Animated
-        animationIn={this.props.animType}
-        animationOut={this.props.animType}
-        animationInDelay={5000}
+        animationIn={this.props.animHome.animType}
+        animationOut={this.props.animHome.animType}
+        animationInDelay={this.props.animHome.animDelay3}
         animationInDuration={900}
         isVisible={this.props.animating}>
 
@@ -63,7 +62,7 @@ class Home extends Component {
       </Animated>    
 
          
-      
+      </div>
       </div>
     );
   }
