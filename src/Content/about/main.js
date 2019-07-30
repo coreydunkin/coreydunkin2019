@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 import {Animated} from "react-animated-css";
-import Content from "../main";
-
-import { animIn } from "../../actions/animIn";
-import { animOut } from "../../actions/animOut";
-import animAction from "../../actions/animAction";
 
 class About extends Component {
   // This syntax ensures `this` is bound within handleClick.
@@ -24,7 +19,7 @@ class About extends Component {
       animationInDuration={900}
       isVisible={this.props.animating}>   
 
-          <h1 className="hero">IM ALSO TIRED</h1>
+          <h1 className="hero"><span>IM ALSO TIRED</span></h1>
 
           </Animated>
           <Animated 

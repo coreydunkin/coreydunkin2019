@@ -20,9 +20,6 @@ class Home extends Component {
   
   render() {
     
-    
-
-
     return ( 
       <div className="home page"> 
         <div key={this.props.animHome.animType}>

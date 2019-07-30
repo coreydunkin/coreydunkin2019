@@ -14,6 +14,7 @@ import animOut from "../actions/animOut";
 
 import logo from '../logo.svg';
 
+let moveSlideSection;
 let moveSection;
 let moveDown;
 let moveUp;
@@ -51,9 +52,9 @@ class Content extends Component {
     animationIsFinished: false,
     animHome: {
       animType: "fadeInDown",
-      animDelay1: 3000,
-      animDelay2: 3200,
-      animDelay3: 5000
+      animDelay1: 0,
+      animDelay2: 0,
+      animDelay3: 0
     },
     animAbout: {
       animType: "fadeOutDown",
@@ -62,7 +63,10 @@ class Content extends Component {
     },
     animWork: {
       animType: "fadeOutDown",
-      animDelay: 1500
+      animSubType: "fadeInRight",
+      animDelay1: 1500,
+      animDelay2: 1800,
+      animDelay3: 2200
     }
   };
 
@@ -120,8 +124,25 @@ class Content extends Component {
               animDelay3: 0
             }});
           }
+        } else if (origin.anchor === "Work") {
+          if(direction === "down") {
+            this.setState({animWork: {
+              animType: "fadeOutUp",
+              animSubType: "fadeInRight",
+              animDelay1: 0,
+              animDelay2: 200,
+              animDelay3: 0
+            }});
+          } else {
+            this.setState({animWork: {
+              animType: "fadeOutDown",
+              animSubType: "fadeInRight",
+              animDelay1: 0,
+              animDelay2: 200,
+              animDelay3: 0
+            }});
+          }
         }
-
         /*
         if(destination.anchor === "/") {
           if(direction == "down") {
@@ -178,6 +199,24 @@ class Content extends Component {
             animDelay2: 700,
           }});
          }
+        } else if (destination.anchor === "Work") {
+          if(direction === "down") {
+            this.setState({animWork: {
+              animType: "fadeInUp",
+              animSubType: "fadeInRight",
+              animDelay1: 0,
+              animDelay2: 200,
+              animDelay3: 0
+            }});
+          } else {
+            this.setState({animWork: {
+              animType: "fadeInDown",
+              animSubType: "fadeInRight",
+              animDelay1: 0,
+              animDelay2: 200,
+              animDelay3: 0
+            }});
+          }
         }
 
 
@@ -207,7 +246,37 @@ class Content extends Component {
         */
       }}
       onSlideLeave={(origin, destination, direction, item, id) => {
-        console.log(item);
+        
+
+        console.log(origin);
+/*
+        if(item == "right") {
+          this.setState({animWork: {
+            animType: "fadeOutUp",
+            animSubType: "fadeOutUp",
+            animDelay1: 0,
+            animDelay2: 200,
+            animDelay3: 300
+          }});
+        } 
+*/
+        clearTimeout(timeoutId);
+        // delaying the next page event so we can add some animations to our page elements
+        if (this.state.animationIsFinished == false) {
+          timeoutId = setTimeout(() => { 
+            this.setState({ animationIsFinished: true });
+            
+            moveSlideSection(item);
+            
+          }, this.delay);
+        }
+
+        return this.state.animationIsFinished;
+
+
+      }}
+      afterSlideLoad={(origin, destination, direction, item, id) => {
+        console.log('after slide load');
       }}
       render={({ state, fullpageApi, destination, index, direction }) => {
         
@@ -217,6 +286,16 @@ class Content extends Component {
             fullpageApi.moveSectionUp();
           } else {
             fullpageApi.moveSectionDown();
+          }
+          this.setState({ animationIsFinished: false });
+          enableScroll();
+        };
+
+        moveSlideSection = (item) => {
+          if (item == 'right') {
+            fullpageApi.moveSlideRight();
+          } else {
+            fullpageApi.moveSlideLeft();
           }
           this.setState({ animationIsFinished: false });
           enableScroll();
