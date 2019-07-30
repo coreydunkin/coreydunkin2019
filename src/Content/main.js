@@ -101,22 +101,22 @@ class Content extends Component {
           this.setState({animHome: {
             animType: "fadeOutUp",
             animDelay1: 0,
-            animDelay2: 0,
-            animDelay3: 0
+            animDelay2: 200,
+            animDelay3: 300
           }});
         } else if (origin.anchor === "About") {
           if(direction === "down") {
             this.setState({animAbout: {
               animType: "fadeOutUp",
               animDelay1: 0,
-              animDelay2: 100,
+              animDelay2: 200,
               animDelay3: 0
             }});
           } else {
             this.setState({animAbout: {
               animType: "fadeOutDown",
               animDelay1: 0,
-              animDelay2: 100,
+              animDelay2: 200,
               animDelay3: 0
             }});
           }
@@ -161,8 +161,8 @@ class Content extends Component {
           this.setState({animHome: {
             animType: "fadeInDown",
             animDelay1: 0,
-            animDelay2: 0,
-            animDelay3: 0
+            animDelay2: 200,
+            animDelay3: 300
           }});
         } else if(destination.anchor === "About") {
          if(direction === "down") {
