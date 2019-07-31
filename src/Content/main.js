@@ -28,6 +28,7 @@ let handleAnimInUp;
 let handleAnimInDown;
 let handleAnimOutUp;
 let handleAnimOutDown;
+let moveToSection;
 
 export class MySection extends Component {
 
@@ -53,7 +54,7 @@ class Content extends Component {
     animHome: {
       animType: "fadeInDown",
       animDelay1: 0,
-      animDelay2: 0,
+      animDelay2: 400,
       animDelay3: 0
     },
     animAbout: {
@@ -79,22 +80,45 @@ class Content extends Component {
       navigationTooltips={anchors}
       onLeave={(origin, destination, direction) => {
 
+        //console.log(origin.index);
+        //console.log(destination.index);
 
-        // we disable the scroll so that the moveSection method can finish
-        // this needs to be done for animation purposes to run
-        disableScroll();
-        handleAnimOutUp();
+        // add some logic to check if the page you want to go to is 
+        // more than 2 page away, using this for animation checks
+        let incrementValue = destination.index - origin.index;
 
-        clearTimeout(timeoutId);
-        // delaying the next page event so we can add some animations to our page elements
-        if (this.state.animationIsFinished == false) {
-          timeoutId = setTimeout(() => { 
-            this.setState({ animationIsFinished: true });
-            
+        console.log(incrementValue);
+        console.log(destination);
 
-            moveSection(direction);
-          }, this.delay);
+        if(incrementValue > 1 || incrementValue < -1) {
+          console.log('skip');
+          this.setState({ animationIsFinished: true });
+          enableScroll();
+          moveToSection(destination); 
+
+          
+
+        } else {
+
+          // we disable the scroll so that the moveSection method can finish
+          // this needs to be done for animation purposes to run
+          disableScroll();
+          handleAnimOutUp();
+
+          clearTimeout(timeoutId);
+          // delaying the next page event so we can add some animations to our page elements
+          if (this.state.animationIsFinished == false) {
+            timeoutId = setTimeout(() => { 
+              this.setState({ animationIsFinished: true });
+              
+
+              moveSection(direction);
+            }, this.delay);
+          }
+
         }
+
+
 
 
 
@@ -278,8 +302,8 @@ class Content extends Component {
       afterSlideLoad={(origin, destination, direction, item, id) => {
         console.log('after slide load');
       }}
-      render={({ state, fullpageApi, destination, index, direction }) => {
-        
+      render={({  state, fullpageApi, destination, index, direction }) => {
+
         // set the direction and reset the animationIsFinished property
         moveSection = (direction) => {
           if (direction == 'up') {
@@ -310,6 +334,14 @@ class Content extends Component {
         enableScroll = () => {
           fullpageApi.setAllowScrolling(true);
         }        
+
+        moveToSection = (destination) => {
+          fullpageApi.moveTo(destination.index, 0);
+
+
+          //this.setState({ animationIsFinished: false });
+          enableScroll();
+        }
         
         handleAnimOutUp = (animPageType) => {
           this.setState({ animPageType: "fadeOutUp" });
