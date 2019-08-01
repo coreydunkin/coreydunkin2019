@@ -31,7 +31,6 @@ let handleAnimOutDown;
 let moveToSection;
 
 export class MySection extends Component {
-
   render=( state, fullpageApi ) => {
     return (
       <div className="section">
@@ -39,7 +38,6 @@ export class MySection extends Component {
       </div>
     );
   }
-
 }
 
 const anchors = ["/", "About", "Work"];
@@ -80,9 +78,6 @@ class Content extends Component {
       navigationTooltips={anchors}
       onLeave={(origin, destination, direction) => {
 
-        //console.log(origin.index);
-        //console.log(destination.index);
-
         // add some logic to check if the page you want to go to is 
         // more than 2 page away, using this for animation checks
         let incrementValue = destination.index - origin.index;
@@ -95,9 +90,6 @@ class Content extends Component {
           this.setState({ animationIsFinished: true });
           enableScroll();
           moveToSection(destination); 
-
-          
-
         } else {
 
           // we disable the scroll so that the moveSection method can finish
@@ -110,20 +102,11 @@ class Content extends Component {
           if (this.state.animationIsFinished == false) {
             timeoutId = setTimeout(() => { 
               this.setState({ animationIsFinished: true });
-              
-
               moveSection(direction);
             }, this.delay);
           }
 
         }
-
-
-
-
-
-        //this.handleAnimOut();
-        //this.handleAnimInUp();
 
         if(origin.anchor === "/") {
           this.setState({animHome: {
@@ -167,27 +150,6 @@ class Content extends Component {
             }});
           }
         }
-        /*
-        if(destination.anchor === "/") {
-          if(direction == "down") {
-            this.setState({ animTypeHome: "fadeInUp" });
-          } else {
-            this.setState({ animTypeHome: "fadeInDown" });
-          }
-        } else if(destination.anchor === "About") {
-          if(direction == "down") {
-            this.setState({ animTypeAbout: "fadeInUp" });
-          } else {
-            this.setState({ animTypeAbout: "fadeInDown" });
-          }
-        } else if(destination.anchor === "Work") {
-          if(direction == "down") {
-            this.setState({ animTypeAbout: "fadeInUp" });
-          } else {
-            this.setState({ animTypeAbout: "fadeInDown" });
-          }
-        }
-        */
 
         if(destination.anchor === "/") {
           GLC.changeNumbersAnimHome();
@@ -244,30 +206,9 @@ class Content extends Component {
         }
 
 
-        //this.handleAnimIn();
-        //this.handleAnimOutUp();
-
-        /*
-        if(origin.anchor === "/") {
-          if(direction == "down") {
-            this.setState({ animTypeHome: "fadeOutUp" });
-          } else {
-            this.setState({ animTypeHome: "fadeOutDown" });
-          }
-        } else if(origin.anchor === "About") {
-          if(direction == "down") {
-            this.setState({ animTypeAbout: "fadeOutUp" });
-          } else {
-            this.setState({ animTypeAbout: "fadeOutDown" });
-          }
-        } else if(origin.anchor === "Work") {
-          if(direction == "down") {
-            this.setState({ animTypeAbout: "fadeOutUp" });
-          } else {
-            this.setState({ animTypeAbout: "fadeOutDown" });
-          }
-        }
-        */
+        console.log('after load');
+        this.setState({ animationIsFinished: false });
+        
       }}
       onSlideLeave={(origin, destination, direction, item, id) => {
         
@@ -300,7 +241,7 @@ class Content extends Component {
 
       }}
       afterSlideLoad={(origin, destination, direction, item, id) => {
-        console.log('after slide load');
+
       }}
       render={({  state, fullpageApi, destination, index, direction }) => {
 
@@ -338,7 +279,7 @@ class Content extends Component {
         moveToSection = (destination) => {
           fullpageApi.moveTo(destination.index, 0);
 
-
+          console.log('lemme know');
           //this.setState({ animationIsFinished: false });
           enableScroll();
         }
@@ -359,8 +300,6 @@ class Content extends Component {
           this.setState({ animPageType: "fadeOutUp" });
         }
 
-      
-
         return (
           <div>
             <MySection><Home animHome={this.state.animHome} /></MySection>
@@ -375,9 +314,6 @@ class Content extends Component {
 
 
   }
-
-
-
 
   handleAnimIn = () => {
     this.props.animIn(!this.props.animating)

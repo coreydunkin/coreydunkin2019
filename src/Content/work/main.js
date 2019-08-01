@@ -4,12 +4,34 @@ import { connect } from "react-redux";
 import animAction from "../../actions/animAction"
 
 let animDecider;
-
+let workAnim;
 
 class Work extends Component {
   // This syntax ensures `this` is bound within handleClick.
   // Warning: this is *experimental* syntax.  
-  render(animDecider) {
+  constructor(props) {
+    super(props);
+    this.delay = 1000;
+  }
+
+  state = {
+    workAnim: "fadeInUp"
+  };
+  
+  componentDidUpdate(prevProps, prevState) {
+    // only update chart if the data has changed
+    if (prevProps.animWork.animType !== this.props.animWork.animType) {
+      this.setState({ workAnim: this.props.animWork.animType });
+
+      console.log('updated');
+
+      console.log(this.state.workAnim);
+    }
+  }
+
+
+  render=()=> {
+
 
 
     const workItem = [
@@ -29,7 +51,7 @@ class Work extends Component {
         "body": "This is some work too"
       },
     ]
-
+;
 /* 
     <i key={this.props.animWork.animType}>
 
@@ -43,28 +65,38 @@ class Work extends Component {
     </Animated> 
 
     </i> 
-*/
+*/  
+    
+console.log(this.state.workAnim + " not updated?");
 
     return (
       
-    <div className="work page" >
+    <div className="work page">
+       <Animated
+       animationIn={this.props.workAnim}
+       animationOut={this.props.workAnim}
+       animationInDelay={1500}
+       animationInDuration={900} 
+       isVisible={this.props.animating}>   
+        {this.state.workAnim}
+
 
        {workItem.map((item, i) => 
-      
+  
             <div className="slide" key={i}>
 
               <h2><span>{item.title}</span></h2> 
-              <p> {item.body}</p>
+              <p className={this.state.workAnim}> {item.body}</p>
                
               
-
               </div>
-            
-      
+
+
        )}
+      
+      </Animated>   
     
     
-       
     </div>
     );
   }
