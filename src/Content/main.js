@@ -46,6 +46,7 @@ class Content extends Component {
   constructor(props) {
     super(props);
     this.delay = 1000;
+    this.slideDelay = 1500;
   }
   state = {
     animationIsFinished: false,
@@ -62,7 +63,6 @@ class Content extends Component {
     },
     animWork: {
       animType: "fadeOutDown",
-      animSubType: "fadeInRight",
       animDelay1: 1500,
       animDelay2: 1800,
       animDelay3: 2200
@@ -135,7 +135,6 @@ class Content extends Component {
           if(direction === "down") {
             this.setState({animWork: {
               animType: "fadeOutUp",
-              animSubType: "fadeInRight",
               animDelay1: 0,
               animDelay2: 200,
               animDelay3: 0
@@ -143,7 +142,6 @@ class Content extends Component {
           } else {
             this.setState({animWork: {
               animType: "fadeOutDown",
-              animSubType: "fadeInRight",
               animDelay1: 0,
               animDelay2: 200,
               animDelay3: 0
@@ -189,7 +187,6 @@ class Content extends Component {
           if(direction === "down") {
             this.setState({animWork: {
               animType: "fadeInUp",
-              animSubType: "fadeInRight",
               animDelay1: 0,
               animDelay2: 200,
               animDelay3: 0
@@ -197,7 +194,6 @@ class Content extends Component {
           } else {
             this.setState({animWork: {
               animType: "fadeInDown",
-              animSubType: "fadeInRight",
               animDelay1: 0,
               animDelay2: 200,
               animDelay3: 0
@@ -214,17 +210,23 @@ class Content extends Component {
         
 
         console.log(origin);
-/*
+
         if(item == "right") {
           this.setState({animWork: {
-            animType: "fadeOutUp",
-            animSubType: "fadeOutUp",
+            animType: "fadeOutLeft",
             animDelay1: 0,
             animDelay2: 200,
             animDelay3: 300
           }});
-        } 
-*/
+        } else {
+          this.setState({animWork: {
+            animType: "fadeOutRight",
+            animDelay1: 0,
+            animDelay2: 200,
+            animDelay3: 300
+          }});
+        }
+
         clearTimeout(timeoutId);
         // delaying the next page event so we can add some animations to our page elements
         if (this.state.animationIsFinished == false) {
@@ -233,7 +235,7 @@ class Content extends Component {
             
             moveSlideSection(item);
             
-          }, this.delay);
+          }, this.slideDelay);
         }
 
         return this.state.animationIsFinished;
@@ -241,6 +243,23 @@ class Content extends Component {
 
       }}
       afterSlideLoad={(origin, destination, direction, item, id) => {
+
+
+        if(item == "right") {
+          this.setState({animWork: {
+            animType: "fadeInRight",
+            animDelay1: 0,
+            animDelay2: 200,
+            animDelay3: 300
+          }});
+        } else {
+          this.setState({animWork: {
+            animType: "fadeInLeft",
+            animDelay1: 0,
+            animDelay2: 200,
+            animDelay3: 300
+          }});
+        }
 
       }}
       render={({  state, fullpageApi, destination, index, direction }) => {

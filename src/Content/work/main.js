@@ -5,7 +5,7 @@ import animAction from "../../actions/animAction"
 
 let animDecider;
 let workAnim;
-
+let updatedWorkAnim;
 class Work extends Component {
   // This syntax ensures `this` is bound within handleClick.
   // Warning: this is *experimental* syntax.  
@@ -23,9 +23,7 @@ class Work extends Component {
     if (prevProps.animWork.animType !== this.props.animWork.animType) {
       this.setState({ workAnim: this.props.animWork.animType });
 
-      console.log('updated');
 
-      console.log(this.state.workAnim);
     }
   }
 
@@ -69,32 +67,42 @@ class Work extends Component {
     
 console.log(this.state.workAnim + " not updated?");
 
+
+
     return (
       
     <div className="work page">
-       <Animated
-       animationIn={this.props.workAnim}
-       animationOut={this.props.workAnim}
-       animationInDelay={1500}
-       animationInDuration={900} 
-       isVisible={this.props.animating}>   
+
+       
         {this.state.workAnim}
 
 
        {workItem.map((item, i) => 
   
+        
+
             <div className="slide" key={i}>
 
-              <h2><span>{item.title}</span></h2> 
-              <p className={this.state.workAnim}> {item.body}</p>
-               
               
-              </div>
+              <h2 className={'animated ' + this.state.workAnim} 
+              style={{ animationDelay: '0ms', 
+                       animationDuration: '900ms', 
+                       pointerEvents: 'all'}}><span>{item.title}</span></h2> 
+             
+              <p className={'animated ' + this.state.workAnim} 
+              style={{ animationDelay: '0ms', 
+                       animationDuration: '1500ms', 
+                       pointerEvents: 'all'}}> {item.body}</p>
+              
+              
+              
 
+
+              </div>
 
        )}
       
-      </Animated>   
+         
     
     
     </div>

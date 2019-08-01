@@ -19,7 +19,7 @@ class About extends Component {
       animationInDuration={900}
       isVisible={this.props.animating}>   
 
-          <h1 className="hero"><span>IM ALSO TIRED</span></h1>
+          <h1 className="hero"><span>IS COOL</span></h1>
 
           </Animated>
           <Animated 
