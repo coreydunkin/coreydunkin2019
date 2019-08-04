@@ -12,7 +12,7 @@ html {
   background: #333;
 
   // only here for production
-  //background: #de9458;
+  background: #de9458;
 }
 
 
@@ -139,9 +139,38 @@ h1 {
 }
 
 h2 {
-
-
+  &.subhead {
+    
+      font-family: 'Montserrat', san-serif;
+      font-weight: 600;
+      font-style: italic;
+      color: #f2efe8;
+      text-transform: uppercase;
+      margin-top: -10.5%;
+    
   
+      span {
+        
+        transform: translateX(1vw);
+        transform: rotate(-10deg) skew(-3deg, 0);    
+        
+        padding: 0px;
+        display: inline-block;
+        margin: 0px;
+        font-size: 3vw;
+        vertical-align: super;
+      }
+    
+  }
+}
+
+h2 {
+
+  &.subhero {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+  }
   span {
     display: inline-block;
     margin: 0px 6px;
@@ -162,6 +191,8 @@ h2 {
 
       animation: expand 0.5s ease-in-out forwards;
       animation-delay: 4s;
+
+      //margin-bottom: -150%;
     }
 }
 
@@ -378,7 +409,7 @@ canvas {
   animation: fade-in-80 2s ease-in;
 
   // only enabled now for production reasons
-  //display: none;
+  display: none;
 }
 
 
