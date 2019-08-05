@@ -90,7 +90,7 @@ h1 {
     //background: rgba(56, 13, 13, 0.8);
     //line-height: 50%;
     transform: rotate(-10deg) skew(-3deg, 0);   
-    
+    margin-top: 0px;
     span {
       text-shadow: -2px 1px 2px rgba(0, 0, 0, 0.11);
       -webkit-background-clip: text;
@@ -98,7 +98,7 @@ h1 {
       background-clip: text;
       background-color: rgba(255,255,255,1);
       color: transparent;
-      padding: 7px;
+      padding: 11px;
     }
     
     .animated {
@@ -146,7 +146,7 @@ h2 {
       font-style: italic;
       color: #f2efe8;
       text-transform: uppercase;
-      margin-top: -10.5%;
+      margin-top: -9.5%;
     
   
       span {
@@ -157,7 +157,7 @@ h2 {
         padding: 0px;
         display: inline-block;
         margin: 0px;
-        font-size: 3vw;
+        font-size: 2.5vw;
         vertical-align: super;
       }
     
@@ -168,7 +168,7 @@ h2 {
 
   &.subhero {
     position: absolute;
-    bottom: 40px;
+    bottom: 20%;
     width: 100%;
   }
   span {
@@ -188,12 +188,22 @@ h2 {
       width: 0px;
       overflow: hidden;
       text-align: center;
-
-      animation: expand 0.5s ease-in-out forwards;
-      animation-delay: 4s;
-
       //margin-bottom: -150%;
     }
+}
+
+.expandIn {
+  a {
+    animation: expandIn 0.5s ease-in-out forwards;
+    animation-delay: 600ms;
+  }
+}
+
+.expandOut {
+  a {
+    animation: expandOut 0.5s ease-in-out forwards;
+    animation-delay: 0ms;
+  }
 }
 
 .work {
@@ -454,7 +464,7 @@ canvas {
   }
 }
 
-@keyframes expand {
+@keyframes expandIn {
   from {
     outline: 0px solid #f2efe8;
     width: 0px;
@@ -462,5 +472,16 @@ canvas {
   to {
     outline: 1px solid #f2efe8;
     width: 200px;
+  }
+}
+
+@keyframes expandOut {
+  from {
+    outline: 1px solid #f2efe8;
+    width: 200px;
+  }
+  to {
+    outline: 0px solid #f2efe8;
+    width: 0px;
   }
 }

@@ -64,7 +64,7 @@ class Home extends Component {
           <h2 className="subhero">
             <a href="#About">SEE MORE</a>
           </h2>
-        </Animated>  
+         </Animated>
 
  
 
