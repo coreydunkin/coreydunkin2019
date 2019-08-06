@@ -43,20 +43,30 @@ class Home extends Component {
         isVisible={this.props.animating}>
           <span>DUNKIN</span>
       </Animated>
+
+
           </h1>
-      <Animated
+        <Animated
         animationIn={this.props.animHome.animType}
         animationOut={this.props.animHome.animType}
         animationInDelay={this.props.animHome.animDelay3}
         animationInDuration={900}
         isVisible={this.props.animating}>
+          <h2 className="subhead"><span>WEB DEVELOPER</span></h2>
+        </Animated>    
 
+        <Animated
+        animationIn={this.props.animHome.animType2}
+        animationOut={this.props.animHome.animType2}
+        animationInDelay={this.props.animHome.animDelay3}
+        animationInDuration={900}
+        isVisible={this.props.animating}>
           <h2 className="subhero">
             <a href="#About">SEE MORE</a>
           </h2>
+         </Animated>
 
-
-      </Animated>    
+ 
 
          
       </div>

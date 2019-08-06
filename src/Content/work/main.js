@@ -40,7 +40,7 @@ class Work extends Component {
       },
       {
         "id": 2,
-        "title": "item 2",
+        "title": "Mitchell",
         "body": "This is some work too"
       },
       {

@@ -31,6 +31,8 @@ class About extends Component {
           <h2 className="subhero">IT'S TRUE</h2>
       
           </Animated>
+
+          <p>Living in Sydney. I've worked for clients such as McDonald's, Volkswagen and Telstra, using the skills i've learnt in photoshop, illustrator, sketch, html, sass, js/jquery. Building out apps with frameworks such as angularjs and using gulp/grunt to help automate my workflow.</p>
       </div>
       </div>
      
