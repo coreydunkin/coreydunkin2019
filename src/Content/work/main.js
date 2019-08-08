@@ -83,7 +83,11 @@ console.log(this.state.workAnim + " not updated?");
 
             <div className="slide" key={i}>
 
-              
+              <div className="workContainer">
+
+              <div className="workDesktop"></div>
+                <div className="workMobile"></div>
+
               <h2 className={'animated ' + this.state.workAnim} 
               style={{ animationDelay: '0ms', 
                        animationDuration: '900ms', 
@@ -93,7 +97,10 @@ console.log(this.state.workAnim + " not updated?");
               style={{ animationDelay: '0ms', 
                        animationDuration: '1500ms', 
                        pointerEvents: 'all'}}> {item.body}</p>
-              
+
+
+
+              </div>
               
               
 

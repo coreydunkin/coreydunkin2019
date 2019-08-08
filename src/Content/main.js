@@ -159,6 +159,7 @@ class Content extends Component {
           GLC.changeNumbersAnimWork();
         }
 
+
         return this.state.animationIsFinished;
 
       }}
@@ -211,6 +212,11 @@ class Content extends Component {
       }}
       onSlideLeave={(origin, destination, direction, item, id) => {
         
+        console.log(destination.index);
+
+        if(destination.index === "1") {
+          console.log('we in the work section now');
+        }
 
         console.log(origin);
 

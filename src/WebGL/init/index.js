@@ -239,9 +239,10 @@ export default () => {
 			requestAnimationFrame(stepHome);
 		} else if (newShape == 'Work') {
 			const stepWork = () => {
-			
+
 				if (newShapeNum >= 10) {
-					newShapeNum-=0.2;
+					// will come back to this, the animation is too jarring atm
+					//newShapeNum+=0.9;
 					locOfShapeNum = gl.getUniformLocation(program, "shapeNum");
 					gl.uniform1f(locOfShapeNum, newShapeNum);
 					window.requestAnimationFrame(stepWork);

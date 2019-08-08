@@ -9,31 +9,40 @@ class About extends Component {
     return (
 
       <div className="about page">
+     
       <div key={this.props.animAbout.animType}>
 
+      <div className="heroContainer">
+          
+        <Animated 
+        animationIn={this.props.animAbout.animType}
+        animationOut={this.props.animAbout.animType}
+        animationInDelay={this.props.animAbout.animDelay2}
+        animationInDuration={900}
+        isVisible={this.props.animating}>   
+            <h1 className="hero"><span>IS COOL</span></h1>
 
-      <Animated 
-      animationIn={this.props.animAbout.animType}
-      animationOut={this.props.animAbout.animType}
-      animationInDelay={this.props.animAbout.animDelay2}
-      animationInDuration={900}
-      isVisible={this.props.animating}>   
+            </Animated>
+            <Animated 
+            animationIn={this.props.animAbout.animType}
+            animationOut={this.props.animAbout.animType}
+            animationInDelay={this.props.animAbout.animDelay1}
+            animationInDuration={900}
+            isVisible={this.props.animating}>   
+            <h2 className="subhero">(IT'S TRUE)</h2>
+        
+            </Animated>
+          </div>
+          <p>Living in Sydney. 
+        I've worked for clients such as <strong>McDonald's</strong>, <strong>Volkswagen</strong> and <strong>Telstra</strong>, 
+        using the skills i've learnt in photoshop, illustrator, sketch, html, 
+        sass, js/jquery. Building out apps with frameworks such as angularjs and 
+        using gulp/grunt to help automate my workflow.</p>
 
-          <h1 className="hero"><span>IS COOL</span></h1>
-
-          </Animated>
-          <Animated 
-          animationIn={this.props.animAbout.animType}
-          animationOut={this.props.animAbout.animType}
-          animationInDelay={this.props.animAbout.animDelay1}
-          animationInDuration={900}
-          isVisible={this.props.animating}>   
-          <h2 className="subhero">IT'S TRUE</h2>
-      
-          </Animated>
-
-          <p>Living in Sydney. I've worked for clients such as McDonald's, Volkswagen and Telstra, using the skills i've learnt in photoshop, illustrator, sketch, html, sass, js/jquery. Building out apps with frameworks such as angularjs and using gulp/grunt to help automate my workflow.</p>
       </div>
+
+
+
       </div>
      
     );

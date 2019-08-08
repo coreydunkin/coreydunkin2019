@@ -165,11 +165,22 @@ h2 {
 }
 
 h2 {
+  font-family: 'Montserrat', san-serif;
 
   &.subhero {
+    font-weight: 600;
+    font-style: italic;
     position: absolute;
     bottom: 20%;
     width: 100%;
+
+
+    transform: translateX(1vw);
+    transform: rotate(-10deg) skew(-3deg, 0);
+    &.cta {
+      transform: none;
+      font-style: normal;
+    } 
   }
   span {
     display: inline-block;
@@ -178,6 +189,7 @@ h2 {
     vertical-align: super;
   }
     a {
+      transform: none;
       color: #f2efe8;
       background: transparent;
       outline: 0px solid #f2efe8;
@@ -207,6 +219,8 @@ h2 {
 }
 
 .work {
+  //position: relative;
+
   .fp-slidesContainer {
     //animation-delay: 600ms;
   }
@@ -216,6 +230,41 @@ h2 {
     &.active {
       opacity: 1;
     };
+
+    .workContainer {
+      max-height: 700px;
+      max-width: 920px;
+      width: 80%;
+      margin: 0 auto;
+      position: relative;
+      height: 90%;
+      padding: 10px;
+
+      .workDesktop {
+        background: rgba(0, 0, 0, 0.3);
+        width: 100%;
+        //border: 1px solid red;
+        height: 80%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        margin: 0px;
+        bottom: 0px;
+        right: 0px;
+      }
+      .workMobile {
+        background: rgba(0, 0, 0, 0.3);
+        width: 40%;
+        //border: 1px solid red;
+        height: 60%;
+        position: absolute;
+        //top: 0px;
+        //left: 0px;
+        margin: 0px;
+        bottom: 0px;
+        right: 20px;
+      }
+    }
   }
   .fp-tableCell {
     position: relative;
@@ -225,8 +274,8 @@ h2 {
   }
   h2 {
     position: absolute;
-    bottom: 10px;
-    left: 30px;
+    top: -60px;
+    left: 10px;
     font-family: 'Montserrat', san-serif;
     font-weight: 900;
     font-style: italic;
@@ -385,6 +434,18 @@ h2 {
 .about {
   text-align: center;
   color: white;
+
+  .heroContainer {
+    position: relative;
+    max-height: 800px;
+    height: 100%;
+  }
+
+  p {
+    max-width: 700px;
+    width: 90%;
+    margin: 0 auto;
+  }
 }
 
 ul.nav {
@@ -419,7 +480,7 @@ canvas {
   animation: fade-in-80 2s ease-in;
 
   // only enabled now for production reasons
-  display: none;
+  //display: none;
 }
 
 
