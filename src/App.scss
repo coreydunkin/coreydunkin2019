@@ -170,16 +170,21 @@ h2 {
   &.subhero {
     font-weight: 600;
     font-style: italic;
-    position: absolute;
+    //position: absolute;
     bottom: 20%;
     width: 100%;
 
 
     transform: translateX(1vw);
     transform: rotate(-10deg) skew(-3deg, 0);
+
+    margin-top: -9%;
+    margin-bottom: 60px;
     &.cta {
       transform: none;
       font-style: normal;
+      margin: 0px;
+      position: absolute;
     } 
   }
   span {
