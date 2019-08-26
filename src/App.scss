@@ -42,6 +42,14 @@ button {
   background: red;
 }
 
+hr {
+  border: 0px;
+  height: 1px;
+  background: white;
+  max-width: 40px;
+  width: 100%;
+  margin: 50px auto;
+}
 
 // Type //
 span {
@@ -440,6 +448,12 @@ h2 {
   text-align: center;
   color: white;
 
+  h3 {
+    margin: 0;
+    font-family: 'Montserrat', san-serif;
+    font-weight: 100;
+  }
+
   .heroContainer {
     position: relative;
     max-height: 800px;
@@ -450,6 +464,49 @@ h2 {
     max-width: 700px;
     width: 90%;
     margin: 0 auto;
+  }
+
+  .logo-container {
+    max-width: 700px;
+    width: 90%;
+    margin: 50px auto;
+    .col-50 {
+      width: 50%;
+      float: left;
+    }
+    ul {
+      margin: 20px;
+      padding: 0;
+      li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+        text-align: center;
+        padding: 10px;
+      }
+    }
+    img {
+      width: 50px;
+      height: auto; 
+      &.NBN {
+        width: 80px;
+      }
+      &.Telstra {
+        width: 40px;
+      }
+      &.ADF {
+        width: 60px;
+      }
+
+      &.HTML {
+        width: 45px;
+      }
+      &.Vue {
+        width: 54px;
+        margin: 1px;
+      }
+    }
   }
 }
 
