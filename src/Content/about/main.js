@@ -122,7 +122,7 @@ class About extends Component {
       
         <div className="logo-container">
           <div className="col-50">
-          <h3>I've worked with these clients</h3>
+          <h3>I've worked for</h3>
           <ul className="clientLogos">
             {clientItem.map((item, i) => 
               <li key={i}>
@@ -132,7 +132,7 @@ class About extends Component {
           </ul>
           </div>
           <div className="col-50">
-          <h3>And I've utilised these tools</h3>
+          <h3>And I've used</h3>
           <ul className="skillLogos">
             {skillItem.map((item, i) => 
               <li key={i}>

@@ -52,7 +52,7 @@ class Home extends Component {
         animationInDelay={this.props.animHome.animDelay3}
         animationInDuration={900}
         isVisible={this.props.animating}>
-          <h2 className="subhead"><span>(WEB DEVELOPER)</span></h2>
+          <h2 className="subhead"><span>WEB DEVELOPER</span></h2>
         </Animated>    
 
         <Animated
