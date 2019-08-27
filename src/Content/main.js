@@ -3,6 +3,7 @@ import Home from './home/main';
 import About from './about/main';
 import Work from './work/main';
 import {Animated} from "react-animated-css";
+import Sidebar from "react-sidebar";
 
 import "fullpage.js/vendors/scrolloverflow"; // Optional. When using scrollOverflow:true
 import GLC from '../WebGL/GLCommander/index.js';
@@ -45,10 +46,16 @@ const anchors = ["/", "About", "Work"];
 class Content extends Component {
   constructor(props) {
     super(props);
+    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
     this.delay = 1000;
     this.slideDelay = 1500;
   }
+ 
+  onSetSidebarOpen(open) {
+    this.setState({ sidebarOpen: open });
+  }
   state = {
+    sidebarOpen: true,
     animationIsFinished: false,
     animHome: {
       animType: "fadeInDown",
@@ -73,7 +80,28 @@ class Content extends Component {
   render=()=> {
     return (
       <div>
-
+        <Sidebar
+        rootId="sidebar"
+        rootClassName="sidebar-container"
+        sidebarClassName="sidebar"
+        contentClassName="sidebar-content"
+        overlayClassName="sidebar-overlay"
+        sidebar={
+          <ul>
+            <li><a onClick={() => this.onSetSidebarOpen(false)} href="#/">HOME</a></li>
+            <li><a onClick={() => this.onSetSidebarOpen(false)} href="#About">ABOUT</a></li>
+            <li><a onClick={() => this.onSetSidebarOpen(false)} href="#Work">WORK</a></li>
+          </ul>
+        }
+        open={this.state.sidebarOpen}
+        pullRight="true"
+        onSetOpen={this.onSetSidebarOpen}
+        styles={{ sidebar: { background: "white" } }}
+        >
+        <button onClick={() => this.onSetSidebarOpen(true)}>
+          <span>&#9776;</span>
+        </button>
+        </Sidebar>
       <ReactFullpage
       anchors={anchors}
       navigationTooltips={anchors}

@@ -52,6 +52,34 @@ hr {
   margin: 50px auto;
 }
 
+// Navigation
+
+#sidebar {
+  ul {
+    padding: 0;
+    li {
+      list-style: none;
+      a {
+        padding: 10px 140px 10px 20px;
+        display: block;
+        text-decoration: none;
+        color:black;
+      }
+    }
+  }
+  button {
+    width: auto;
+    position: fixed;
+    right: 0px;
+    background: none;
+    font-size: 30px;
+    text-align: right;
+    vertical-align: top;
+    padding: 5px 10px;
+    z-index: 1;
+  }
+}
+
 // Type //
 span {
   &.bar {
@@ -214,6 +242,8 @@ h2 {
       width: 0px;
       overflow: hidden;
       text-align: center;
+      font-family: 'Montserrat', san-serif;
+      font-weight: 100;
       //margin-bottom: -150%;
     }
 }
