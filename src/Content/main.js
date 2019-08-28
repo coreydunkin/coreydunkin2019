@@ -85,21 +85,24 @@ class Content extends Component {
       <div>
         <Sidebar
         rootId="sidebar"
+        onClick={() => console.log('sidebar clicked')}
+        transitions={false}
         rootClassName="sidebar-container"
         sidebarClassName="sidebar"
         contentClassName="sidebar-content"
         overlayClassName="sidebar-overlay"
+        shadow={false}
         sidebar={
-          <ul>
-            <li><a onClick={() => this.onSetSidebarOpen(false)} href="#/">HOME</a></li>
-            <li><a onClick={() => this.onSetSidebarOpen(false)} href="#About">ABOUT</a></li>
-            <li><a onClick={() => this.onSetSidebarOpen(false)} href="#Work">WORK</a></li>
+          <ul> 
+            <li><a onClick={() => this.onSetSidebarOpen(false)} href="#/"><sup>1</sup> HOME</a></li>
+            <li><a onClick={() => this.onSetSidebarOpen(false)} href="#About"><sup>2</sup> ABOUT</a></li>
+            <li><a onClick={() => this.onSetSidebarOpen(false)} href="#Work"><sup>3</sup> WORK</a></li>
           </ul>
         }
         open={this.state.sidebarOpen}
         pullRight={true}
         onSetOpen={this.onSetSidebarOpen}
-        styles={{ sidebar: { background: "white" } }}
+        styles={{ sidebar: { background: "transparent" } }}
         >
         <button onClick={() => this.onSetSidebarOpen(true)}>
           <span>&#9776;</span>
