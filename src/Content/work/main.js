@@ -15,7 +15,7 @@ class Work extends Component {
   }
 
   state = {
-    workAnim: "fadeInUp"
+    workAnim: "fadeOut"
   };
   
   componentDidUpdate(prevProps, prevState) {
@@ -85,8 +85,14 @@ console.log(this.state.workAnim + " not updated?");
 
               <div className="workContainer">
 
-              <div className="workDesktop"></div>
-                <div className="workMobile"></div>
+              <div className={"workDesktop" + " animated " + this.state.workAnim}
+              style={{ animationDelay: '0ms', 
+                       animationDuration: '900ms', 
+                       pointerEvents: 'all'}}></div>
+                <div className={"workMobile" + " animated " + this.state.workAnim}
+              style={{ animationDelay: '0ms', 
+                       animationDuration: '900ms', 
+                       pointerEvents: 'all'}}></div>
 
               <h2 className={'animated ' + this.state.workAnim} 
               style={{ animationDelay: '0ms', 

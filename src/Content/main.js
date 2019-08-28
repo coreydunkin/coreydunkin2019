@@ -54,8 +54,11 @@ class Content extends Component {
   onSetSidebarOpen(open) {
     this.setState({ sidebarOpen: open });
   }
+
+
+
   state = {
-    sidebarOpen: true,
+    sidebarOpen: false,
     animationIsFinished: false,
     animHome: {
       animType: "fadeInDown",
@@ -94,7 +97,7 @@ class Content extends Component {
           </ul>
         }
         open={this.state.sidebarOpen}
-        pullRight="true"
+        pullRight={true}
         onSetOpen={this.onSetSidebarOpen}
         styles={{ sidebar: { background: "white" } }}
         >
@@ -289,7 +292,7 @@ class Content extends Component {
             animDelay2: 200,
             animDelay3: 300
           }});
-        } else {
+        } else if(item == "left") {
           this.setState({animWork: {
             animType: "fadeInLeft",
             animDelay1: 0,
