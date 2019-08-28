@@ -74,7 +74,6 @@ console.log(this.state.workAnim + " not updated?");
     <div className="work page">
 
        
-        {this.state.workAnim}
 
 
        {workItem.map((item, i) => 

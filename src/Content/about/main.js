@@ -110,16 +110,24 @@ class About extends Component {
         
             </Animated>
           </div>
-          <p>Living in Sydney. 
-        I've worked for clients such as <strong>McDonald's</strong>, <strong>Volkswagen</strong> and <strong>Telstra</strong>, 
-        using the skills i've learnt in photoshop, illustrator, sketch, html, 
-        sass, js/jquery. Building out apps with frameworks such as angularjs and 
-        using gulp/grunt to help automate my workflow.</p>
+          <Animated 
+          animationIn={this.props.animAbout.animType2}
+          animationOut={this.props.animAbout.animType2}
+          animationInDelay={1100}
+          animationInDuration={900}
+          isVisible={this.props.animating}>   
+          <p>I've worked on high traffic, intricate websites for large-scale clients such as 
+           <strong> Macquarie Bank</strong>, <strong>NBNco</strong>, <strong>Australian Defence Force</strong> and many more.
+        Using the skills i've learnt in <strong>HTML5</strong>, <strong>SASS</strong> and <strong>Javascript</strong>. 
+        I've created webapps from the ground up utilising frameworks such as 
+        <strong> Angular</strong>, <strong>React</strong> and <strong>Vue</strong>.</p>
+          </Animated>   
 
       </div>
-      
+      <div className={"animated " + this.props.animAbout.animType2}
+      style={{ animationDelay: '1200ms', 
+               animationDuration: '900ms'}}>
       <hr />
-      
         <div className="logo-container">
           <div className="col-50">
           <h3>I've worked for</h3>
@@ -142,10 +150,9 @@ class About extends Component {
           </ul>
           </div>
         </div>
-      
-
       </div>
      
+      </div>
     );
   }
 }

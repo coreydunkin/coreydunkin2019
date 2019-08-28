@@ -51,13 +51,13 @@ class Content extends Component {
     this.slideDelay = 1500;
   }
  
-  onSetSidebarOpen(open) {
-    this.setState({ sidebarOpen: open });
-  }
+
 
 
 
   state = {
+    animNav: "fadeOutUp",
+    display: "none",
     sidebarOpen: false,
     animationIsFinished: false,
     animHome: {
@@ -69,6 +69,7 @@ class Content extends Component {
     },
     animAbout: {
       animType: "fadeOutDown",
+      animType2: "fadeOut",
       animDelay1: 1500,
       animDelay2: 1800
     },
@@ -80,23 +81,69 @@ class Content extends Component {
     }
   };
 
+  onSetSidebarOpen(open) {
+    this.setState({ sidebarOpen: open });
+
+    
+
+    if(this.state.sidebarOpen === true) {
+      
+
+
+      this.setState({
+        animNav: "fadeOutUp"
+      }, () => {
+        setTimeout(() => {
+          this.setState({
+            display: "none"
+          })        
+        }, 200);
+      });
+    } else {
+      this.setState({
+        animNav: "fadeInDown"
+      }, () => {
+        setTimeout(() => {
+          this.setState({
+            display: "block"
+          })        
+        }, 200);
+      });
+    }
+
+
+  }
+
   render=()=> {
+
     return (
       <div>
         <Sidebar
         rootId="sidebar"
         onClick={() => console.log('sidebar clicked')}
-        transitions={false}
+        transitions={true}
         rootClassName="sidebar-container"
         sidebarClassName="sidebar"
         contentClassName="sidebar-content"
         overlayClassName="sidebar-overlay"
         shadow={false}
         sidebar={
-          <ul> 
-            <li><a onClick={() => this.onSetSidebarOpen(false)} href="#/"><sup>1</sup> HOME</a></li>
-            <li><a onClick={() => this.onSetSidebarOpen(false)} href="#About"><sup>2</sup> ABOUT</a></li>
-            <li><a onClick={() => this.onSetSidebarOpen(false)} href="#Work"><sup>3</sup> WORK</a></li>
+          <ul style={{display: this.state.display}}> 
+            <li className={"animated " + this.state.animNav}
+            style={{ animationDelay: '0ms', 
+                     animationDuration: '200ms'}}>
+              <a onClick={() => {this.onSetSidebarOpen(false); GLC.changeNumbersAnimHome()}} href="#/"><sup>1</sup> HOME</a>
+            </li>
+            <li className={"animated " + this.state.animNav}
+            style={{ animationDelay: '100ms', 
+                     animationDuration: '200ms'}}>
+              <a onClick={() => {this.onSetSidebarOpen(false); GLC.changeNumbersAnimAbout()}} href="#About"><sup>2</sup> ABOUT</a>
+            </li>
+            <li className={"animated " + this.state.animNav}
+            style={{ animationDelay: '200ms', 
+                     animationDuration: '200ms'}}>
+              <a onClick={() => {this.onSetSidebarOpen(false); GLC.changeNumbersAnimWork()}} href="#Work"><sup>3</sup> WORK</a>
+            </li>
           </ul>
         }
         open={this.state.sidebarOpen}
@@ -155,6 +202,7 @@ class Content extends Component {
           if(direction === "down") {
             this.setState({animAbout: {
               animType: "fadeOutUp",
+              animType2: "fadeOut",
               animDelay1: 0,
               animDelay2: 200,
               animDelay3: 0
@@ -162,6 +210,7 @@ class Content extends Component {
           } else {
             this.setState({animAbout: {
               animType: "fadeOutDown",
+              animType2: "fadeOut",
               animDelay1: 0,
               animDelay2: 200,
               animDelay3: 0
@@ -171,6 +220,7 @@ class Content extends Component {
           if(direction === "down") {
             this.setState({animWork: {
               animType: "fadeOutUp",
+              animType2: "fadeOut",
               animDelay1: 0,
               animDelay2: 200,
               animDelay3: 0
@@ -178,6 +228,7 @@ class Content extends Component {
           } else {
             this.setState({animWork: {
               animType: "fadeOutDown",
+              animType2: "fadeOut",
               animDelay1: 0,
               animDelay2: 200,
               animDelay3: 0
@@ -191,6 +242,7 @@ class Content extends Component {
           GLC.changeNumbersAnimAbout();
         } else if(destination.anchor === "Work") {
           GLC.changeNumbersAnimWork();
+          console.log('gogogo');
         }
 
 
@@ -211,12 +263,14 @@ class Content extends Component {
          if(direction === "down") {
           this.setState({animAbout: {
             animType: "fadeInUp",
+            animType2: "fadeIn",
             animDelay1: 500,
             animDelay2: 700,
           }});
          } else {
           this.setState({animAbout: {
             animType: "fadeInDown",
+            animType2: "fadeIn",
             animDelay1: 500,
             animDelay2: 700,
           }});
@@ -225,6 +279,7 @@ class Content extends Component {
           if(direction === "down") {
             this.setState({animWork: {
               animType: "fadeInUp",
+              animType2: "fadeIn",
               animDelay1: 0,
               animDelay2: 200,
               animDelay3: 0
@@ -232,6 +287,7 @@ class Content extends Component {
           } else {
             this.setState({animWork: {
               animType: "fadeInDown",
+              animType2: "fadeIn",
               animDelay1: 0,
               animDelay2: 200,
               animDelay3: 0
