@@ -20,7 +20,7 @@ class Work extends Component {
   
   componentDidUpdate(prevProps, prevState) {
     // only update chart if the data has changed
-    if (prevProps.animWork.animType !== this.props.animWork.animType) {
+   if (prevProps.animWork.animType !== this.props.animWork.animType) {
       this.setState({ workAnim: this.props.animWork.animType });
 
 

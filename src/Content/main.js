@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Home from './home/main';
 import About from './about/main';
 import Work from './work/main';
+import Contact from './contact/main';
 import {Animated} from "react-animated-css";
 import Sidebar from "react-sidebar";
 
@@ -41,7 +42,7 @@ export class MySection extends Component {
   }
 }
 
-const anchors = ["/", "About", "Work"];
+const anchors = ["/", "About", "Work", "Contact"];
 
 class Content extends Component {
   constructor(props) {
@@ -51,10 +52,6 @@ class Content extends Component {
     this.slideDelay = 1500;
   }
  
-
-
-
-
   state = {
     animNav: "fadeOutUp",
     display: "none",
@@ -78,18 +75,20 @@ class Content extends Component {
       animDelay1: 1500,
       animDelay2: 1800,
       animDelay3: 2200
+    },
+    animContact: {
+      animType: "fadeOutDown",
+      animDelay1: 1500,
+      animDelay2: 1800,
+      animDelay3: 2200
     }
   };
 
   onSetSidebarOpen(open) {
     this.setState({ sidebarOpen: open });
 
-    
-
     if(this.state.sidebarOpen === true) {
       
-
-
       this.setState({
         animNav: "fadeOutUp"
       }, () => {
@@ -110,7 +109,6 @@ class Content extends Component {
         }, 200);
       });
     }
-
 
   }
 
@@ -143,6 +141,11 @@ class Content extends Component {
             style={{ animationDelay: '200ms', 
                      animationDuration: '200ms'}}>
               <a onClick={() => {this.onSetSidebarOpen(false); GLC.changeNumbersAnimWork()}} href="#Work"><sup>3</sup> WORK</a>
+            </li>
+            <li className={"animated " + this.state.animNav}
+            style={{ animationDelay: '200ms', 
+                     animationDuration: '200ms'}}>
+              <a onClick={() => {this.onSetSidebarOpen(false); GLC.changeNumbersAnimWork()}} href="#Contact"><sup>4</sup> CONTACT</a>
             </li>
           </ul>
         }
@@ -234,6 +237,24 @@ class Content extends Component {
               animDelay3: 0
             }});
           }
+        } else if (origin.anchor === "Contact") {
+          if(direction === "down") {
+            this.setState({animContact: {
+              animType: "fadeOutUp",
+              animType2: "fadeOut",
+              animDelay1: 0,
+              animDelay2: 200,
+              animDelay3: 0
+            }});
+          } else {
+            this.setState({animContact: {
+              animType: "fadeOutDown",
+              animType2: "fadeOut",
+              animDelay1: 0,
+              animDelay2: 200,
+              animDelay3: 0
+            }});
+          }
         }
 
         if(destination.anchor === "/") {
@@ -242,7 +263,8 @@ class Content extends Component {
           GLC.changeNumbersAnimAbout();
         } else if(destination.anchor === "Work") {
           GLC.changeNumbersAnimWork();
-          console.log('gogogo');
+        } else if(destination.anchor === "Contact") {
+          GLC.changeNumbersAnimWork();
         }
 
 
@@ -275,7 +297,7 @@ class Content extends Component {
             animDelay2: 700,
           }});
          }
-        } else if (destination.anchor === "Work") {
+         } else if (destination.anchor === "Work") {
           if(direction === "down") {
             this.setState({animWork: {
               animType: "fadeInUp",
@@ -286,6 +308,25 @@ class Content extends Component {
             }});
           } else {
             this.setState({animWork: {
+              animType: "fadeInDown",
+              animType2: "fadeIn",
+              animDelay1: 0,
+              animDelay2: 200,
+              animDelay3: 0
+            }});
+          }
+        } else if (destination.anchor === "Contact") {
+        
+          if(direction === "down") {
+            this.setState({animContact: {
+              animType: "fadeInUp",
+              animType2: "fadeIn",
+              animDelay1: 0,
+              animDelay2: 200,
+              animDelay3: 0
+            }});
+          } else {
+            this.setState({animContact: {
               animType: "fadeInDown",
               animType2: "fadeIn",
               animDelay1: 0,
@@ -423,6 +464,7 @@ class Content extends Component {
             <MySection><Home animHome={this.state.animHome} /></MySection>
             <MySection><About animAbout={this.state.animAbout} /></MySection>
             <MySection><Work animWork={this.state.animWork} /></MySection>
+            <MySection><Contact animContact={this.state.animContact} /></MySection>
           </div>
         );
       }}
