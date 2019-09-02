@@ -54,6 +54,8 @@ class Content extends Component {
  
   state = {
     animNav: "fadeOutUp",
+    animUp: "fadeOutUp",
+    animDown: "fadeInUp",
     display: "none",
     sidebarOpen: false,
     animationIsFinished: false,
@@ -114,8 +116,17 @@ class Content extends Component {
 
   render=()=> {
 
-    return (
+    return ( 
       <div>
+      
+      <a className={"scroll-up animated " + this.state.animUp}
+      style={{ animationDelay: '200ms', 
+               animationDuration: '500ms'}} onClick={() => moveSection("up")}><i class="fas fa-chevron-up"></i></a>  
+      
+      <a className={"scroll-down animated " + this.state.animDown}
+      style={{ animationDelay: '200ms', 
+               animationDuration: '500ms'}} onClick={() => moveSection("down")}><i class="fas fa-chevron-down"></i></a>
+
         <Sidebar
         rootId="sidebar"
         onClick={() => console.log('sidebar clicked')}
@@ -143,7 +154,7 @@ class Content extends Component {
               <a onClick={() => {this.onSetSidebarOpen(false); GLC.changeNumbersAnimWork()}} href="#Work"><sup>3</sup> WORK</a>
             </li>
             <li className={"animated " + this.state.animNav}
-            style={{ animationDelay: '200ms', 
+            style={{ animationDelay: '300ms', 
                      animationDuration: '200ms'}}>
               <a onClick={() => {this.onSetSidebarOpen(false); GLC.changeNumbersAnimContact()}} href="#Contact"><sup>4</sup> CONTACT</a>
             </li>
@@ -259,12 +270,28 @@ class Content extends Component {
 
         if(destination.anchor === "/") {
           GLC.changeNumbersAnimHome();
+          this.setState({
+            animUp: "fadeOutUp",
+            animDown: "fadeInUp",
+          });
         } else if(destination.anchor === "About") {
           GLC.changeNumbersAnimAbout();
+          this.setState({
+            animUp: "fadeInDown",
+            animDown: "fadeInUp",
+          });
         } else if(destination.anchor === "Work") {
           GLC.changeNumbersAnimWork();
+          this.setState({
+            animUp: "fadeInDown",
+            animDown: "fadeInUp",
+          });
         } else if(destination.anchor === "Contact") {
           GLC.changeNumbersAnimContact();
+          this.setState({
+            animUp: "fadeInDown",
+            animDown: "fadeOutDown",
+          });
         }
 
 

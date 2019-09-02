@@ -1,8 +1,31 @@
+// media queries
+@mixin for-extra-small-phone-only {
+  @media (max-width: 375px) { @content; }
+}
+@mixin for-small-phone-only {
+  @media (max-width: 400px) { @content; }
+}
+@mixin for-phone-only {
+  @media (max-width: 599px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) { @content; }
+}
 
 html, body {
 	padding: 0px;
 	margin: 0px;
   overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   * {
     box-sizing: border-box;
   }
@@ -10,7 +33,6 @@ html, body {
 
 html {
   background: #333;
-
   // only here for production
   //background: #de9458;
 }
@@ -50,6 +72,9 @@ hr {
   max-width: 40px;
   width: 100%;
   margin: 50px auto;
+  @include for-phone-only {
+    margin: 30px auto;
+  }
 }
 
 // Navigation
@@ -69,7 +94,18 @@ hr {
     padding: 0;
     position: relative;
     top: 50%;
-    margin-top: -20%;
+    margin-top: -25%;
+    @include for-phone-only {
+      margin-top: -40%;
+    }
+    @include for-big-desktop-up {
+      margin-top: -21%;
+      li {
+        a {
+          padding: 10px!important;
+        }
+      }
+    }
     li {
       list-style: none;
       a {
@@ -86,7 +122,11 @@ hr {
         font-family: 'Montserrat', san-serif;
         font-weight: 800;
         color:rgba(255,255,255,0.8);
-        font-size: 9vw;
+        font-size: 8vw;
+
+        @include for-phone-only {
+          font-size: 9vw;
+        }
 
 
 
@@ -118,6 +158,10 @@ hr {
     vertical-align: top;
     padding: 5px 10px;
     z-index: 1;
+    color: white;
+    span {
+      color: white;
+    }
   }
 }
 
@@ -129,13 +173,51 @@ span {
   }
 }
 
+.scroll-up, .scroll-down {
+  color: white;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.scroll-up {
+  top: 10px;
+}
+
+.scroll-down {
+  bottom: 10px;
+}
+
 .fp-controlArrow {
+  font-family: "Font Awesome 5 Pro";
+  font-weight: 900;
+  font-size: 2em;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
   &.fp-prev {
-    border-width: 28.5px 34px 28.5px 0!important;
+    border: none;
+    &:before {
+      content: "\f053";
+    }
+    //border-width: 28.5px 34px 28.5px 0!important;
   }
   &.fp-next {
-    border-width: 28.5px 0 28.5px 34px!important;
+    border: none;
+    right: 30px!important;
+    &:before {
+      content: "\f054";
+    }
+    //border-width: 28.5px 0 28.5px 34px!important;
   }
+  
+  /*
   transform: scale(0.5)!important;
 
   text-shadow: -2px 1px 2px rgba(0, 0, 0, 0.11);
@@ -144,6 +226,7 @@ span {
   background-clip: text;
   background-color: rgba(255,255,255,1);
   color: transparent;
+  */
 } 
 
 h1 {
@@ -177,6 +260,9 @@ h1 {
       background-color: rgba(255,255,255,1);
       color: transparent;
       padding: 11px;
+      @include for-phone-only {
+        padding: 3px;
+      }
     }
     
     .animated {
@@ -237,6 +323,9 @@ h2 {
         margin: 0px;
         font-size: 2.5vw;
         vertical-align: super;
+        @include for-phone-only {
+          font-size: 4.5vw;
+        }
       }
     
   }
@@ -305,6 +394,27 @@ h2 {
 
 .work {
   //position: relative;
+  .workDesktop, .workMobile {
+    
+    img {
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      height: auto;
+    }
+
+  }
+
+  img {
+    &.logo {
+      width: 50px;
+      position: absolute;
+      top: -60px;
+      right: 2px;
+      @include for-phone-only {
+        display: none;
+      }
+    }
+  }
 
   .fp-slidesContainer {
     //animation-delay: 600ms;
@@ -326,7 +436,7 @@ h2 {
       padding: 10px;
 
       .workDesktop {
-        background: rgba(0, 0, 0, 0.3);
+        //background: rgba(0, 0, 0, 0.3);
         width: 100%;
         //border: 1px solid red;
         height: 80%;
@@ -336,10 +446,13 @@ h2 {
         margin: 0px;
         bottom: 0px;
         right: 0px;
+        @include for-phone-only {
+          display: none;
+        }
       }
       .workMobile {
-        background: rgba(0, 0, 0, 0.3);
-        width: 40%;
+        //background: rgba(0, 0, 0, 0.3);
+        width: 200px;
         //border: 1px solid red;
         height: 60%;
         position: absolute;
@@ -348,6 +461,17 @@ h2 {
         margin: 0px;
         bottom: 0px;
         right: 20px;
+        @include for-phone-only {
+          position: relative;
+          max-width: 250px;
+          width: 90%;
+          margin: 10px auto;
+          right: 0px;
+          left: 0px;
+          top: 0px;
+          bottom: 0px;
+          height: auto;
+        }
       }
     }
   }
@@ -359,8 +483,8 @@ h2 {
   }
   h2 {
     position: absolute;
-    top: -60px;
-    left: 10px;
+    top: -110px;
+    left: -10px;
     font-family: 'Montserrat', san-serif;
     font-weight: 900;
     font-style: italic;
@@ -369,9 +493,8 @@ h2 {
     font-size: 43px;
 
     span {
-      
-    transform: translateX(1vw);
-    transform: rotate(-10deg) skew(-3deg, 0);    
+    //transform: translateX(1vw);
+    //transform: rotate(-10deg) skew(-3deg, 0);    
       text-shadow: -2px 1px 3px rgba(0, 0, 0, 0.12);
       -webkit-background-clip: text;
       -moz-background-clip: text;
@@ -379,6 +502,60 @@ h2 {
       background-color: rgba(255,255,255,1);
       color: transparent;
       padding: 7px;
+    }
+  }
+
+  h3 {    
+    position: absolute;
+    text-transform: uppercase;
+    top: -67px;
+    left: -2px;
+    font-family: 'Montserrat', san-serif;
+    font-family: 'Montserrat', san-serif;
+    font-weight: 300;
+    color: white;
+    @include for-phone-only {
+      top: inherit;
+      left: 0px;
+      width: 100%;
+      bottom: 20px;
+      text-align: center;
+    }
+  }
+  .macbank {
+    p {
+      bottom: 130px;
+    }
+    @include for-phone-only {
+      bottom: 0px!important;
+    }
+  }
+  .mcd {
+    p {
+      bottom: 90px;
+    }
+    @include for-phone-only {
+      bottom: 0px!important;
+    }
+  }
+  .nbn {
+    img {
+      &.logo {
+        width: 80px;
+        top: -50px;
+      }
+    }
+  }
+  p {
+    color: white;
+    position: absolute;
+    bottom: 10px;
+    left: -2px;
+    @include for-phone-only {
+      width: 100%;
+      bottom: 0px!important;
+      left: 0px;
+      top: inherit;
     }
   }
   height: 100%;
@@ -516,6 +693,22 @@ h2 {
   color: white;
 }
 
+.about {
+  p {
+    @include for-extra-small-phone-only {
+      display: block;
+    }
+    @include for-small-phone-only {
+      display: none;
+    }
+  }
+  .subhero {
+    @include for-small-phone-only {
+      margin-bottom: 15px;
+    }
+  }
+}
+
 .about, .contact {
   text-align: center;
   color: white;
@@ -536,19 +729,33 @@ h2 {
     max-width: 700px;
     width: 90%;
     margin: 0 auto;
+    @include for-phone-only {
+      font-size: 14px;
+    }
   }
 
   .logo-container {
     max-width: 700px;
     width: 90%;
     margin: 50px auto;
+    @include for-phone-only {
+      width: 95%;
+      margin: 10px auto;
+    }
     .col-50 {
       width: 50%;
       float: left;
+      @include for-phone-only {
+        width: 100%;
+        float: none;
+      }
     }
     ul {
       margin: 20px;
       padding: 0;
+      @include for-phone-only {
+        margin: 10px 0px;
+      }
       li {
         list-style: none;
         margin: 0;
@@ -556,12 +763,24 @@ h2 {
         display: inline-block;
         text-align: center;
         padding: 10px;
+        @include for-phone-only {
+          padding: 5px;
+        }
+        @include for-small-phone-only {
+          padding: 2px;
+        }
       }
     }
     img {
       width: 50px;
       height: auto; 
       vertical-align: middle;
+      @include for-phone-only {
+        transform: scale(0.7);
+      }
+      @include for-small-phone-only {
+        transform: scale(0.5);
+      }
       &.NBN {
         width: 80px;
       }
@@ -599,6 +818,23 @@ ul.nav {
       &:hover {
         background: black;
         color: white;
+      }
+    }
+  }
+}
+
+.contact {
+  ul {
+    margin: 40px auto;
+    padding: 0;
+    li {
+      list-style: none;
+      a {
+        color: white;
+        text-decoration: none;
+        vertical-align: middle;
+        padding: 5px 0px;
+        display: block;
       }
     }
   }
