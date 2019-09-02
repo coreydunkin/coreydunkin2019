@@ -118,7 +118,12 @@ class Contact extends Component {
           animationInDelay={1100}
           animationInDuration={900}
           isVisible={this.props.animating}>   
-          <p>List out the contact details.</p>
+          <ul>
+            <li><a href="tel:0434090596"><i class="fas fa-phone"></i> 0434 090 596</a></li>
+            <li><a href="mailto:corey.dunkin@gmail.com"><i class="fas fa-envelope"></i> corey.dunkin@gmail.com</a></li>
+            <li><a href="https://github.com/coreydunkin"><i class="fab fa-github"></i> github.com/coreydunkin</a></li>
+            <li><a href="/coreydunkin.pdf"><i class="far fa-file-alt"></i> resume</a></li>
+          </ul>
           </Animated>   
 
       </div>

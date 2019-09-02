@@ -24,8 +24,6 @@ class Home extends Component {
       <div className="home page"> 
         <div key={this.props.animHome.animType}>
 
-
-
           <h1 className="hero">
       <Animated
         animationIn={this.props.animHome.animType}
