@@ -145,7 +145,7 @@ class Content extends Component {
             <li className={"animated " + this.state.animNav}
             style={{ animationDelay: '200ms', 
                      animationDuration: '200ms'}}>
-              <a onClick={() => {this.onSetSidebarOpen(false); GLC.changeNumbersAnimWork()}} href="#Contact"><sup>4</sup> CONTACT</a>
+              <a onClick={() => {this.onSetSidebarOpen(false); GLC.changeNumbersAnimContact()}} href="#Contact"><sup>4</sup> CONTACT</a>
             </li>
           </ul>
         }
@@ -264,7 +264,7 @@ class Content extends Component {
         } else if(destination.anchor === "Work") {
           GLC.changeNumbersAnimWork();
         } else if(destination.anchor === "Contact") {
-          GLC.changeNumbersAnimWork();
+          GLC.changeNumbersAnimContact();
         }
 
 

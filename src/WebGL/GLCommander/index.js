@@ -115,7 +115,18 @@ class GLCommander {
       this.anim(newColorR, newColorG, newColorB, newShape);
 
 
-    }        
+    }
+    
+    changeNumbersAnimContact() {
+      let newColorR = [0,  190,159,148,248,244,  255];
+      let newColorG = [0,  175,136,124,246,182,  255];
+      let newColorB = [0,  211,190,183,190,188,  255];
+      // saving for later 0.85373472095314
+      let newShape = 'Work';
+
+      this.anim(newColorR, newColorG, newColorB, newShape);
+
+    }
 
 
 
