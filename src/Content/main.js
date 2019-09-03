@@ -295,11 +295,16 @@ class Content extends Component {
         }
 
 
+
         return this.state.animationIsFinished;
 
       }}
       afterLoad={(origin, destination, direction, animPageType) => {
 
+
+
+
+        
         if(destination.anchor === "/") {
           this.setState({animHome: {
             animType: "fadeInDown",
@@ -342,6 +347,23 @@ class Content extends Component {
               animDelay3: 0
             }});
           }
+          if (destination.item.baseURI.includes("/1")) {
+            console.log('mac');
+            GLC.changeNumbersAnimMac();
+          } else if (destination.item.baseURI.includes("/2")) {
+            console.log('adf');
+            GLC.changeNumbersAnimAdf();
+          } else if (destination.item.baseURI.includes("/3")) {
+            console.log('mcd');
+            GLC.changeNumbersAnimMcd();
+          } else if (destination.item.baseURI.includes("/4")) {
+            console.log('vw');
+            GLC.changeNumbersAnimVw();
+          } else {
+            console.log('nbn');
+            GLC.changeNumbersAnimNbn();
+          }
+
         } else if (destination.anchor === "Contact") {
         
           if(direction === "down") {
@@ -364,19 +386,75 @@ class Content extends Component {
         }
 
 
-        console.log('after load');
+
         this.setState({ animationIsFinished: false });
         
       }}
-      onSlideLeave={(origin, destination, direction, item, id) => {
-        
-        console.log(destination.index);
+      onSlideLeave={(origin, destination, direction, item) => {
 
-        if(destination.index === "1") {
-          console.log('we in the work section now');
+/*
+       console.log(origin);
+
+        let numSlide = origin.item.baseURI;
+
+        console.log(numSlide);
+
+        if (destination.item.baseURI.includes("/1")) {
+          console.log('nbn');
+        } else if (destination.item.baseURI.includes("/2")) {
+          console.log('adf');
+        } else if (destination.item.baseURI.includes("/3")) {
+          console.log('mcd');
+        } else if (destination.item.baseURI.includes("/4")) {
+          console.log('vw');
+        } else {
+          console.log('mac');
         }
+*/
 
-        console.log(origin);
+
+        if(destination.index == 0 && item == "right") {
+          console.log('macbank');
+          GLC.changeNumbersAnimMac();
+        } else if(destination.index == 1 && item == "right") {
+          console.log('adf');
+          GLC.changeNumbersAnimAdf();
+        } else if(destination.index == 2 && item == "right") {
+          console.log('mcd');
+          GLC.changeNumbersAnimMcd();
+        } else if(destination.index == 3 && item == "right") {
+          console.log('vw');
+          GLC.changeNumbersAnimVw();
+        } else if(destination.index == 4 && item == "right") {
+          console.log('nbn');
+          GLC.changeNumbersAnimNbn();
+        } 
+
+        if(destination.index == 4 && item == "left") {
+          console.log('mcd');
+          GLC.changeNumbersAnimMcd();
+
+        } else if(destination.index == 3 && item == "left") {
+          console.log('adf');
+          GLC.changeNumbersAnimAdf();
+
+        } else if(destination.index == 2 && item == "left") {
+          console.log('macbank');
+          GLC.changeNumbersAnimMac();
+
+          
+
+        } else if(destination.index == 1 && item == "left") {
+          
+          console.log('nbn');
+          GLC.changeNumbersAnimNbn();
+          
+        } else if(destination.index == 0 && item == "left") {
+          console.log('vw');
+          GLC.changeNumbersAnimVw();
+
+        }         
+
 
         if(item == "right") {
           this.setState({animWork: {
@@ -398,6 +476,11 @@ class Content extends Component {
         // delaying the next page event so we can add some animations to our page elements
         if (this.state.animationIsFinished == false) {
           timeoutId = setTimeout(() => { 
+            
+            
+ 
+
+            
             this.setState({ animationIsFinished: true });
             
             moveSlideSection(item);
@@ -410,6 +493,7 @@ class Content extends Component {
 
       }}
       afterSlideLoad={(origin, destination, direction, item, id) => {
+
 
 
         if(item == "right") {

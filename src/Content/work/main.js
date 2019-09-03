@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {Animated} from "react-animated-css";
 import { connect } from "react-redux";
-import animAction from "../../actions/animAction"
+import animAction from "../../actions/animAction";
+
+
 const reqSvgs = require.context ('../../images/logos', true, /\.svg$/);
 
 const reqJpgs = require.context ('../../images', true, /\.jpg$/);
@@ -108,21 +110,21 @@ class Work extends Component {
     const workItem = [
       {
         "id": 1,
-        "name": "macbank",
-        "title": "Macquarie Bank",
-        "logo": svgs[4],
-        "image": jpgs[1],
-        "imagemob": jpgs[6],
-        "body": "Angular | SASS | Gulp | AEM"
-      },
-      {
-        "id": 2,
         "name": "nbn",
         "title": "NBNco",
         "logo": svgs[6],
         "image": jpgs[3],
         "imagemob": jpgs[8],
         "body": "Angular | SASS | AEM"
+      },
+      {
+        "id": 2,
+        "name": "macbank",
+        "title": "Macquarie Bank",
+        "logo": svgs[4],
+        "image": jpgs[1],
+        "imagemob": jpgs[6],
+        "body": "Angular | SASS | Gulp | AEM"
       },
       {
         "id": 3,

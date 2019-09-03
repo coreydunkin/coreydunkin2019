@@ -1,5 +1,10 @@
 //import anim from "../init/index.js";
 //import { createAssignment } from "typescript";
+import ImagePalette from 'react-image-palette';
+const reqJpgs = require.context ('../../images', true, /\.jpg$/);
+const pathsJpgs = reqJpgs.keys ();
+const jpgs = pathsJpgs.map( path => reqJpgs ( path ) );
+
 
 class GLCommander {    
     
@@ -106,9 +111,9 @@ class GLCommander {
     }    
 
     changeNumbersAnimWork() {
-      let newColorR = [0,  0,36,66,125,0,  255];
-      let newColorG = [0,  49,102,141,189,26,   255];
-      let newColorB = [0,  76,140,175,216,45,     255];
+      let newColorR = [0,  41,95,70,139,209,  255];
+      let newColorG = [0,  80,144,194,219,222,   255];
+      let newColorB = [0,  96,169,239,255,232,     255];
 // saving for later 0.85373472095314
       let newShape = 'Work';
 
@@ -118,15 +123,71 @@ class GLCommander {
     }
     
     changeNumbersAnimContact() {
-      let newColorR = [0,  190,159,148,248,244,  255];
-      let newColorG = [0,  175,136,124,246,182,  255];
-      let newColorB = [0,  211,190,183,190,188,  255];
+      let newColorR = [0,  171,  2,  0,     2,   5,    255];
+      let newColorG = [0,  220,128,168,  195,  102,     255];
+      let newColorB = [0,  201,144,150,  154,  141,  255];
       // saving for later 0.85373472095314
       let newShape = 'Work';
 
       this.anim(newColorR, newColorG, newColorB, newShape);
 
     }
+    
+    changeNumbersAnimMac() {
+      let newColorR = [0,  122,31,105,187,48,  255];
+      let newColorG = [0,  124,17,123,187,62,  255];
+      let newColorB = [0,  123,30,123,188,66,  255];
+      // saving for later 0.85373472095314
+      let newShape = 'Work';
+
+      this.anim(newColorR, newColorG, newColorB, newShape);
+
+    }
+    
+    changeNumbersAnimNbn() {
+      let newColorR = [0,  56,255,238,172,54,  255];
+      let newColorG = [0,  86,200,229,188,164,  255];
+      let newColorB = [0,  96,65,221,198,200,  255];
+      // saving for later 0.85373472095314
+      let newShape = 'Work';
+
+      this.anim(newColorR, newColorG, newColorB, newShape);
+
+    }
+    
+    changeNumbersAnimAdf() {
+      let newColorR = [0,  193,186,128,2,6,  255];
+      let newColorG = [0,  119,186,129,34,72,  255];
+      let newColorB = [0,  46,186,131,63,133,  255];
+      // saving for later 0.85373472095314
+      let newShape = 'Work';
+
+      this.anim(newColorR, newColorG, newColorB, newShape);
+
+    }
+    
+    changeNumbersAnimMcd() {
+      let newColorR = [0,   59,190,158,255,91,  255];
+      let newColorG = [0,   31,0,68,187,51,     255];
+      let newColorB = [0,   20,21,60,16,27,     255];
+      // saving for later 0.85373472095314
+      let newShape = 'Work';
+
+      this.anim(newColorR, newColorG, newColorB, newShape);
+
+    }
+    
+    changeNumbersAnimVw() {
+      let newColorR = [0,  51,114,184,235,65,  255];
+      let newColorG = [0,  71,111,184,242,63,  255];
+      let newColorB = [0,  91,110,187,242,62,  255];
+      // saving for later 0.85373472095314
+      let newShape = 'Work';
+
+      this.anim(newColorR, newColorG, newColorB, newShape);
+
+    }
+
 
 
 
