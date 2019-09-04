@@ -29,7 +29,7 @@ html, body {
 	padding: 0px;
 	margin: 0px;
   overflow: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Sans-serif;
   * {
     box-sizing: border-box;
   }
@@ -123,8 +123,8 @@ hr {
         display: block;
         text-align: center;
         text-decoration: none;
-        font-family: 'Montserrat', san-serif;
-        font-weight: 800;
+        font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Sans-serif;
+        font-weight: 900;
         color:rgba(255,255,255,0.8);
         font-size: 8vw;
 
@@ -247,7 +247,8 @@ h1 {
     font-size: 11vw;
     padding: 0px 20px;
     color: rgba(242, 239, 232, 1);
-    font-family: 'Montserrat', san-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Sans-serif;
+    font-weight: bold;
     font-weight: 900;
     font-style: italic;
     margin-left: -100px;
@@ -319,7 +320,7 @@ h1 {
 h2 {
   &.subhead {
     
-      font-family: 'Montserrat', san-serif;
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
       font-weight: 600;
       font-style: italic;
       color: #f2efe8;
@@ -346,7 +347,7 @@ h2 {
 }
 
 h2 {
-  font-family: 'Montserrat', san-serif;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Sans-serif;
 
   &.subhero {
     font-weight: 600;
@@ -386,7 +387,7 @@ h2 {
       width: 0px;
       overflow: hidden;
       text-align: center;
-      font-family: 'Montserrat', san-serif;
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Sans-serif;
       font-weight: 100;
       //margin-bottom: -150%;
     }
@@ -509,7 +510,7 @@ h2 {
     position: absolute;
     top: -110px;
     left: -10px;
-    font-family: 'Montserrat', san-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Sans-serif;
     font-weight: 900;
     font-style: italic;
     color: #f2efe8;
@@ -534,8 +535,8 @@ h2 {
     text-transform: uppercase;
     top: -67px;
     left: -2px;
-    font-family: 'Montserrat', san-serif;
-    font-family: 'Montserrat', san-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Sans-serif;
     font-weight: 300;
     color: white;
     @include for-phone-only {
@@ -739,7 +740,7 @@ h2 {
 
   h3 {
     margin: 0;
-    font-family: 'Montserrat', san-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Sans-serif;
     font-weight: 100;
   }
 
