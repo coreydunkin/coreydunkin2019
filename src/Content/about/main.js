@@ -8,8 +8,7 @@ const paths = reqSvgs.keys ()
 
 const svgs = paths.map( path => reqSvgs ( path ) )
 
-  console.log('=====');
-  console.log(svgs[2]);
+
 
 class About extends Component {
   // This syntax ensures `this` is bound within handleClick.

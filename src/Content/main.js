@@ -121,11 +121,16 @@ class Content extends Component {
       
       <a className={"scroll-up animated " + this.state.animUp}
       style={{ animationDelay: '200ms', 
-               animationDuration: '500ms'}} onClick={() => moveSection("up")}><i class="fas fa-chevron-up"></i></a>  
+               animationDuration: '500ms'}} onClick={() => moveSection("up")}>
+               <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 551.13 551.13" height="25px" viewBox="0 0 551.13 551.13" width="25px" class=""><g><path d="m275.565 189.451 223.897 223.897h51.668l-275.565-275.565-275.565 275.565h51.668z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/></g> </svg>
+
+               </a>  
       
       <a className={"scroll-down animated " + this.state.animDown}
       style={{ animationDelay: '200ms', 
-               animationDuration: '500ms'}} onClick={() => moveSection("down")}><i class="fas fa-chevron-down"></i></a>
+               animationDuration: '500ms'}} onClick={() => moveSection("down")}>
+               <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 551.13 551.13" height="25px" viewBox="0 0 551.13 551.13" width="25px" class=""><g><path d="m275.565 361.679-223.897-223.896h-51.668l275.565 275.565 275.565-275.565h-51.668z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/></g> </svg>         
+      </a>
 
         <Sidebar
         rootId="sidebar"
@@ -171,6 +176,8 @@ class Content extends Component {
         </Sidebar>
       <ReactFullpage
       anchors={anchors}
+      controlArrows={false}
+      dragAndMove={true}
       navigationTooltips={anchors}
       onLeave={(origin, destination, direction) => {
 
