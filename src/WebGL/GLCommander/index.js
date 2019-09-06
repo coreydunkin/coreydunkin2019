@@ -83,6 +83,7 @@ class GLCommander {
     }    
 
     changeNumbersAnimHome() {
+      //                                   bg
       let newColorR = [0,  109,181,229,255,255,  255];
       let newColorG = [0,  104,131,152,180,205,  255];
       let newColorB = [0,  117,141,155,162,178,  255];

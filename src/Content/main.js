@@ -43,7 +43,7 @@ class Content extends Component {
     super(props);
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
     this.delay = 700;
-    this.slideDelay = 750;
+    this.slideDelay = 850;
   }
 
  
@@ -114,18 +114,18 @@ class Content extends Component {
     return ( 
       <div>
       
-      <a href="!#" className={"scroll-up animated " + this.state.animUp}
+      <button className={"scroll-up animated " + this.state.animUp}
       style={{ animationDelay: '200ms', 
                animationDuration: '500ms'}} onClick={() => moveSection("up")}>
                <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 551.13 551.13" height="25px" viewBox="0 0 551.13 551.13" width="25px" class=""><g><path d="m275.565 189.451 223.897 223.897h51.668l-275.565-275.565-275.565 275.565h51.668z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/></g> </svg>
 
-               </a>  
+               </button>  
       
-      <a href="!#" className={"scroll-down animated " + this.state.animDown}
+      <button className={"scroll-down animated " + this.state.animDown}
       style={{ animationDelay: '200ms', 
                animationDuration: '500ms'}} onClick={() => moveSection("down")}>
                <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 551.13 551.13" height="25px" viewBox="0 0 551.13 551.13" width="25px" class=""><g><path d="m275.565 361.679-223.897-223.896h-51.668l275.565 275.565 275.565-275.565h-51.668z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/></g> </svg>         
-      </a>
+      </button>
 
         <Sidebar
         rootId="sidebar"
@@ -166,7 +166,9 @@ class Content extends Component {
         styles={{ sidebar: { background: "transparent" } }}
         >
         <button onClick={() => this.onSetSidebarOpen(true)}>
-          <span>&#9776;</span>
+          <div></div>
+          <div></div>
+          <div></div>
         </button>
         </Sidebar>
       <ReactFullpage
