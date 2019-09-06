@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import {Animated} from "react-animated-css";
-import ReactFullPage, {fullpageApi} from '@fullpage/react-fullpage';
-import Content, {MySection} from '../main';
-import logo from '../../logo.svg';
+import Content from '../main';
 
 import { connect } from "react-redux";
-import { animIn } from "../../actions/animIn";
-import { animOut } from "../../actions/animOut";
 import animAction from "../../actions/animAction"
 
 export const newContent = Content;
@@ -14,9 +10,7 @@ export const newContent = Content;
 class Home extends Component {
   // This syntax ensures `this` is bound within handleClick.
   // Warning: this is *experimental* syntax.
-  constructor(props){
-    super(props);    
-  }
+  
   
   render() {
     

@@ -1,9 +1,5 @@
 //import anim from "../init/index.js";
-//import { createAssignment } from "typescript";
-import ImagePalette from 'react-image-palette';
-const reqJpgs = require.context ('../../images', true, /\.jpg$/);
-const pathsJpgs = reqJpgs.keys ();
-const jpgs = pathsJpgs.map( path => reqJpgs ( path ) );
+//import { createAssignment } from "typescript
 
 
 class GLCommander {    

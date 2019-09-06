@@ -133,7 +133,7 @@ class About extends Component {
           <ul className="clientLogos">
             {clientItem.map((item, i) => 
               <li key={i}>
-                <img className={item.title} src={item.image}></img>
+                <img alt="client" className={item.title} data-src={item.image}></img>
               </li>
             )}
           </ul>
@@ -143,7 +143,7 @@ class About extends Component {
           <ul className="skillLogos">
             {skillItem.map((item, i) => 
               <li key={i}>
-                <img className={item.title} src={item.image}></img>
+                <img alt="skills" className={item.title} data-src={item.image}></img>
               </li>
             )}
           </ul>

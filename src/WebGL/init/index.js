@@ -20,6 +20,15 @@ export default () => {
 	let canvas; 
 	let gl; // canvas and webgl context
 
+	// increasing fps performance on lower end machines by lowering the canvas res
+	gl = (context) => {
+		context['imageSmoothingEnabled'] = false;       /* standard */
+		context['mozImageSmoothingEnabled'] = false;    /* Firefox */
+		context['oImageSmoothingEnabled'] = false;      /* Opera */
+		context['webkitImageSmoothingEnabled'] = false; /* Safari */
+		context['msImageSmoothingEnabled'] = false;     /* IE */
+	}
+
 	let shaderSource;
 	let buffer;
 
@@ -106,14 +115,31 @@ export default () => {
 	// standard canvas setup here, except get webgl context
 	let vertexShader = GLC.vertexShaderSource;
 	let fragmentShader = fragmentShaderTemplate;
-
+	
+	
 	
 	// standard canvas setup here, except get webgl context
 	canvas = document.getElementById('webgl');
-	gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+	gl = canvas.getContext('webgl', {
+		antialias: false,
+		depth: false,
+		alpha: false,
+		powerPreference: "high-performance"
+	}) || canvas.getContext('experimental-webgl', {
+		antialias: false,
+		depth: false,
+		alpha: false,
+		powerPreference: "high-performance"
+	});
 	canvas.width  = window.innerWidth;
 	canvas.height = window.innerHeight;
-	
+
+	canvas.imageSmoothingEnabled = false;
+	//canvas.antialias = false;
+	//canvas.width = 800;
+	//canvas.height = 600; 
+
+	console.log("resolution is: " + window.innerWidth + " x " + window.innerHeight);
 
 	// give WebGL it's viewport
 	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
@@ -198,7 +224,7 @@ export default () => {
 	const anim = (newColorR, newColorG, newColorB, newShape) => {
 
 
-		if (newShape == 'Home') {
+		if (newShape === 'Home') {
 			const stepAbout = () => {
 			//saving remaining numbers for later 5373472095314
 				if (newShapeNum <= 30) {
@@ -211,7 +237,7 @@ export default () => {
 			}
 	
 			requestAnimationFrame(stepAbout);
-		} else if (newShape == 'About') {
+		} else if (newShape === 'About') {
 			const stepHome = () => {
 
 				let speed = 10000;
@@ -237,7 +263,7 @@ export default () => {
 	
 			}
 			requestAnimationFrame(stepHome);
-		} else if (newShape == 'Work') {
+		} else if (newShape === 'Work') {
 			const stepWork = () => {
 
 				if (newShapeNum >= 10) {
@@ -329,10 +355,7 @@ export default () => {
  
 	}
 	
-	const animShape = (newColorR, newColorG, newColorB) => {
 
-			
-	}
 
 	assign(colorR, colorG, colorB);
 

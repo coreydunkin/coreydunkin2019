@@ -3,7 +3,6 @@ import Home from './home/main';
 import About from './about/main';
 import Work from './work/main';
 import Contact from './contact/main';
-import {Animated} from "react-animated-css";
 import Sidebar from "react-sidebar";
 
 import "fullpage.js/vendors/scrolloverflow"; // Optional. When using scrollOverflow:true
@@ -14,23 +13,18 @@ import animAction from "../actions/animAction";
 import animIn from "../actions/animIn";
 import animOut from "../actions/animOut";
 
-import logo from '../logo.svg';
 
 let moveSlideSection;
 let moveSection;
-let moveDown;
-let moveUp;
 let timeoutId;
-let preventDefault;
-let preventDefaultForScrollKeys;
 let disableScroll;
 let enableScroll;
-let animPageType;
+let moveToSection;
+
 let handleAnimInUp;
 let handleAnimInDown;
 let handleAnimOutUp;
 let handleAnimOutDown;
-let moveToSection;
 
 export class MySection extends Component {
   render=( state, fullpageApi ) => {
@@ -48,9 +42,10 @@ class Content extends Component {
   constructor(props) {
     super(props);
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
-    this.delay = 1000;
-    this.slideDelay = 1500;
+    this.delay = 700;
+    this.slideDelay = 750;
   }
+
  
   state = {
     animNav: "fadeOutUp",
@@ -119,14 +114,14 @@ class Content extends Component {
     return ( 
       <div>
       
-      <a className={"scroll-up animated " + this.state.animUp}
+      <a href="!#" className={"scroll-up animated " + this.state.animUp}
       style={{ animationDelay: '200ms', 
                animationDuration: '500ms'}} onClick={() => moveSection("up")}>
                <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 551.13 551.13" height="25px" viewBox="0 0 551.13 551.13" width="25px" class=""><g><path d="m275.565 189.451 223.897 223.897h51.668l-275.565-275.565-275.565 275.565h51.668z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/></g> </svg>
 
                </a>  
       
-      <a className={"scroll-down animated " + this.state.animDown}
+      <a href="!#" className={"scroll-down animated " + this.state.animDown}
       style={{ animationDelay: '200ms', 
                animationDuration: '500ms'}} onClick={() => moveSection("down")}>
                <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 551.13 551.13" height="25px" viewBox="0 0 551.13 551.13" width="25px" class=""><g><path d="m275.565 361.679-223.897-223.896h-51.668l275.565 275.565 275.565-275.565h-51.668z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/></g> </svg>         
@@ -180,13 +175,19 @@ class Content extends Component {
       dragAndMove={true}
       navigationTooltips={anchors}
       onLeave={(origin, destination, direction) => {
-
         // add some logic to check if the page you want to go to is 
         // more than 2 page away, using this for animation checks
         let incrementValue = destination.index - origin.index;
 
         console.log(incrementValue);
         console.log(destination);
+
+        if(incrementValue >100) {          
+          handleAnimInUp();
+          handleAnimInDown();
+          handleAnimOutUp();
+          handleAnimOutDown();
+        }
 
         if(incrementValue > 1 || incrementValue < -1) {
           console.log('skip');
@@ -202,7 +203,7 @@ class Content extends Component {
 
           clearTimeout(timeoutId);
           // delaying the next page event so we can add some animations to our page elements
-          if (this.state.animationIsFinished == false) {
+          if (this.state.animationIsFinished === false) {
             timeoutId = setTimeout(() => { 
               this.setState({ animationIsFinished: true });
               moveSection(direction);
@@ -420,50 +421,50 @@ class Content extends Component {
 */
 
 
-        if(destination.index == 0 && item == "right") {
+        if(destination.index === 0 && item === "right") {
           console.log('macbank');
           GLC.changeNumbersAnimMac();
-        } else if(destination.index == 1 && item == "right") {
+        } else if(destination.index === 1 && item === "right") {
           console.log('adf');
           GLC.changeNumbersAnimAdf();
-        } else if(destination.index == 2 && item == "right") {
+        } else if(destination.index === 2 && item === "right") {
           console.log('mcd');
           GLC.changeNumbersAnimMcd();
-        } else if(destination.index == 3 && item == "right") {
+        } else if(destination.index === 3 && item === "right") {
           console.log('vw');
           GLC.changeNumbersAnimVw();
-        } else if(destination.index == 4 && item == "right") {
+        } else if(destination.index === 4 && item === "right") {
           console.log('nbn');
           GLC.changeNumbersAnimNbn();
         } 
 
-        if(destination.index == 4 && item == "left") {
+        if(destination.index === 4 && item === "left") {
           console.log('mcd');
           GLC.changeNumbersAnimMcd();
 
-        } else if(destination.index == 3 && item == "left") {
+        } else if(destination.index === 3 && item === "left") {
           console.log('adf');
           GLC.changeNumbersAnimAdf();
 
-        } else if(destination.index == 2 && item == "left") {
+        } else if(destination.index === 2 && item === "left") {
           console.log('macbank');
           GLC.changeNumbersAnimMac();
 
           
 
-        } else if(destination.index == 1 && item == "left") {
+        } else if(destination.index === 1 && item === "left") {
           
           console.log('nbn');
           GLC.changeNumbersAnimNbn();
           
-        } else if(destination.index == 0 && item == "left") {
+        } else if(destination.index === 0 && item === "left") {
           console.log('vw');
           GLC.changeNumbersAnimVw();
 
         }         
 
 
-        if(item == "right") {
+        if(item === "right") {
           this.setState({animWork: {
             animType: "fadeOutLeft",
             animDelay1: 0,
@@ -481,7 +482,7 @@ class Content extends Component {
 
         clearTimeout(timeoutId);
         // delaying the next page event so we can add some animations to our page elements
-        if (this.state.animationIsFinished == false) {
+        if (this.state.animationIsFinished === false) {
           timeoutId = setTimeout(() => { 
             
             
@@ -503,14 +504,14 @@ class Content extends Component {
 
 
 
-        if(item == "right") {
+        if(item === "right") {
           this.setState({animWork: {
             animType: "fadeInRight",
             animDelay1: 0,
             animDelay2: 200,
             animDelay3: 300
           }});
-        } else if(item == "left") {
+        } else if(item === "left") {
           this.setState({animWork: {
             animType: "fadeInLeft",
             animDelay1: 0,
@@ -521,10 +522,11 @@ class Content extends Component {
 
       }}
       render={({  state, fullpageApi, destination, index, direction }) => {
+        
 
         // set the direction and reset the animationIsFinished property
         moveSection = (direction) => {
-          if (direction == 'up') {
+          if (direction === 'up') {
             fullpageApi.moveSectionUp();
           } else {
             fullpageApi.moveSectionDown();
@@ -534,7 +536,7 @@ class Content extends Component {
         };
 
         moveSlideSection = (item) => {
-          if (item == 'right') {
+          if (item === 'right') {
             fullpageApi.moveSlideRight();
           } else {
             fullpageApi.moveSlideLeft();

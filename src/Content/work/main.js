@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Animated} from "react-animated-css";
 import { connect } from "react-redux";
 import animAction from "../../actions/animAction";
 
@@ -14,9 +13,6 @@ const pathsJpgs = reqJpgs.keys ();
 const svgs = paths.map( path => reqSvgs ( path ) );
 const jpgs = pathsJpgs.map( path => reqJpgs ( path ) );
 
-let animDecider;
-let workAnim;
-let updatedWorkAnim;
 class Work extends Component {
   // This syntax ensures `this` is bound within handleClick.
   // Warning: this is *experimental* syntax.  
@@ -41,71 +37,7 @@ class Work extends Component {
 
   render=()=> {
 
-    const clientItem = [
-      {
-        "id": 3,
-        "image": svgs[4],
-        "title": "Macquarie"
-      },
-      {
-        "id": 0,
-        "image": svgs[5],
-        "title": "McDonalds"
-      },
-      {
-        "id": 3,
-        "image": svgs[6],
-        "title": "NBN"
-      },
-      {
-        "id": 4,
-        "image": svgs[9],
-        "title": "Telstra"
-      },
-      {
-        "id": 4,
-        "image": svgs[10],
-        "title": "Volkswagen"
-      },
-      {
-        "id": 1,
-        "image": svgs[1],
-        "title": "ADF"
-      },
-    ];
 
-    const skillItem = [
-      {
-        "id": 1,
-        "image": svgs[7],
-        "title": "React"
-      },
-      {
-        "id": 5,
-        "image": svgs[0],
-        "title": "Angular"
-      },
-      {
-        "id": 5,
-        "image": svgs[2],
-        "title": "HTML"
-      },
-      {
-        "id": 2,
-        "image": svgs[11],
-        "title": "Vue"
-      },
-      {
-        "id": 0,
-        "image": svgs[3],
-        "title": "JS"
-      },
-      {
-        "id": 2,
-        "image": svgs[8],
-        "title": "SASS"
-      },
-    ];
 
     const workItem = [
       {
@@ -193,19 +125,19 @@ console.log(this.state.workAnim + " not updated?");
 
               <div className="workContainer">
 
-              <div className={"workDesktop" + " animated " + this.state.workAnim}
+              <div className={"workDesktop animated " + this.state.workAnim}
               style={{ animationDelay: '0ms', 
                        animationDuration: '900ms', 
                        pointerEvents: 'all'}}>
                        
-                <img src={item.image}></img>         
+                <img alt="workdesktop" data-src={item.image}></img>         
               </div>
-                <div className={"workMobile" + " animated " + this.state.workAnim}
+                <div className={"workMobile animated " + this.state.workAnim}
               style={{ animationDelay: '0ms', 
                        animationDuration: '900ms', 
                        pointerEvents: 'all'}}>
                        
-                       <img src={item.imagemob}></img>  
+                       <img alt="workmobile" data-src={item.imagemob}></img>  
                        </div>
 
               <h3 className={'animated ' + this.state.workAnim} 
@@ -213,10 +145,10 @@ console.log(this.state.workAnim + " not updated?");
                        animationDuration: '900ms', 
                        pointerEvents: 'all'}}><span>{item.title}</span></h3> 
              
-              <img className={'logo animated ' + this.state.workAnim} 
+              <img alt="logo" className={'logo animated ' + this.state.workAnim} 
               style={{ animationDelay: '0ms', 
                        animationDuration: '900ms', 
-                       pointerEvents: 'all'}} src={item.logo}></img>
+                       pointerEvents: 'all'}} data-src={item.logo}></img>
 
               <p className={'animated ' + this.state.workAnim} 
               style={{ animationDelay: '0ms', 
