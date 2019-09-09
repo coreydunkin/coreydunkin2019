@@ -75,15 +75,7 @@ html {
 }
 
 
-button {
-  width: 33%; 
-  background: white;
-  border: none;
-  padding: 10px;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-}
+
 
 .pumpkin {
   background: rgb(255, 115, 0);
@@ -116,15 +108,18 @@ hr {
 
 // Navigation
 
+
 #sidebar {
   .sidebar {
     width: 100%;
     pointer-events: none;
-    z-index: 3!important;
+    z-index: 4!important;
     transform: translateX(0%)!important;
   }
+
   .sidebar-overlay {
-    z-index: 2!important;
+    cursor: pointer;
+    z-index: 3!important;
     background-color: rgba(0,0,0,.7)!important;
   }
   ul {
@@ -185,21 +180,51 @@ hr {
       }
     }
   }
+  
   button {
-    width: auto;
+    cursor: pointer;
+    border: none;
+      div {
+        background: white;
+        height: 3px;
+        width: 100%;
+        margin: 6px 0px;
+        transition: all 200ms ease-in-out;
+
+      }
+   
     position: fixed;
     right: 0px;
     background: none;
     font-size: 30px;
     text-align: right;
     vertical-align: top;
-    padding: 5px 10px;
-    z-index: 1;
+    z-index: 2;
     color: white;
+    width: 50px;
+    padding: 5px 10px;
     span {
       color: white;
     }
+    &:hover {
+      float: right;
+      div {
+        
+        &:nth-child(1) {
+          width: 90%;
+        }
+        &:nth-child(2) {
+          width: 60%;
+        }
+        &:nth-child(3) {
+          width: 30%;
+        }
+      }
+    }
+
   }
+
+
 }
 
 // Type //
@@ -208,8 +233,19 @@ span {
     display: block;
     width: 100%;
   }
-}
 
+}
+/*
+.button {
+  width: 33%; 
+  background: white;
+  border: none;
+  padding: 10px;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+*/
 .scroll-up, .scroll-down {
   color: white;
   text-align: center;
@@ -217,7 +253,9 @@ span {
   position: fixed;
   z-index: 1;
   background: none;
+  border: none;
   cursor: pointer;
+  background: none;
 }
 
 .scroll-up {
@@ -294,15 +332,13 @@ h1 {
     margin-top: 0px;
     span {
       text-shadow: -2px 1px 2px rgba(0, 0, 0, 0.11);
-      -webkit-background-clip: text;
-      -moz-background-clip: text;
-      background-clip: text;
-      background-color: rgba(255,255,255,1);
-      color: transparent;
+      // -webkit-background-clip: text;
+      // -moz-background-clip: text;
+      // background-clip: text;
+      // background-color: rgba(255,255,255,1);
+      // color: transparent;
       padding: 11px;
-
-
-      //color: white;
+      color: white;
       //background: transparent;
       //-webkit-background-clip: initial;
 
@@ -529,7 +565,7 @@ h2 {
           position: absolute;
           max-width: 250px;
           width: 90%;
-          height: 500px;
+          height: 420px;
           margin: 60px auto auto auto;
           top: 0px;
           right: 0px;
@@ -537,7 +573,7 @@ h2 {
           left: 0px;
         }
         @include for-small-phone-only {
-          height: 420px;
+          height: 370px;
           margin: auto;
         }
         @include for-extra-extra-small-phone-only {
@@ -798,9 +834,9 @@ h2 {
   }
 
   p {
-    max-width: 700px;
+    max-width: 660px;
     width: 90%;
-    margin: 0 auto;
+    margin: 60px auto 0px auto;
     @include for-phone-only {
       font-size: 14px;
     }
@@ -826,7 +862,7 @@ h2 {
       margin: 20px;
       padding: 0;
       @include for-phone-only {
-        margin: 10px 0px;
+        margin: 8px 0px;
       }
       li {
         list-style: none;
@@ -841,7 +877,8 @@ h2 {
         @include for-small-phone-only {
           padding: 2px;
         }
-        @include for-extra-extra-small-phone-only {
+        @include for-phone-only {
+          padding: 2px;
           &:nth-last-child(1) {
             display: none;
           }
