@@ -102,7 +102,6 @@ class Work extends Component {
     </i> 
 */  
     
-console.log(this.state.workAnim + " not updated?");
 
 
 

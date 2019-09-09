@@ -139,7 +139,9 @@ export default () => {
 	//canvas.width = 800;
 	//canvas.height = 600; 
 
-	console.log("resolution is: " + window.innerWidth + " x " + window.innerHeight);
+	//canvas.width = 100;
+	//canvas.height = 100;
+
 
 	// give WebGL it's viewport
 	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
