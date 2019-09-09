@@ -43,7 +43,7 @@ class Content extends Component {
     super(props);
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
     this.delay = 700;
-    this.slideDelay = 850;
+    this.slideDelay = 900;
   }
 
  
@@ -113,7 +113,6 @@ class Content extends Component {
 
     return ( 
       <div>
-      
       <button className={"scroll-up animated " + this.state.animUp} 
       style={{ animationDelay: '200ms',  
                animationDuration: '500ms'}} onClick={() => moveSection("up")}>
