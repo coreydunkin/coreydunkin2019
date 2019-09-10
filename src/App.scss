@@ -110,6 +110,7 @@ hr {
 
 
 #sidebar {
+  
   .sidebar {
     width: 100%;
     pointer-events: none;
@@ -196,7 +197,6 @@ hr {
         width: 100%;
         margin: 6px 0px;
         transition: all 200ms ease-in-out;
-
       }
    
     position: fixed;
@@ -209,6 +209,10 @@ hr {
     color: white;
     width: 50px;
     padding: 5px 10px;
+
+    @include for-ipad-portrait-and-landscape {
+      display: none;
+    }
     span {
       color: white;
     }
@@ -511,6 +515,9 @@ h2 {
       box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
       width: 100%;
       height: auto;
+      @include for-ipad-landscape {
+        transform: scale(0.8);
+      }
     }
 
   }
@@ -522,6 +529,9 @@ h2 {
       top: -60px;
       right: 2px;
       @include for-phone-only {
+        display: none;
+      }
+      @include for-ipad-landscape {
         display: none;
       }
     }
@@ -613,6 +623,7 @@ h2 {
     text-transform: uppercase;
     font-size: 43px;
 
+
     span {
     //transform: translateX(1vw);
     //transform: rotate(-10deg) skew(-3deg, 0);    
@@ -635,6 +646,10 @@ h2 {
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Sans-serif;
     font-weight: 300;
     color: white;
+    @include for-ipad-landscape {
+      top: -2px;
+      left: 90px;
+    }
     @include for-phone-only {
       top: inherit;
       left: 0px;
@@ -643,6 +658,11 @@ h2 {
       text-align: center;
       
     text-shadow: -2px 1px 1px rgba(0, 0, 0, 0.4);
+    }
+  }
+  p {
+    @include for-ipad-landscape {
+      display: none;
     }
   }
   .macbank {
