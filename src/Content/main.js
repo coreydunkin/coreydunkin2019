@@ -116,19 +116,19 @@ class Content extends Component {
       <button className={"scroll-up animated " + this.state.animUp} 
       style={{ animationDelay: '200ms',  
                animationDuration: '500ms'}} onClick={() => moveSection("up")}>
-               <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 551.13 551.13" height="25px" viewBox="0 0 551.13 551.13" width="25px" class=""><g><path d="m275.565 189.451 223.897 223.897h51.668l-275.565-275.565-275.565 275.565h51.668z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/></g> </svg>
+               <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enableBackground="new 0 0 551.13 551.13" height="25px" viewBox="0 0 551.13 551.13" width="25px"  ><g><path d="m275.565 189.451 223.897 223.897h51.668l-275.565-275.565-275.565 275.565h51.668z" data-original="#000000" className={"active-path"} data-old_color="#000000" fill="#FFFFFF"/></g> </svg>
 
                </button>  
       
       <button className={"scroll-down animated " + this.state.animDown}
       style={{ animationDelay: '200ms', 
                animationDuration: '500ms'}} onClick={() => moveSection("down")}>
-               <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 551.13 551.13" height="25px" viewBox="0 0 551.13 551.13" width="25px" class=""><g><path d="m275.565 361.679-223.897-223.896h-51.668l275.565 275.565 275.565-275.565h-51.668z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/></g> </svg>         
+               <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enableBackground="new 0 0 551.13 551.13" height="25px" viewBox="0 0 551.13 551.13" width="25px"  ><g><path d="m275.565 361.679-223.897-223.896h-51.668l275.565 275.565 275.565-275.565h-51.668z" data-original="#000000" className={"active-path"} data-old_color="#000000" fill="#FFFFFF"/></g> </svg>         
       </button> 
 
         <Sidebar
         rootId="sidebar"
-        onClick={() => console.log('sidebar clicked')}
+        onClick={this.state.sidebarOpen}
         transitions={true}
         rootClassName="sidebar-container"
         sidebarClassName="sidebar"
@@ -171,6 +171,7 @@ class Content extends Component {
         </button>
         </Sidebar>
       <ReactFullpage
+      licenseKey={'8FA2BE48-ADBA410D-8AD4BEAC-71190824'}
       anchors={anchors}
       controlArrows={false}
       dragAndMove={true}
@@ -180,8 +181,6 @@ class Content extends Component {
         // more than 2 page away, using this for animation checks
         let incrementValue = destination.index - origin.index;
 
-        console.log(incrementValue);
-        console.log(destination);
 
         if(incrementValue >100) {          
           handleAnimInUp();
@@ -191,7 +190,6 @@ class Content extends Component {
         }
 
         if(incrementValue > 1 || incrementValue < -1) {
-          console.log('skip');
           this.setState({ animationIsFinished: true });
           enableScroll();
           moveToSection(destination); 
@@ -357,19 +355,14 @@ class Content extends Component {
             }});
           }
           if (destination.item.baseURI.includes("/1")) {
-            console.log('mac');
             GLC.changeNumbersAnimMac();
           } else if (destination.item.baseURI.includes("/2")) {
-            console.log('adf');
             GLC.changeNumbersAnimAdf();
           } else if (destination.item.baseURI.includes("/3")) {
-            console.log('mcd');
             GLC.changeNumbersAnimMcd();
           } else if (destination.item.baseURI.includes("/4")) {
-            console.log('vw');
             GLC.changeNumbersAnimVw();
           } else {
-            console.log('nbn');
             GLC.changeNumbersAnimNbn();
           }
 
@@ -402,64 +395,47 @@ class Content extends Component {
       onSlideLeave={(origin, destination, direction, item) => {
 
 /*
-       console.log(origin);
 
         let numSlide = origin.item.baseURI;
 
-        console.log(numSlide);
 
         if (destination.item.baseURI.includes("/1")) {
-          console.log('nbn');
         } else if (destination.item.baseURI.includes("/2")) {
-          console.log('adf');
         } else if (destination.item.baseURI.includes("/3")) {
-          console.log('mcd');
         } else if (destination.item.baseURI.includes("/4")) {
-          console.log('vw');
         } else {
-          console.log('mac');
         }
 */
 
 
         if(destination.index === 0 && item === "right") {
-          console.log('macbank');
           GLC.changeNumbersAnimMac();
         } else if(destination.index === 1 && item === "right") {
-          console.log('adf');
           GLC.changeNumbersAnimAdf();
         } else if(destination.index === 2 && item === "right") {
-          console.log('mcd');
           GLC.changeNumbersAnimMcd();
         } else if(destination.index === 3 && item === "right") {
-          console.log('vw');
           GLC.changeNumbersAnimVw();
         } else if(destination.index === 4 && item === "right") {
-          console.log('nbn');
           GLC.changeNumbersAnimNbn();
         } 
 
         if(destination.index === 4 && item === "left") {
-          console.log('mcd');
           GLC.changeNumbersAnimMcd();
 
         } else if(destination.index === 3 && item === "left") {
-          console.log('adf');
           GLC.changeNumbersAnimAdf();
 
         } else if(destination.index === 2 && item === "left") {
-          console.log('macbank');
           GLC.changeNumbersAnimMac();
 
           
 
         } else if(destination.index === 1 && item === "left") {
           
-          console.log('nbn');
           GLC.changeNumbersAnimNbn();
           
         } else if(destination.index === 0 && item === "left") {
-          console.log('vw');
           GLC.changeNumbersAnimVw();
 
         }         
@@ -559,7 +535,6 @@ class Content extends Component {
         moveToSection = (destination) => {
           fullpageApi.moveTo(destination.index, 0);
 
-          console.log('lemme know');
           //this.setState({ animationIsFinished: false });
           enableScroll();
         }

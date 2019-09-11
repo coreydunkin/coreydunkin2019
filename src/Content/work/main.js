@@ -110,10 +110,10 @@ class Work extends Component {
     <div className="work page">
 
     <div className="fp-controlArrow fp-prev">
-    <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 551.13 551.13" height="40px" viewBox="0 0 551.13 551.13" width="40px" class=""><g><path d="m189.451 275.565 223.897-223.897v-51.668l-275.565 275.565 275.565 275.565v-51.668z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/></g> </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enableBackground="new 0 0 551.13 551.13" height="40px" viewBox="0 0 551.13 551.13" width="40px"  ><g><path d="m189.451 275.565 223.897-223.897v-51.668l-275.565 275.565 275.565 275.565v-51.668z" data-original="#000000" className={"active-path"} data-old_color="#000000" fill="#FFFFFF"/></g> </svg>
     </div>
     <div className="fp-controlArrow fp-next">
-      <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 551.13 551.13" height="40px" viewBox="0 0 551.13 551.13" width="40px" class=""><g><path d="m361.679 275.565-223.896 223.897v51.668l275.565-275.565-275.565-275.565v51.668z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/></g> </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enableBackground="new 0 0 551.13 551.13" height="40px" viewBox="0 0 551.13 551.13" width="40px"  ><g><path d="m361.679 275.565-223.896 223.897v51.668l275.565-275.565-275.565-275.565v51.668z" data-original="#000000" className={"active-path"} data-old_color="#000000" fill="#FFFFFF"/></g> </svg>
     </div>
 
        {workItem.map((item, i) => 
