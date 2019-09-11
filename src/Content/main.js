@@ -25,6 +25,15 @@ let handleAnimInUp;
 let handleAnimInDown;
 let handleAnimOutUp;
 let handleAnimOutDown;
+let userAgent = window.navigator.userAgent;
+
+// check if ipad/iphone ios
+if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
+   // iPad or iPhone
+  document.body.className += ' ios';
+
+}
+
 
 export class MySection extends Component {
   render=( state, fullpageApi ) => {
@@ -45,6 +54,7 @@ class Content extends Component {
     this.delay = 700;
     this.slideDelay = 900;
   }
+
 
  
   state = {
