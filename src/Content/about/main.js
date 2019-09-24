@@ -117,7 +117,7 @@ class About extends Component {
           isVisible={this.props.animating}>   
           <p>I've worked on high traffic, intricate websites for large-scale clients such as 
            <strong> Macquarie Bank</strong>, <strong>NBNco</strong>, <strong>Australian Defence Force</strong> and many more.
-        Using the skills i've learnt in <strong>HTML5</strong>, <strong>SASS</strong> and <strong>Javascript</strong>. 
+        Using the skills I've learnt in <strong>HTML5</strong>, <strong>SASS</strong>, and <strong>Javascript</strong>. 
         I've created webapps from the ground up utilising frameworks such as 
         <strong> Angular</strong>, <strong>React</strong> and <strong>Vue</strong>.</p>
           </Animated>   

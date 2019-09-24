@@ -27,13 +27,11 @@ let handleAnimOutUp;
 let handleAnimOutDown;
 let userAgent = window.navigator.userAgent;
 
-// check if ipad/iphone ios
-if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
+// check if ipad only
+if (userAgent.match(/iPad/i)) {
    // iPad or iPhone
-  document.body.className += ' ios';
-
+  document.body.className += ' ipad';
 }
-
 
 export class MySection extends Component {
   render=( state, fullpageApi ) => {

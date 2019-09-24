@@ -25,6 +25,15 @@
   @media (min-width: 1800px) { @content; }
 }
 
+@mixin for-ipad-ios13 {
+  @media only screen 
+  and (min-device-width : 768px) 
+  and (max-device-width : 1024px) 
+    {
+      @content;
+    }
+}
+
 @mixin for-ipad-portrait-and-landscape {
   @media only screen 
   and (min-width: 1024px) 
@@ -64,6 +73,8 @@ html, body {
     box-sizing: border-box;
   }
 }
+
+
 
 .animated {
 }
@@ -358,13 +369,16 @@ h1 {
       color: white;
       //background: transparent;
       //-webkit-background-clip: initial;
-
-      .ios & {
-        @include for-ipad-portrait-and-landscape() {
+      @include for-ipad-ios13 {
+        color: white;
+        background: transparent;
+        -webkit-background-clip: initial;   
+      }
+      .ipad & {
           color: white;
           background: transparent;
           -webkit-background-clip: initial;     
-        }
+        
       }
 
       @include for-phone-only {
@@ -517,10 +531,11 @@ h2 {
       box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
       width: 100%;
       height: auto;
-      .ios & {
-      @include for-ipad-landscape {
+      @include for-ipad-ios13 {
         transform: scale(0.8);
       }
+      .ipad & {
+        transform: scale(0.8);
       }
     }
 
@@ -535,10 +550,11 @@ h2 {
       @include for-phone-only {
         display: none;
       }
-      .ios & {
-      @include for-ipad-landscape {
+      @include for-ipad-ios13 {
         display: none;
       }
+      .ipad & {
+        display: none;
       }
     }
   }
@@ -652,11 +668,13 @@ h2 {
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Sans-serif;
     font-weight: 300;
     color: white;
-    .ios & {
-    @include for-ipad-landscape {
+    @include for-ipad-ios13 {
       top: -2px;
       left: 90px;
     }
+    .ipad & {
+      top: -2px;
+      left: 90px;
     }
     @include for-phone-only {
       top: inherit;
@@ -669,10 +687,11 @@ h2 {
     }
   }
   p {
-    .ios & {
-    @include for-ipad-landscape {
+    @include for-ipad-ios13 {
       display: none;
     }
+    .ipad & {
+      display: none;
     }
   }
   .macbank {
